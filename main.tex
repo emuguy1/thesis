@@ -1,0 +1,158 @@
+% add option draft to skip images
+\documentclass[12pt,a4paper,twosided,open=right]{scrbook}
+% \documentclass[12pt,a4paper,twosided,open=right,draft]{scrbook}
+
+% Entwickelt auf Basis von Carsten Kerns Template.
+
+\input{lib/includes}
+\input{lib/commands}
+\addbibresource{bib.bib}
+
+\begin{document}
+
+% ----------------------------------------------------------------------------------------------------------
+% Titelseite
+% ----------------------------------------------------------------------------------------------------------
+\newcommand{\stud}{Emanuel Erben}  % Ihr Name
+\student{\stud}
+{3174817}						% Matrikelnummer
+{Informatik}					% Studiengang
+
+\MyTitelseite{}					% Optionales Logo des extern betreuenden Unternehmens
+% \MyTitelseite{pics/mathcomm}	% Optionales Logo des extern betreuenden Unternehmens
+{1}								% Style der Titelseite (1 oder 2)
+{Bachelorarbeit}				% Typ der Abschlussarbeit (\in {Bachelorarbeit, Masterarbeit})
+{Vergleich verschiedener Ansätze der Multiplattform Applikationsentwicklung anhand einer Beispiel-Anwendung}				% Thema der Arbeit						
+{Prof.\ Dr.-Ing.\ Kai Selgrad}		% Betreuer
+{Prof.\ Dr.\ Name des Zweitgutachters}	% Zweitgutachter
+{15.09.\the\year}				% Abgabedatum
+
+\thispagestyle{empty}
+~\pagebreak
+
+\setcounter{page}{1} 
+
+\input{notizen}
+
+% ----------------------------------------------------------------------------------------------------------
+% Abstract
+% ----------------------------------------------------------------------------------------------------------
+\include{inhalt/abstract}
+
+\frontmatter
+
+% ----------------------------------------------------------------------------------------------------------
+% Inhaltsverzeichnis
+% ----------------------------------------------------------------------------------------------------------
+\tableofcontents
+\vfill
+\pagebreak
+
+% % ----------------------------------------------------------------------------------------------------------
+% % Abbildungsverzeichnis
+% % ----------------------------------------------------------------------------------------------------------
+% \listoffigures
+% \vfill
+% \pagebreak
+% 
+% % ----------------------------------------------------------------------------------------------------------
+% % Tabellenverzeichnis (optional)
+% % ----------------------------------------------------------------------------------------------------------
+% \listoftables
+% \vfill
+% \pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% Listingsverzeichnis (optional; Code nur, wenn wirklich sinnvoll und wichtig)
+% ----------------------------------------------------------------------------------------------------------
+\lstlistoflistings
+\vfill
+\pagebreak
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Inhalt
+% ----------------------------------------------------------------------------------------------------------
+\setstretch{1.15}
+
+
+\mainmatter
+
+
+\input{inhalt/intro}
+\input{inhalt/begriffsklaerung}
+\chapter{Native Entwicklung}
+\chapter{Hybride Entwicklung mit Hotwire und Turbo Adapter für App-Entwicklung}
+\chapter{Cross-Plattform Entwicklung mit Flutter}
+\chapter{Zusammenfassung und Auswertung}
+\chapter{Fazit}
+
+
+\vfill
+\pagebreak
+
+\appendix
+
+% ----------------------------------------------------------------------------------------------------------
+% Abkürzungsverzeichnis (optional, bitte nur wenn sinnvoll)
+% ----------------------------------------------------------------------------------------------------------
+%\listoftables
+\addchap{Abkürzungsverzeichnis}
+\begin{acronym}[KDE]
+\acro{BA}[BA]{Bachelorarbeit}
+\end{acronym}
+\vfill
+\pagebreak
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Filter fuer Literatur und Quellen definieren
+% ----------------------------------------------------------------------------------------------------------
+
+\defbibheading{Literatur}{\addchap{Literaturverzeichnis}} 
+\defbibheading{Quellen}{\addchap{Internetquellenverzeichnis}} 
+  
+\defbibfilter{Literatur}{\not\keyword{online}} 
+\defbibfilter{Quellen}{\keyword{online}} 
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Literatur
+% ----------------------------------------------------------------------------------------------------------
+
+\printbibliography[heading=Literatur,filter=Literatur] 
+\vfill
+
+\pagebreak
+
+
+% ---------------------------------------------------------------------------------------------------------- 
+% Internetquellen 
+% ---------------------------------------------------------------------------------------------------------- 
+
+\printbibliography[title = {Quellenverzeichnis}, heading=Quellen,filter=Quellen] 
+
+\pagebreak 
+
+% ----------------------------------------------------------------------------------------------------------
+% Anhang
+% ----------------------------------------------------------------------------------------------------------
+\appendix
+
+
+\chapter{Anhang}
+
+% \input{inhalt/suppl}
+
+
+\pagebreak
+
+
+% % ----------------------------------------------------------------------------------------------------------
+% % Eigenschtändigkeitserklaerung
+% % ----------------------------------------------------------------------------------------------------------
+\include{inhalt/erklaerung}
+
+
+
+\end{document}

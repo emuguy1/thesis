@@ -1,0 +1,81 @@
+\usepackage[backend=biber,style=alphabetic,maxalphanames=60,maxbibnames=10]{biblatex}
+% \usepackage[backend=bibtex,style=alphabetic]{biblatex}
+% \usepackage{natbib}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ifthen}
+\usepackage{xargs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+% \usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage[right]{eurosym}
+\usepackage[printonlyused]{acronym}
+\usepackage{subfig}
+\usepackage{floatflt}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{paralist}
+\usepackage{array}
+% \usepackage{titlesec}
+\usepackage{parskip}
+% \usepackage[subfigure,titles]{tocloft}
+\usepackage[pdfpagelabels=true,colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
+\usepackage{booktabs}
+\usepackage[lighttt]{lmodern}
+\usepackage{mathabx}
+
+\usepackage{listings}
+\lstset{basicstyle=\footnotesize, captionpos=b, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
+
+\geometry{a4paper, top=27mm, left=25mm, right=15mm, bottom=27mm, headsep=10mm, footskip=12mm}
+
+% make lstinline be normalsize but keep displayed listings small
+\makeatletter
+\lstdefinestyle{mystyle}{
+  basicstyle=%
+    \ttfamily
+    \lst@ifdisplaystyle\scriptsize\fi
+}
+\makeatother
+
+\lstset{
+	language=C++,
+	% basicstyle=\ttfamily\scriptsize,
+	style = mystyle,
+	% basicstyle=\ttfamily\scriptsize,
+	keywordstyle=\bfseries\ttfamily,
+	% commentstyle=\color{LimeGreen}\ttfamily,
+	commentstyle=\color{gray}\ttfamily,
+	emphstyle={\color{Purple!90!black}},
+	tabsize=4,
+	morekeywords={nullptr,nullptr_t,vector,string,std,list,map,pair,set,size_t,endl,cout,move},
+	emph={},
+	showstringspaces=false,
+}
+
+\setcapindent{0pt}
+\setkomafont{captionlabel}{\bfseries}
+
+\DefineBibliographyStrings{ngerman}{
+	andothers = {{et\,al\adddot}},
+}
+
+
+\DeclareLabelalphaTemplate{
+  \labelelement{
+    \field[final]{shorthand}
+    \field{label}
+    \field[strwidth=3,strside=left,ifnames=1,names=1]{labelname}
+    \field[strwidth=1,strside=left,names=1-3]{labelname}
+  }
+  \labelelement{
+    \field[strwidth=2,strside=right]{year}
+  }
+}
+\renewcommand*\labelalphaothers{$^\Asterisk\mkern-.8mu$}

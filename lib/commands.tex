@@ -1,0 +1,94 @@
+\newcommandx{\student}[3][]{
+	\def\studentName{#1}%
+	\def\studentMatnr{#2}%
+	\def\studentStudiengang{#3}%
+}
+
+\newcommandx{\MyTitelseite}[8][]{
+\thispagestyle{empty}
+\ifthenelse{\equal{#1}{}}{
+	\includegraphics[scale=0.2]{lib/oth-logo.png}
+}{
+	\includegraphics[scale=0.2]{lib/oth-logo.png}\hfill\includegraphics[scale=0.5]{#1}
+}
+\begin{center}
+\ifthenelse{\equal{#2}{2}}{ % then
+	\vspace*{2cm}
+	\Large
+	\textbf{Ostbayerische Technische Hochschule Regensburg}\\
+	\textbf{Fakultät für Informatik und Mathematik}\\
+	\vspace*{2cm}
+	\Huge
+	\textbf{#3}\\[1em]
+	\large
+	Zur Erlangung des akademischen Grades des\\
+	\ifthenelse{\equal{#3}{Bachelorarbeit}}{Bachelor of Science (B.Sc.)}{Master of Science (M.Sc.)}\\
+	\vspace*{1cm}
+	\Large
+	\textbf{#4}\\
+}{ % else
+	\vspace*{1cm}
+	\Large
+	\textbf{#4}\\
+	\vspace*{2cm}
+	\large
+	An der Fakultät für Informatik und Mathematik der\\
+	Ostbayerischen Technischen Hochschule Regensburg\\
+	im Studiengang\\[2em]
+	\textbf{\studentStudiengang}\\[2em]
+	eingereichte\\
+	\vspace*{1cm}
+	\Large
+	\textbf{#3}\\[2em]
+	\large
+	zur Erlangung des akademischen Grades des\\
+	\ifthenelse{\equal{#3}{Bachelorarbeit}}{Bachelor of Science (B.Sc.)}{Master of Science (M.Sc.)}
+	\vspace*{1cm}
+	\Large
+}
+	\vfill
+	\normalsize
+	%\newcolumntype{x}[1]{>{\raggedleft\arraybackslash\hspace{0pt}}p{#1}}
+	\begin{tabular}{rl}%{6cm}p{7.5cm}}
+	    \rule{0mm}{1ex}\textbf{Vorgelegt von:} & \studentName \\
+		\rule{0mm}{1ex}\textbf{Matrikelnummer:} & \hspace*{-0.5em}\begin{tabular}[t]{r}\studentMatnr\end{tabular} \\ 
+		\ifthenelse{\equal{#2}{1}}{~\\}{\rule{0mm}{1ex}\textbf{Studiengang:} & \studentStudiengang \\[2em]}
+		\rule{0mm}{1ex}\textbf{Erstgutachter:} & #5 \\ 
+		\rule{0mm}{1ex}\textbf{Zweitgutachter:} & #6 \\[2em]
+		\rule{0mm}{1ex}\textbf{Abgabedatum:} & #7 \\ 
+	\end{tabular} 
+\end{center}
+\pagebreak
+}
+
+
+
+% ein paar nützliche Kommandos
+
+\newcommand\defsec[1]{\label{sec:#1}}
+\newcommand\refsec[1]{\ref{sec:#1}}
+
+%\newcommand\todo[1]{\textcolor{red}{[{\textbf{TODO}} #1]}}
+\newcommand\todo[1]{} % remove todos
+
+%\newcommand\new[1]{\textcolor{new}{{#1}}}
+\newcommand\new[1]{#1} % plain text
+%\newcommand\old[1]{\textcolor{gray}{{\sout{#1}}}}
+\newcommand\old[1]{} % remove old stuff
+
+\definecolor{lgdv}{rgb}{.80,.23,.13}
+\definecolor{agreen}{rgb}{.2,.8,.2}
+\definecolor{jorange}{rgb}{.9,.6,.0}
+\definecolor{new}{rgb}{.8,.4,.4}
+
+\newcommand\NOTE[3]{\textcolor{#1}{[#2: #3]}}
+
+%\newcommand\kai[1]{\NOTE{lgdv}{Kai}{#1}}
+\newcommand\kai[1]{} % remove notes
+%\newcommand\niko[1]{\NOTE{jorange}{Niko}{#1}}
+\newcommand\niko[1]{} % remove notes
+
+\newcommand\To{\ensuremath{\to}}
+\newcommand\hi[1]{\textcolor{red}{#1}}
+
+\let\shortcite=\cite
