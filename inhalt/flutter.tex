@@ -7,6 +7,59 @@ Hot Reload zeigt sofort sichtbare Änderungen, so dass man gut UI debuggen umbau
 
 Schwer herauszufinden welche Elemente es gibt, wie man sachen konfigurieren kann. Am Anfang nicht sehr intuitiv. Man muss sich auf jeden Fall gut in die Doku einlesen und vlt. auch ein kleines Tutorial machen, bzw. die genauen Sachen googlen.
 
+
+
+\section{Flutter 101}
+
+\subsection{Layout}
+-Button
+-Row
+-Wrap
+-Container
+-Scaffold
+\subsection{Aufbau}
+-Widgets
+-classes
+-Stateclasses
+-Navigator / Router
+-Assets
+
+\subsection{Plugins / pubspec.yaml}
+\subsubsection{benutzte Plugins}
+\subsubsection{Lehre aus Unterhaltung mit Entwicklern von Plugins}
 Bei erstellen erster Seiten und hinzufügen ersten Packages Fehler aufgetreten betreffend Not implemented. Fehlermeldung und Fehler-stack nicht sehr aussagekräftig. Wurde evaluiert dass es an simple gradient text lag. Laut Dokumentationseite des Packages ist es kompatibel für alle Plattformen. Jedoch funtkionierte es nach hinzufügen der Vorgeschlagenen Lösung nur noch auf Android/mobile. Beim Nachforschen tut man sich schwer genaue Gründe herraus zu finden, da die Fehlermeldung und die Dokumentation hierfür leider keinerlei Hinweise gibt. 
 Es kam im Verlaufe der Fehlererforschung auch zum Kontakt mit dem Entwickler der sehr hilfsbereit die Fehlerforschung unterstütze.
 \TODO{Ergebniss der Issueunterhaltung mit Entwickler}
+Bei genauer untersuchung mit dem Entwickler zusammen kam herraus, dass meine Flutterversion eine ältere war, als die, die benötigt wurde, um das Plugin auf Web laufen zu lassen. Nachdem die Flutter version angepasst war, funktionierte es einwandfrei. Da es jedoch bei vielen Packages und auch bei diesem keine Angaben zur mindestens zu nutzenden Flutterversion gab, empfohl ich dem Entwickler doch dies in der Read.me hinzuzufügen, was auch prompt geschah. 
+An diesem Beispiel sieht man sehr gut, dass diese Community sehr aktiv und offen ist für Vorschläge und Veränderungen.
+Es hat mir jedoch auch gezeigt, dass einige Sachen hier Fehlen:
+1. Eine Angabe welche Flutterversion genutzt werden muss, damit alles gut funktioniert. Es gibt zwar eine Angabe unter welcher Version das Plugin getestet wurde, aber manchmal will man vlt. gar nicht sofort auf die neueste Version wechseln.
+2. Eine Anzeige welche Packete und Flutterversionen geupgraded werden können, fehlen. Es muss irgendein Anhaltspunkt geben um schnell zu sehen, welche Plugins bzw. Dependencies veraltet sind und was hier geupdated werden kann.
+
+
+\section{Layouting in Flutter}
+SpacerFürTODO
+\TODO{Eigentlich hat ja android das auch. Hier sind halt die Layout Files wirklich nur } 
+\TODO{reine Layout Files aber sie sind ja auch xml. Siehe vergleich mit HTML+CSS} 
+Flutter ist ersteinmal etwas anderes als die native Entwicklung. 
+\TODO{Mit iOS abgleichen}
+Containerisierter Aufbau Abgleich miut Kapitel zu Layout aus der Flutter - Doku
+
+Flutter ist ähnlich zu html+css Aufbau Man verschachtelt die verschiedenen Elemente ineinander um dann einen Container-Baum zu erhalten.
+Dies ist sehr ähnlich zum html baum. Der entsteht wenn man eine Website entwirft und die verschiedenen Elemente verschachtelt. 
+Allerdings kommt hier auch gleich noch css mit rein, da man die verschiedenen Attribute der Elemeente direkt beschreibt.
+Was anders ist, ist dass man für Layout spezifische Sachen manchmal noch einen Container braucht, während man ja etwa margin auf jedes Element drauf machen kann. Es ist aber dementsprechend auch wieder ähnlich, da etwa flex boxen manchmal in sogenannte divs eingebaut werden müssen, um zu funtktionieren. Was außerdem besonders ist, ist dass es schon sehr vordefinierte Plugins gibt, die das Layout vorgeben können. Einerseits gibt es rows und Columns, die ansonsten oft über divs mit bestimmten Klassen und Frontend UI Framewortks erreichrt werden können und es gibt oft auch schon spezifizierte Sachen für Buttons etwa. Hier kann man dann OutlinedButton, Button, TextButton oder auch IconButton nehmen um das Design hierfür nicht erst selber bauen zu müssen.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[height=7cm,keepaspectratio]{images/sample-flutter-layout.png} 
+  \caption{Hierachie einer Menüleiste Quelle: Flutter Doku}
+  \label{fig:flutter_layout_tree}
+\end{figure}
+
+Abbildung \ref{fig:flutter_layout_tree}
+
+Um Seiten zu erstellen gibt es verschiedene Methoden. Oft muss man die Seiten komplett selbst aufbauen. Das heißt man fängt beim Startelement an. Dem sogennanten Scaffold. Dieser hat verschiedene Elemente. So gibt es AppBar man kann einen Footer hinzufügen und vorallem gibt es einen Body. Der kann dann ein Widget als Child hinzugefügt werden. Hier kann nun über verschiedene Widgets wieder neue Sachen hinzugefügt werden und so Stück für Stück ein Layout gebaut werden. 
+Hierfür gibt es Grundsätzlich zwei verschiedene Arten von Widgets. 
+1. Widgets die Helfen die Seite zu strukturieren und Layouts zu verfeinern und aufzubauen.
+2. Widgets die Teil der Nutzeroberfläche sind und die unter Umständen noch weitere Childs zur ausgestaltung Besitzen, aber auf der Oberfläche angezeigt werden. So hat etwa ein TextButton noch ein Child Text wo dann der Text hinzugefügt wird, der im Button steht. Der Button ist allerdings ebenfalls ein Teil der UI. Anders als Container. Diese fügen eventuell eine Margin, also Abstand zu anderen Elementen hinzu oder ändern\TODO{Tun sie das wirklich?} unter Umständen auch mal den Hintergrund, sie sind allerdings keine Alleinstehenden Elemente und umgeben eigentlich nur das Child oder die Child Elemente.
