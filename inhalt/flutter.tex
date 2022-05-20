@@ -1,5 +1,7 @@
 Notizen zur Entwicklung mit Flutter:
 
+\TODO{https://www.youtube.com/watch?v=wE7khGHVkYY}
+Composition: Composing different existing widgets to a new one
 
 Durch voreinstellung und Erstellen eines Basic screen schon nach wenigen Minuten eine erste laufende "Version" zu sehen.
 
@@ -10,12 +12,25 @@ Schwer herauszufinden welche Elemente es gibt, wie man sachen konfigurieren kann
 
 
 \section{Flutter 101}
+\subsection{Widgets}
+Widgets sind die Elemente in Flutter, die genutzt werden um die Applikation aufzubauen.
+Es gibt zwei Arten von Widgets:
+1. Statefull Widget
+2. Stateless Widget
+Der Unterschied ist, dass bei Statefull widgets, gibt es noch eine State Klasse, die den aktuellen Status des Elements speichert und bei einer Änderung die neuen Werte übernimmt und damit eine Änderung in dem Element ausführt. Am besten ist dies etwa mit einem Favoriten Button vorstellbar. Drückt man ihn, fügt man ihn zu den eigenen Favoriten hinzu und das Icon des Buttons ändert sich bspw. von einem Herzicon, das nur den Rahmen hat, zu einem was ausgefüllt ist.
+
+Bei der Erstellung gibt es einiges zu beachten. 
+Etwa kann man auch ein Widget erstellen wollen, dass in ein eigenes File auslagern, wie es mit tobBar.dart ist. Hier ist jedoch dann die übergabe von Parametern wieder wie bei normalen Klassen übergeben werden. Man kann sie aber auch erstellen wie bei topBar2.dart, wo man die einzelnen Parameter bennenen kann und auch besser nullabillity handln kann.
+\TODO{genauer untersuchen. Vorallem Statless Widgets, nullability wie bei topBar, und vieles mehr}
+
+Man kann aber auf jeden Fall sehr einfach ein eigenes Widget schreiben. Dies ist vorallem sinvoll, wenn man eine Komponente hat, die man wiederverwenden möchte. Man erstellt einfach die Widgetclasse mit den entsprechenden 
+\subsection{Plugins}
 
 \subsection{Layout}
 -Button
 -Row
 -Wrap
--Container
+-Container: Dies ist das Wichtigste Widget von Flutter. Sobald man irgendwelche Platzhalter oder innere Abordnung oder sonst was nötig ist, braucht man oftmals das Widget Container. Man kann ganz einfach andere Elemente in ein Container hineinstecken und alle benötigten Sachen hinzufügen. Von Margin Paddings feste Größen und vieles mehr. Einfach Einen Container erstelle und die innenliegenden Elemente in einem ChildWidget hinzufügen.
 -Scaffold
 \subsection{Aufbau}
 -Widgets
