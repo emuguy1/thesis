@@ -1,0 +1,22 @@
+Es gibt noch einen anderen Weg eine Anwendung auf mehrere Plattforment zu bringen.
+Und zwar eine Website in einer nativen App anzuzeigen. So muss man lediglich eine Website schreiben die auch gut auf verschiedenen Bildschirmgrößen angezeigt werden kann. Danach muss man nur noch ein paar Anpassungen an einer nativen Android App vornehmen, um eine Reibungslose funktionalität zu gewährleisten und schon hat man eine Applikation die als Website auf allen Geräten aufgerufen werden kann und man kann sie gleichzeitig noch in eine Webview einbauen, um seinen Nutzern eine Appversion bieten zu können, die diese aus den Appstores herunterladen können.
+\section{Abstufungen}
+Diese Entwicklung kann jedoch noch generell in zwei unterschiedliche Abstufungen unterteilt werden. 
+\section{Reine Webview ohne nativen Anteil}
+Hier wird nur die Website auf einem "Canvas" angezeigt und noch ein paar Konfigurationen vorgenommen, damit alle Funktionalität grundsätzlich angeboten werden kann.
+
+\section{Webview gemischt mit Nativer Funktionalität}
+Es gibt Optionen einen Nativen anteil in eine WebView App einzubauen.
+\subsection{Einbau des Android Adapters in Website um native Funktionalität aufzurufen}
+Neben der einfachen WebView kann man wenn die Website Javascript benutzt auch native Funktionalität einbauen. So kann man eine Javascript Verbindung erstellen indem man im Javascript der Website eine Android Adapter aufruft und dort eine Funktion aufruft, die im Android Code definiert ist. So kann man native Funktionalität auf Smartphones nutzen.(Toast beispiel)
+\subsection{Mischen zwischen Nativer und Webansicht}
+Einen Schritt weiter als davor. Hier schreibt man die Website bereits in einer passenden Technologie/ Sprache, um im Anschluss eine App zu entwickeln, die native und Web Ansichten mischt, um einen möglichst effizienten aber trotzdem nativ aussehenden Look für eine App zu erhalten. Hotwire und Turbo. als Beispiel
+
+
+
+
+
+\section{Fazit(muss wsl. wo anders hin) zu hybrid}
+Auch wenn es auf dem ersten Moment super einfach scheint und es so wirkt, als könnte man so jede Website einfach in eine Applikation stecken, ohne dass man groß wiederholenden Code hat, bzw. dass man mehrmals die komplette Anwendung schreiben muss, sondern ja nur einmal und je nach grad noch einmal Aufwand hineinstecken muss, aber nie in dem Umfang wie für eine komplette native App. 
+Es hat auch Nachteile und Gründe, warum dies nicht gern genutzt wird.
+Ein aller erster großer Nachteil ist eine reine online Funktionalität. 
