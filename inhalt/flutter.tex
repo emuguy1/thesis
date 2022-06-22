@@ -10,8 +10,8 @@ Schwer herauszufinden welche Elemente es gibt, wie man sachen konfigurieren kann
 
 
 
-\section{Flutter 101}
-\subsection{Widgets}
+\subsection{Flutter 101}
+\subsubsection{Widgets}
 Widgets sind die Elemente in Flutter, die genutzt werden um die Applikation aufzubauen.
 Es gibt zwei Arten von Widgets:
 1. Statefull Widget
@@ -23,26 +23,26 @@ Etwa kann man auch ein Widget erstellen wollen, dass in ein eigenes File auslage
 \TODO{genauer untersuchen. Vorallem Statless Widgets, nullability wie bei topBar, und vieles mehr}
 
 Man kann aber auf jeden Fall sehr einfach ein eigenes Widget schreiben. Dies ist vorallem sinvoll, wenn man eine Komponente hat, die man wiederverwenden möchte. Man erstellt einfach die Widgetclasse mit den entsprechenden 
-\subsection{Plugins, Modules, Packages}
+\subsubsection{Plugins, Modules, Packages}
 Im Verlauf der Arbeit wurde ebenfalls Testweise ein eigenes Plugin geschrieben um zu testen wie hier der entsprechende Ablauf ist, und wie hiermit eventuelle nicht vorhandene Funktionalität mit nativen Programmiersprachen und API calls programmiert werden kann. Hierzu wurde einmal die Einführung von der google developer seite TODO: Link genutzt um ein iOS und Android keyboard zu schreiben das auf dem Gerät anhand von nativen APIs der Betriebssysteme die Töne erzeugt und dabei sowohl auf drauf drücken und loslassen reagiert.
 Das interessante an dieser Methode ist es , dass zur Kommunikation zwischen dem Dart Code und dem nativen Code channels zur Kommunikation genutzt werden, um dann die entsprechende native Funktionalität auszuführen. Ein zweiter interessanter Punkt ist, dass plugins asynchron auf eigenen Threads ausgeführt werden/können. Dies folgt der größeren Diurektive dass UI und Logik auf unterschiedlichen Threads laufen, um mögliche Blockaden nicht auf dem jeweils anderen Thread bem,erkbar zu machen.
 
 
 
-\subsection{Layout}
+\subsubsection{Layout}
 -Button
 -Row
 -Wrap
 -Container: Dies ist das Wichtigste Widget von Flutter. Sobald man irgendwelche Platzhalter oder innere Abordnung oder sonst was nötig ist, braucht man oftmals das Widget Container. Man kann ganz einfach andere Elemente in ein Container hineinstecken und alle benötigten Sachen hinzufügen. Von Margin Paddings feste Größen und vieles mehr. Einfach Einen Container erstelle und die innenliegenden Elemente in einem ChildWidget hinzufügen.
 -Scaffold
-\subsection{Aufbau}
+\subsubsection{Aufbau}
 -Widgets
 -classes
 -Stateclasses
 -Navigator / Router
 -Assets
 
-\subsection{Plugins / pubspec.yaml}
+\subsubsection{Plugins / pubspec.yaml}
 \subsubsection{benutzte Plugins}
 \subsubsection{Lehre aus Unterhaltung mit Entwicklern von Plugins}
 Bei erstellen erster Seiten und hinzufügen ersten Packages Fehler aufgetreten betreffend Not implemented. Fehlermeldung und Fehler-stack nicht sehr aussagekräftig. Wurde evaluiert dass es an simple gradient text lag. Laut Dokumentationseite des Packages ist es kompatibel für alle Plattformen. Jedoch funtkionierte es nach hinzufügen der Vorgeschlagenen Lösung nur noch auf Android/mobile. Beim Nachforschen tut man sich schwer genaue Gründe herraus zu finden, da die Fehlermeldung und die Dokumentation hierfür leider keinerlei Hinweise gibt. 
@@ -55,7 +55,7 @@ Es hat mir jedoch auch gezeigt, dass einige Sachen hier Fehlen:
 2. Eine Anzeige welche Packete und Flutterversionen geupgraded werden können, fehlen. Es muss irgendein Anhaltspunkt geben um schnell zu sehen, welche Plugins bzw. Dependencies veraltet sind und was hier geupdated werden kann.
 
 
-\section{Layouting in Flutter}
+\subsection{Layouting in Flutter}
 SpacerFürTODO
 \TODO{Eigentlich hat ja android das auch. Hier sind halt die Layout Files wirklich nur } 
 \TODO{reine Layout Files aber sie sind ja auch xml. Siehe vergleich mit HTML+CSS} 
@@ -85,7 +85,7 @@ Hierfür gibt es Grundsätzlich zwei verschiedene Arten von Widgets.
 
 
 
-\section{Conclusion Flutter}
+\subsection{Conclusion Flutter}
 Hier auf die Challanges mit Null safety und grundsätzlichen Änderungen zwischen den großen Versionen eingehen, die dazu führen, dass nicht nur unter anderem auch eigene Dokumentation und Codelabs Einträge nicht mehr funktionieren, sondern auch ein großteil der bestehenden Lösungen so nicht mehr einfach Copy Paste mäßig in die eigene Applikation gezogen werden kann.
 Dazu kommt, dass etwa reihenweiße Packages mit einem Update auf Flutter 3.0 wieder ein Update brauchen da hier wieder einige Sachen zu Nullsafety usw. siehe Screenshot mit Warnung aus Console und der Nutzer dann immer eine Warning bekommt, die er so schnell nicht ändern kann. Dazu kommt, dass das upgraden der Dependencys wie bei allen anderem aber auch, wieder zu häufigen Koabhängigkeiten und Upgrade Issues führt, sodass man immer genau aufpassen muss, ob man denn jetzt eine ältere bzw. neuere Version der Plugins nutzen kann. Deswegen gilt auch hier wie in vielem anderen. Versuche so viel wie möglich selbst zu machen. Hierzu vlt. aus dem Artikel zietieren mit jeder Import ist ein "Dept" und irgendwann muss man dann seine Schulden zurückzahlen. Natürlich gilt. Nur so viel wie sinnvoll. Denn man sollte bereits verfügbare Lösungen zu komplexen Problemen schon nutzen, um nicht unnötig Zeit zu verschwenden. jedoch sollte man hier darauf achten, dass man vlt. nur so viel importiert wie nötig ist, um möglich Cropssdependencie errors zu vermeiden.
 Ein weiterer Punkt ist die verfügbarkeit auf Plattformen. Nachdem mit Flutter 3 die Lücke der letzten Fehlenden Plattformen geschlossen wurde, heißt es nicht dass man jetzt einfach seine für Android und iOS entwickelte App nehmen kann und dann eine Plattform hinzufügen und dann der Meinung sein dass alles einfach funktioniert. Denn einige Plugins sind nur für bestimmte Plattformen geschrieben. So etwa das WebView Plugin für Flutter. Die populärste von Flutter "promoted(noch mal nachschauen)" Version ist nur für Android und iOS. Das ist ja eigentlich auch erst mal ok, da man ja bei allen anderne Versionen einfach eine Website aufrufen kann und dabei auch keine Layout probleme haben sollte. Aber wenn man sich vornimmt nun für eine andere PLattform eine App mit WebView zu bauen, so hat man leider nie das alles in einem Paket. So gibt es Plugins die unterstützen dann zusätzlich noch Windows Version oder die Webversion, oder eine andere die alle Laptop Plattformen (Mac, Linux, Windows) unterstützt, aber dann wieder nciht die Smatrphone Versionen. Hier muss man also bei Projektbeginn sich überlegen, für welche Plattformen man etwas entwickeln will, bzw. welche Plattformen man ausschließen kann und dann dementsprechen deine Plugins suchen, was eiunen auch stark einschränken kann. Natürlich gibt es jetzt die Möglichkeit einfach sein eigenes Plugin zu schreiben und dabei alle Plattformen zu unterstützen. Dafür muss man sich jedoch dann auch in jeder zu unterstützenden Plattformtypischen Programmiersprache auskennen.

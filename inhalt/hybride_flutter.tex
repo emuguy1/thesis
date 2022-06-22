@@ -1,0 +1,8 @@
+
+\subsection{Entwicklung einer Hybriden App mit wechsel zwischen Flutter und WebView}
+In dem behandelten Beispiel wird Phoenix mit einer sogenannten Live Komponente behandelt. Hier gibt es eine Methode namens Live-redirect. Diese kann zwischen zwei Live komponenten hin und her schalten. Dadurch wird kein erneuter URL Aufruf ausgeführt, der dann von einem URL Request mitbekommen wird. Hier findet jedeglich eine AJAX Abfrage statt, die hier nicht abgefangen werden kann.
+Zwei Mögliche Lösungen:
+1. Website umbauen, sodass ein richtiger Redirect genutzt wird: Nachteil -> Geringere Performance im Browser
+2. App so bauen, dass kompletter Live Bereich abgebildet wird: Nachteil -> Views die Nativ gar nicht gebaut werden sollten, müssen unter umständen gebaut werden, um Funktionalität zu gewährleisten.
+
+Weiteres Problem war die Navigation. Da in diesem Fall zur besseren Performance immer die gleiche WebView wiederverwendet wurde, war es ein konstantes Springen zwischen einer WebView und nativen Teilen. Wenn man nun im WebViewBrowser die zurück Taste aufruft, wird innerhalb der WebView zurück gegangen. Hier kommt allerdings das Problem, dass wenn eine Flutter Page dazwischen geschaltet wurde, 

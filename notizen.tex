@@ -1,50 +1,13 @@
-
-Lesen Sie das \emph{lshort}, zumindest inkl.\ Kapitel 2: \url{https://www.ctan.org/tex-archive/info/lshort/english/}!
-
-Verwenden Sie explizite Zeilenumbrüche mit \lstinline[language=Tex]!\\! \emph{nur wenn unbedingt} nötig.
-
-Für viele Anwendungsbeispiele wie das Einfügen von Abbildungen, Tabellen, Formeln und Formattierung allgemein schauen Sie sich das beiliegende Beispiel unter \texttt{./example} an.
-
-
 Mögliche Kriterien:
 The comparison investigates several aspects of each language, including program length, programming effort, runtime efficiency, memory consumption, and reliability
 siehe:https://ieeexplore.ieee.org/abstract/document/876288
 
-----------
-
-
-
---------------------
-
-Wenn man über Applikationsentwicklung für mobile Endgeräte spricht, muss mann zwischen einigen verschiedenen Varianten unterscheiden.
-1.Native Apps:
-Native Apps sind Applikationen die mit der Plattformspezifischen Programmiersprache für die einzelnen Plattformen entwickeltwerden. Hierbei wird dann in Kotlin für Android oder Swift für iOS sowohl die UI als auch die Logik der App umgesetzt und ist so gesehen ein eigenständiges System, da die dadurch entwickleten Applikationen nur auf der Plattform genutzt werden können, für die sie geschrieben wurden.
-Oft verfügen diese Applikationen auch noch über externe Schnitstellen, oder einer Verbindung zu einem Server, um etwa auf Datenhaltung oder andere Dienste zuzugreifen.
-Ein Vorteil dieser Art der Entwicklung ist es, dass man sehr gut die verschiedenen Möglichkeiten der jeweiligen Plattform ausnutzen kann. So ist etwa eine Nutzung der Kamera in nativ entwickelten Applikation deutlich einfacher und besser umsetzbar. Dazu kommt, dass man bessere Nutzeroberflächen bauen kann, die auf die mobile Plattform angepasst sind.
-Der Nachteil den eine Native Entwicklung jedoch hat ist der Aufwand und die damit verbundenen Kosten. Um für die beiden vorherschenden Plattformen eine Applikation anbieten zu können, braucht man die doppelte Zeit, als wenn man nur eine App entwickelt. Kommt dann noch eine Website und Serveranwendung oder ähnliches hinzu, wird schnell aus einer kleinen Anwendung ein großer Kostenproduzent.
-
-2. Cross-Plattform-Apps
-Unterscheidung zwischen Webview in App und z.B. Flutter 
-
-
-3. Hybride Apps:
-Hybride Apps sind Applikationen die zu gewissen Anteilen aus nativem Code bestehen und zu gewissen Teilen Code, Schnitstellen oder Darstellungen anderer Websiten bzw. Webapplikationen nutzen. Der häufigste Anatz ist es hier, Webappplikationen zu einem gewissen Anteil in einem Frame der Applikation darzustellen und dabei einzelne Seiten durch nativ entwickelte Oberflächen zu ersetzen und die Daten an die Webapplikationen weiter zu geben. 
-
-
+Ease of Coding, Debug/Test, Distribution/Upgrade, Ease of Use: Download, Install and Update, User Interface, Functionalities, Performance Comparison 
+siehe:https://ieeexplore.ieee.org/abstract/document/8082717
 
 -----
 Vortrag zu Cross Plattform Notizen:
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[height=7cm,keepaspectratio]{images/cross-platform-mobile-frameworks.png} 
-  \caption{Cross-Plattform-Frameworks 2019-2021}
-  \label{fig:statista_cross_plattform}
-\end{figure}
-
-Abbildung \ref{fig:statista_cross_plattform} zeigt Statistik von JetBrains die Verteilung von verschiedenen Sprachen zeigt:
- -> Flutter vielversprechend
- 
 Flutter ist für Ubuntu Standardsprache zur Desktopanwendungsentwicklung
 
 Mittlerweile für fast alle möglichen Plattformen übersetzbar und Gemeinschaft sehr aktiv.
@@ -55,9 +18,7 @@ Bei Flutter kann man Plugins schreiben. Diese funktionieren, indem man einen Dar
 
 Die Grundfunktionalität von Flutter funktioniert, indem ein Canvas genommen wird, auf den die verschiedenen UI-Komponenten "drauf" gemalt werden. Mit einer dahinter liegenden Zuordnung und Tracking wird es dann zu einer funktionalen Nutzeroberfläche.
 
---------
-
-Frage: Ist es überhaupt noch sinnvoll, eine App nativ zu entwickeln? Macht es nicht immer mehr Sinn eine Cross-Plattform-Entwicklung zu tun, falls man einmal doch auf eine weitere Plattform umsteigen will? 
+------------Frage: Ist es überhaupt noch sinnvoll, eine App nativ zu entwickeln? Macht es nicht immer mehr Sinn eine Cross-Plattform-Entwicklung zu tun, falls man einmal doch auf eine weitere Plattform umsteigen will? 
 Es könnte ja immer sein, dass man die App erweitern kann. Dann müsste man eine zusätzliche Entwicklung bezahlen. Man müsste gewissermaßen komplett von vorne anfangen. Während wenn man bereits in Flutter etwa entwickelt hat, muss man nur noch die benötigte Plattform kompilieren und eventuell ein paar Sachen anpassen. 
 
 Andererseits hat man einen schnell sich ändernden Technologiemarkt. Flutter wurde erst 2017 auf den Markt gebracht und ist 2021 zum Führenden Framework aufgestiegen. Andererseits ist React Native von einem der viel versprechendsten Frameworks seit dem Erscheinen von Flutter auf dem Abeseigenden Mast und andere haben ganz und gar Ihre Bedeutung verloren.Etwa Apache Flex. Das auch seit 2017 nicht mehr weiter entwickelt wird. So zeigt sich, dass die Wahl auf das richtige Framework und die richtige Entwicklungsstrategie eine sehr wichtige ist und mit viel Vorsicht getroffen werden muss.
@@ -126,4 +87,4 @@ Quellen:
 
 - Entwicklerverfügbarkeit [1]
 
--Ausprobieren: Wenn man nicht mit dem Framework zurecht kommt, sollte man eventuell ein anderes versuchen. Nur durch ausprobieren erfährt man wie gut man damit entwickeln kann. [1]
+-Ausprobieren:Wenn man nicht mit dem Framework zurecht kommt, sollte man eventuell ein anderes versuchen. Nur durch ausprobieren erfährt man wie gut man damit entwickeln kann.[1]
