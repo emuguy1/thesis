@@ -1,5 +1,6 @@
 % add option draft to skip images
-\documentclass[12pt,a4paper,twosided,open=right]{scrbook}
+\documentclass[12pt,a4paper,twosided,openany]{scrbook}
+%\documentclass[12pt,a4paper,twosided,open=right]{scrbook}
 % \documentclass[12pt,a4paper,twosided,open=right,draft]{scrbook}
 
 % Entwickelt auf Basis von Carsten Kerns Template.
@@ -51,9 +52,9 @@
 % % ----------------------------------------------------------------------------------------------------------
 % % Abbildungsverzeichnis
 % % ----------------------------------------------------------------------------------------------------------
-% \listoffigures
-% \vfill
-% \pagebreak
+\listoffigures
+\vfill
+\pagebreak
 % 
 % % ----------------------------------------------------------------------------------------------------------
 % % Tabellenverzeichnis (optional)
@@ -65,9 +66,9 @@
 % ----------------------------------------------------------------------------------------------------------
 % Listingsverzeichnis (optional; Code nur, wenn wirklich sinnvoll und wichtig)
 % ----------------------------------------------------------------------------------------------------------
-\lstlistoflistings
-\vfill
-\pagebreak
+%\lstlistoflistings
+%\vfill
+%\pagebreak
 
 
 % ----------------------------------------------------------------------------------------------------------
@@ -78,8 +79,9 @@
 
 \mainmatter
 
-
-\input{inhalt/intro}
+\chapter{Motivation}
+\input{inhalt/motivation}
+\chapter{Definitionen und Erklärungen}
 \input{inhalt/begriffsklaerung}
 \chapter{Entwicklung Nativer Android Application}
 \input{inhalt/native}
@@ -91,6 +93,8 @@
 \input{inhalt/hybride_flutter}
 \chapter{Zusammenfassung und Auswertung}
 \chapter{Fazit}
+\section{Flutter vs. Native Android}
+\section{Nativ vs. Hybrid vs. Cross-Plattform}
 
 
 \vfill

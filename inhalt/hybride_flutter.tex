@@ -6,3 +6,7 @@ Zwei Mögliche Lösungen:
 2. App so bauen, dass kompletter Live Bereich abgebildet wird: Nachteil -> Views die Nativ gar nicht gebaut werden sollten, müssen unter umständen gebaut werden, um Funktionalität zu gewährleisten.
 
 Weiteres Problem war die Navigation. Da in diesem Fall zur besseren Performance immer die gleiche WebView wiederverwendet wurde, war es ein konstantes Springen zwischen einer WebView und nativen Teilen. Wenn man nun im WebViewBrowser die zurück Taste aufruft, wird innerhalb der WebView zurück gegangen. Hier kommt allerdings das Problem, dass wenn eine Flutter Page dazwischen geschaltet wurde, 
+
+Es gibt dafür aber auch eine andere Sache. AutomaticKeepAliveMixin.
+Dadurch kann man bei den verschiedenen Pages entscheiden, ob der State erhalten werden soll, oder ob er 
+Hiermit kann man sagen, dass der State/ das Widget vomn Hauptscreen gelöst wird, dann wird nicht der State automatisch dismissed und wenn es erneut aufgerufen wird, neu gebaut, sondern der alte State bleibt erhalten und sobald die Seite wieder in den Focus kommt, wird sie gemounted, anstatt neu zu bauen.
