@@ -1,5 +1,6 @@
+Im folgenden wird ein vierter Entwicklungsansatz vorgestellt, der eine Mischung aus den zwei Anwendungsklassen der hybriden und Cross-Plattform Applikationen verbindet. Hierbei wird zwischen reinen Flutter-Benutzeroberflächen und einer in Flutter implementierten WebView hin und hergeschaltet, um eine schnelle umfangreiche Multiplattform Applikation zu erstellen.
 
-\subsection{Entwicklung einer Hybriden App mit wechsel zwischen Flutter und WebView}
+\subsection{Grundlagen und Aufbau}
 In dem behandelten Beispiel wird Phoenix mit einer sogenannten Live Komponente behandelt. Hier gibt es eine Methode namens Live-redirect. Diese kann zwischen zwei Live komponenten hin und her schalten. Dadurch wird kein erneuter URL Aufruf ausgeführt, der dann von einem URL Request mitbekommen wird. Hier findet jedeglich eine AJAX Abfrage statt, die hier nicht abgefangen werden kann.
 Zwei Mögliche Lösungen:
 1. Website umbauen, sodass ein richtiger Redirect genutzt wird: Nachteil -> Geringere Performance im Browser
@@ -10,3 +11,7 @@ Weiteres Problem war die Navigation. Da in diesem Fall zur besseren Performance 
 Es gibt dafür aber auch eine andere Sache. AutomaticKeepAliveMixin.
 Dadurch kann man bei den verschiedenen Pages entscheiden, ob der State erhalten werden soll, oder ob er 
 Hiermit kann man sagen, dass der State/ das Widget vomn Hauptscreen gelöst wird, dann wird nicht der State automatisch dismissed und wenn es erneut aufgerufen wird, neu gebaut, sondern der alte State bleibt erhalten und sobald die Seite wieder in den Focus kommt, wird sie gemounted, anstatt neu zu bauen.
+
+\subsection{Herausforderung und Probleme}
+
+\subsection{Fazit}

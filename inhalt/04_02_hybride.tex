@@ -1,22 +1,22 @@
 Es gibt noch einen anderen Weg eine Anwendung auf mehrere Plattforment zu bringen.
 Und zwar eine Website in einer nativen App anzuzeigen. So muss man lediglich eine Website schreiben die auch gut auf verschiedenen Bildschirmgrößen angezeigt werden kann. Danach muss man nur noch ein paar Anpassungen an einer nativen Android App vornehmen, um eine Reibungslose funktionalität zu gewährleisten und schon hat man eine Applikation die als Website auf allen Geräten aufgerufen werden kann und man kann sie gleichzeitig noch in eine Webview einbauen, um seinen Nutzern eine Appversion bieten zu können, die diese aus den Appstores herunterladen können.
-\section{Abstufungen}
+\subsection{Abstufungen}
 Diese Entwicklung kann jedoch noch generell in zwei unterschiedliche Abstufungen unterteilt werden. 
-\subsection{Reine Webview ohne nativen Anteil}
+\subsubsection{Reine Webview ohne nativen Anteil}
 Hier wird nur die Website auf einem "Canvas" angezeigt und noch ein paar Konfigurationen vorgenommen, damit alle Funktionalität grundsätzlich angeboten werden kann.
 
-\subsection{Webview gemischt mit Nativer Funktionalität}
+\subsubsection{Webview gemischt mit Nativer Funktionalität}
 Es gibt Optionen einen Nativen anteil in eine WebView App einzubauen.
-\subsection{Einbau des Android Adapters in Website um native Funktionalität aufzurufen}
+\subsubsection{Einbau des Android Adapters in Website um native Funktionalität aufzurufen}
 Neben der einfachen WebView kann man wenn die Website Javascript benutzt auch native Funktionalität einbauen. So kann man eine Javascript Verbindung erstellen indem man im Javascript der Website eine Android Adapter aufruft und dort eine Funktion aufruft, die im Android Code definiert ist. So kann man native Funktionalität auf Smartphones nutzen.(Toast beispiel)
-\subsection{Mischen zwischen Nativer und Webansicht}
+\subsubsection{Mischen zwischen Nativer und Webansicht}
 Einen Schritt weiter als davor. Hier schreibt man die Website bereits in einer passenden Technologie/ Sprache, um im Anschluss eine App zu entwickeln, die native und Web Ansichten mischt, um einen möglichst effizienten aber trotzdem nativ aussehenden Look für eine App zu erhalten. Hotwire und Turbo. als Beispiel
 Diese Technologie wurde von der Firma Basecamp entwickelt, die schon lange für ihre Plattform eine schnelle Lösung für ihre Websiten gesucht haben. Daher haben sie Hotwire erfunden. Hotwire steht für HTML over Wire. Was das bedeuted ist, dass die Website nicht andauernd komplett neugeladen wird, sondern nur die teile, die auch erneuert werden müssen. Dazu kommt noch einige technologie die das caching und die verarbeitung der benötigten javascript Files handelt und raus kam eine Lösung um schnell und performant Websiten zu laden.
 Um das ganze nun auf ein Smartphone zu bringen war die Idee entsanden, dass man hier nicht eine komplette native App schreiben wollte sondern eben eine WebView herzunehmen, in die aber Native Teile gemischt weren, um die Erfahrung der Nutzer möglichst intuitiv zu gestalten. 
 
 
 
-\section{Fazit(muss wsl. wo anders hin) zu hybrid}
+\subsection{Fazit(muss wsl. wo anders hin) zu hybrid}
 Auch wenn es auf dem ersten Moment super einfach scheint und es so wirkt, als könnte man so jede Website einfach in eine Applikation stecken, ohne dass man groß wiederholenden Code hat, bzw. dass man mehrmals die komplette Anwendung schreiben muss, sondern ja nur einmal und je nach grad noch einmal Aufwand hineinstecken muss, aber nie in dem Umfang wie für eine komplette native App. 
 Es hat auch Nachteile und Gründe, warum dies nicht gern genutzt wird.
 Ein aller erster großer Nachteil ist eine reine online Funktionalität. 
