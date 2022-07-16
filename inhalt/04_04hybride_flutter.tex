@@ -1,17 +1,38 @@
-Im folgenden wird ein vierter Entwicklungsansatz vorgestellt, der eine Mischung aus den zwei Anwendungsklassen der hybriden und Cross-Plattform Applikationen verbindet. Hierbei wird zwischen reinen Flutter-Benutzeroberflächen und einer in Flutter implementierten WebView hin und hergeschaltet, um eine schnelle umfangreiche Multiplattform Applikation zu erstellen.
+Im folgenden wird ein vierter Entwicklungsansatz vorgestellt, der eine Mischung aus den zwei Anwendungsklassen der hybriden Plattformen der Stufe 4 und Cross-Plattform Applikationen verbindet. Hierbei wird zwischen reinen Flutter-Benutzeroberflächen und einer in Flutter implementierten WebView hin und hergeschaltet, um eine schnelle umfangreiche Multiplattform Applikation zu erstellen.
 
-\subsection{Grundlagen und Aufbau}
-In dem behandelten Beispiel wird Phoenix mit einer sogenannten Live Komponente behandelt. Hier gibt es eine Methode namens Live-redirect. Diese kann zwischen zwei Live komponenten hin und her schalten. Dadurch wird kein erneuter URL Aufruf ausgeführt, der dann von einem URL Request mitbekommen wird. Hier findet jedeglich eine AJAX Abfrage statt, die hier nicht abgefangen werden kann.
-Zwei Mögliche Lösungen:
-1. Website umbauen, sodass ein richtiger Redirect genutzt wird: Nachteil -> Geringere Performance im Browser
-2. App so bauen, dass kompletter Live Bereich abgebildet wird: Nachteil -> Views die Nativ gar nicht gebaut werden sollten, müssen unter umständen gebaut werden, um Funktionalität zu gewährleisten.
+\subsection{Grundlagen und Benutzte Bibliotheken}
+In der Grundlage wurde für diese Implementierung wieder eine Grundlegende Implementierung mit Flutter geschaffen, die ähnlich zu der vorherigen Implementierung ist. Jedoch wird noch eine WebView hinzugefügt, um die bestehende Webseite wie im zweiten Beispiel einzubauen.  
 
-Weiteres Problem war die Navigation. Da in diesem Fall zur besseren Performance immer die gleiche WebView wiederverwendet wurde, war es ein konstantes Springen zwischen einer WebView und nativen Teilen. Wenn man nun im WebViewBrowser die zurück Taste aufruft, wird innerhalb der WebView zurück gegangen. Hier kommt allerdings das Problem, dass wenn eine Flutter Page dazwischen geschaltet wurde, 
+Als weitere externe Bibliothek im Vergleich zur reinen Flutter Implementierung wurde das von Flutter veröffentliche \verb|webview_flutter|\footnote{https://pub.dev/packages/webview\_flutter} Plugin genutzt. Die Wahl der richtigen Bibliothek war hier eine recht komplizierte, da die genutzte nur Android und iOS als Plattformen unterstützt. Es gibt zwar verschiedene andere Plugins die etwa eine Web-Version unterstützen, jedoch wurde in diesem Fall dagegen entschieden, da die hier entwickelte App lediglich für Smartphones veröffentlicht werden soll. Desweiteren macht es keinen Sinn eine Webapplikation zu erstellen, wenn das Projekt bereits auf einer Webseite aufbaut und Nutzer daher einfach diese verwenden können.
 
-Es gibt dafür aber auch eine andere Sache. AutomaticKeepAliveMixin.
+Von der weiteren Entwicklung ist dies wieder recht ähnlich zu der hybriden Applikatione. So werden die URLs abgefangen und dann je nach Entscheidung die aufgerufene Seite in der WebView angezeigt oder in diesem Fall dann einige interne URLs in eigenen Flutter Pages angezeigt. Dies ist insofern anders, als das bei der hybriden Implementierung lediglich externe Links in einem externen ChromeTab angezeigt wurden. Bei dieser Implementierung muss dementsprechend die Unterscheidung und Analyse der URL viel genauer und feingradiger stattfinden.
+
+
+Da es hierzu keine richtigen Anleitungen oder Tutorials beziehungsweise Erfahrungen und Beispiele gibt, gab es hierbei einige Herausforderungen die gelöst werden mussten. Im folgenden sollen hier auf ein paar eingegangenw werden,
+
+\subsection{Herausforderungen}
+Damit der WebContainer bei einer Rückkehr wieder benutzt werden kann wie davor, muss eine Art von Speicherung der Konfiguration stattfinden, da ansonsten der Verlauf oder andere Sachen, die in dem Webcontainer gemacht bzw. gespeichert wurden, verloren gehen würden. In diesem Fall wurde dafür das von Flutter bereitgestellte \verb|AutomaticKeepAliveMixin| verwendet. Wie der Name schon ganz gut beschreibt, markiert es damit das Widget als ein Widget, dessen State nicht von der Garbage Collection weggeschmiessen werden soll, und erst gelöscht wird, wenn das dazugehörige Widget final beendet wird, also wenn die Verlinkung aus der Navigation herrausgelöscht wird, oder wenn die App geschlossen wird.\TODO{Nochmal nachschauen und Quelle für automatic keep alive}
+
 Dadurch kann man bei den verschiedenen Pages entscheiden, ob der State erhalten werden soll, oder ob er 
 Hiermit kann man sagen, dass der State/ das Widget vomn Hauptscreen gelöst wird, dann wird nicht der State automatisch dismissed und wenn es erneut aufgerufen wird, neu gebaut, sondern der alte State bleibt erhalten und sobald die Seite wieder in den Focus kommt, wird sie gemounted, anstatt neu zu bauen.
 
-\subsection{Herausforderung und Probleme}
+Die größte Herausforderung bei dieser Implementierung ist die Navigation.
+Hier ist die Navigation in die Vorwärtsrichtung erst einmal recht einfach. Die aufgerufene URL kann abgefangen und je nach Entscheidung aufgerufen werden oder eben abgefangen und auf eine andere URL geändert, beziehungseise der Nutzer auf eine andere Oberfläche umgeleitet werden. Jedoch ist dies nur beim aufrufen einer URL möglich. Wenn jedoch zurück navigiert wird, also die Zurücktaste genutzt wird, oder über andere Elemente im Verlauf der WebView rückwärts gegangen wird, dann wird dieser Mechanismus zum überprüfen der URL nicht ausgelöst. Dies ist auch nicht nur ein Problem der konkreten Flutter Implementierung sondern war ebenfalls so reproduzierbar in der WebView Implementierung. Das heißt, dass nicht die Navigation der WebView genutzt werden kann, um die Navigation in der Applikation zu managen.
 
+Um diese Herausforderung zu lösen gibt es zwei Ansätze:
+\begin{enumerate}
+    \item Eine eigene Navigation schreiben, in der genau definiert wird, wann genau in der WebView etwas aufgerufen wird und wann eine Flutter Seite aufgerufen wird. 
+    \item Jedes mal, wenn von einer Flutter Seite zurück in eine WebView gewechselt wird, eine neue WebView erzeugen und somit die ganz normale Flutter Navigation zu nutzen. 
+\end{enumerate}
+
+Beide Ansätze haben wieder ihre Vor und Nachteile. Beim ersten Ansatz hätte man eine sehr performante Lösung, da lediglich eine WebView genutzt werden würde, die immer wieder verwendet wird. Sie ist jedoch mit einem hohen Aufwand verbunden, diese Navigation zu schreiben. Beim zweiten Ansatz ist die Performance zwar etwas schlechter, jedoch kann die von Flutter bereitgestellte Navigation genutzt werden und somit Fehler bei einer Implementierung verhindert werden. Wenn außerdem noch sinnvolle Punkte in der App definiert werden, wann die Navigationshistorie in der App gelöscht oder verkürzt wird, kann man den Effekt auf die Performance stark einschränken, weshalb bei der Implementierung eben dieser zweite Ansatz gewählt wurde. 
+
+Eine weitere Herausforderung war der Mix mehrerer Technologien. Wenn andere Technologien in ein Projekt integriert werden, können Probleme durch die Benutzung der verschiedenen Technologien entstehen. So auch bei dieser Implementierung. Denn in der Webimplementierung der bestehenden Webseite mit Phoenix werden sogenannte Live-Komponenten benutzt. Hierbei schaltet der Webserver zwischen zwei verschiedenen Seiten hin und her, ohne dass eine richtige Weiterleitung gibt. Dadurch konnte etwa beim Wechseln der Konversationsübersicht in einen Chat hinein, die Weiterleitung nicht abgefangen werden. Es gibt zwei mögliche Lösungen. Einerseit kann die Webseite umgebaut werden, um einen richtigen Redirect zu nutzen, jedoch wäre eine Folge davon,  dass es eine geringere Performance im Browser geben würde. Daher wurde die Zweite Möglichkeit genutzt und die Konversationsseite ebenfalls als Flutterseite übernommen. Daher kann es manchmal sinnvoll sein eine Technologie zu nutzen. Ein Beispiel hierzu soll in folgendem Exkurs etwas betrachtet werden.
+
+
+
+\subsection{Exkurs: Hotwire Turbo}
+sc
+\TODO{Mal schauen ob wirklich. Mag ich nicht wirklich so wie es gerade ist.}
+Eine interessante Technologie, die das vorher erwähnte Problem umgeht, indem es eine Technologie für alle Plattformen nutzt, ist Hotwire. Es ist sogesehen kein Cross-Plattform-Framework sondern nur ein Multi-Plattform-Framework, jedoch ist der Ansatz sehr ähnlich zu diesem Ansatz, da auch hier zwischen den Views für Web und nativen Plattform Seiten hin und her navigiert wird. 
 \subsection{Fazit}
