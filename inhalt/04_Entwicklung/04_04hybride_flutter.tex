@@ -1,3 +1,4 @@
+\section{Entwicklung Hybrider Cross-Platform Applikation mit WebView und Flutter}
 Im folgenden wird ein vierter Entwicklungsansatz vorgestellt, der eine Mischung aus den zwei Anwendungsklassen der hybriden Plattformen der Stufe 4 und Cross-Plattform Applikationen verbindet. Hierbei wird zwischen reinen Flutter-Benutzeroberflächen und einer in Flutter implementierten WebView hin und hergeschaltet, um eine schnelle umfangreiche Multiplattform Applikation zu erstellen.
 
 \subsection{Grundlagen und Benutzte Bibliotheken}
@@ -8,7 +9,7 @@ Als weitere externe Bibliothek im Vergleich zur reinen Flutter Implementierung w
 Von der weiteren Entwicklung ist dies wieder recht ähnlich zu der hybriden Applikatione. So werden die URLs abgefangen und dann je nach Entscheidung die aufgerufene Seite in der WebView angezeigt oder in diesem Fall dann einige interne URLs in eigenen Flutter Pages angezeigt. Dies ist insofern anders, als das bei der hybriden Implementierung lediglich externe Links in einem externen ChromeTab angezeigt wurden. Bei dieser Implementierung muss dementsprechend die Unterscheidung und Analyse der URL viel genauer und feingradiger stattfinden.
 
 
-Da es hierzu keine richtigen Anleitungen oder Tutorials beziehungsweise Erfahrungen und Beispiele gibt, gab es hierbei einige Herausforderungen die gelöst werden mussten. Im folgenden sollen hier auf ein paar eingegangenw werden,
+Da dies kein verbreiteter Ansatz ist, mussten hierzu einige Herausforderungen überwunden werden, die im folgenden etwas erklärt werden sollen. 
 
 \subsection{Herausforderungen}
 Damit der WebContainer bei einer Rückkehr wieder benutzt werden kann wie davor, muss eine Art von Speicherung der Konfiguration stattfinden, da ansonsten der Verlauf oder andere Sachen, die in dem Webcontainer gemacht bzw. gespeichert wurden, verloren gehen würden. In diesem Fall wurde dafür das von Flutter bereitgestellte \verb|AutomaticKeepAliveMixin| verwendet. Wie der Name schon ganz gut beschreibt, markiert es damit das Widget als ein Widget, dessen State nicht von der Garbage Collection weggeschmiessen werden soll, und erst gelöscht wird, wenn das dazugehörige Widget final beendet wird, also wenn die Verlinkung aus der Navigation herrausgelöscht wird, oder wenn die App geschlossen wird.\TODO{Nochmal nachschauen und Quelle für automatic keep alive}
@@ -34,5 +35,7 @@ Eine weitere Herausforderung war der Mix mehrerer Technologien. Wenn andere Tech
 \subsection{Exkurs: Hotwire Turbo}
 sc
 \TODO{Mal schauen ob wirklich. Mag ich nicht wirklich so wie es gerade ist.}
-Eine interessante Technologie, die das vorher erwähnte Problem umgeht, indem es eine Technologie für alle Plattformen nutzt, ist Hotwire. Es ist sogesehen kein Cross-Plattform-Framework sondern nur ein Multi-Plattform-Framework, jedoch ist der Ansatz sehr ähnlich zu diesem Ansatz, da auch hier zwischen den Views für Web und nativen Plattform Seiten hin und her navigiert wird. 
+Eine interessante Technologie, die das vorher erwähnte Problem umgeht, indem es eine Technologie für alle Plattformen nutzt, ist Hotwire. Es ist so gesehen kein Cross-Plattform-Framework sondern nur ein Multi-Plattform-Framework, jedoch ist der Ansatz sehr ähnlich zu diesem Ansatz, da auch hier zwischen den Views für Web und nativen Plattform Seiten hin und her navigiert wird. 
+
 \subsection{Fazit}
+Nach weniger als einer Woche kann man durch diesen Ansatz bereits eine verteilbare Applikation haben, die sowohl auf iOS als auch Android Smartphones verteilt werden kann. Je nach gewünschten Umfang der Implementierung als Ersatz kann man dann Stück für Stück die Anwendung erweitern und damit die Webseite Stück für Stück ersetzen. Dieser Ansatz kann gut in zwei möglichen Fällen genutzt werden
