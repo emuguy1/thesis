@@ -1,9 +1,10 @@
 In dem folgenden Kapitel sollen die Ergebnisse der Implementierungen ausgewertet und analysiert werden. 
 
 \section{Programmierung}
-\subsubsection{Community}
-\subsubsection{Debugging/Testing}
-\subsubsection{Compilier und Refresh Zeit}
+Zunächst werden einige messbare Zahlen anhand der Implementierung erörtert. 
+\TODO{Besserer Name}
+
+\subsubsection{Entwicklungszeitconstraints}
 Wenn es um Entwicklungzeit und Fortschritt geht, dann ist oft auch ein Faktor, wie lange die App braucht um gebaut zu werden und wie lange es dauert um Änderungen in der App anzuzeigen. Oft muss man bei der Entwicklung von Oberflächen auch einige Kleinigkeiten ändern und dann überprüfen, ob die Änderung den gewünschten Effekt hatte. Deshalb sind vor allem kurze ladezeiten von Änderungen besonders wichtig.
 
 Für diesen Test wurde die Dauer des erstmaligen Compilieren, die Dauer eines Neubauens auf Basis eines bestehenden Caches, die Dauer bis Layoutänderungen und bis Anwendungslogik geladen wurde, im Debug Modus durchgeführt. Es wurde außerdem die Compilierzeit im Release Modus aufgezeichnet.
@@ -34,9 +35,7 @@ Die genauen Zahlen sind immer abhängig von der Hardware und der Appgröße abh�
 Bei der Analyse der Daten fällt auf, dass grundsätzlich bei der Build Zeit die Flutter Apps schlechter abschließen. Sowohl beim erstellen einer Release oder auch Debug APK sind die Kotlin Applikationen schneller. Bei der Debug APK ist die Sache jedoch nicht so ein großer Unterschied und selbst die Kotlin-WebView App benötigt gleich lang wie die reine Kotlin Implementierung. Beim compilieren einer Release App scheint es tatsächlich mehr um den Umfang der Applikation zu gehen, als bei der Debug Version.
 Der auffälligste Unterschied ist jedoch die Neuladezeit nach einer Änderung im Quellcode. Denn Flutter mit dem HotReload Feature schneidet hier deutlich besser ab und benötigt somit gerade mal 1/5 der Zeit die die mit Koltin implementierten Applikationen benötigen. Dazu kommt, dass beim Neustarten bei Android, man an den Anfang der Applikation zurückgesetzt wird, während bei Flutter man an der aktuellen Stelle bleibt und somit nicht erst wieder durch die Anwendung gehen muss. Dadurch ändert man etwa ganz einfach die Farbe eines Textes im Fluttercode und bekommt innerhalb von 600ms die Änderung angezeigt. So sparrt man nicht nur Zeit, sondern kann sich auch besser darauf konzentrieren, eine ordentliche Nutzeroberfläche zu entwickeln.
 
-
-
-\section{Performance}
+\subsubsection{Performance}
 
 
 \begin{table}
@@ -105,9 +104,23 @@ Auffällig ist, dass die CPU auslastung bei beiden gleichmäßig ansteigt, währ
 Grundsätzlich kann man eigentlich festhalten dass native Entwicklungen meistens die beste Performance haben werden, Jedoch ist mit Flutter ein Framework auf den Markt gekommen, das diese Einstellung stark ins wanken geraten. Denn Flutter ist wie bereits erwähnt ein Framework, dass den geschriebenen Dart-Code in Nativen Code umwandelt. Es hat sich außerdem zum Ziel gesetz, möglichst performant zu sein. Eine Untersuchung von Biørn-Hansen et Al hat ergeben, das Nativ zwar immer noch am performantesten ist, und Flutter da in einigen Kategorien doch noch hinten dran ist. Sie stellten jedoch fest, dass gerade bei ausführen von Aufgaben Flutter weniger Speicher benötigt und ansonsten grundsätzlich durchschnittlich abschloss \cite{BirnHansen.2020}. 
 Eine andere Untersuchung zeigte, dass  es darauf ankommt, was man macht
 
-\subsubsection{Memory}
-\subsubsection{CPU}
-\subsubsection{Ladezeit}
+\subsubsection{Debugging/Testing}
+
+\section{Community \& Dokumentation}
+Die Entwickler Community ist ein wichtiger Faktor für die Wahl eines Frameworks. Wenn es keine Community gibt, wird es schwer Entwickler oder auch Lösungen für Probleme zu finden, ohne sie selber zu entwickeln. Aber nicht nur Bibliotheken helfen dabei, schneller zu entwickeln sondern auch Frage-Antwort Communities wie Stackoverflow\footnote{https://stackoverflow.com/}.  Die genauen Zahlen der Community-Größe oder die Populärität sind dabei nicht genau bestimmbar. Sie können jedoch anhand einiger Faktoren annähernd bestimmt werden, bzw. verglichen werden.
+
+\subsubsection{Star-History}
+Ein erster Anhaltspunkt ist die Sogenannte Star-History von Github-Repositorys. Es gibt an, wie viele Leute sich die Repositories mit einem Stern markiert haben. Es gibt weniger absolute Zahlen an, wie viele Leute mit einem Framework oder Programmiersprache entwickeln, es zeigt jedoch ganz gut wie viel Interesse Leute an der Entwicklung dieser haben.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[height=7cm,keepaspectratio]{images/star-history_programming languages.png} 
+  \caption[Zeitlicher Verlauf von Stars der Github-Repositorys von Swift, Kotlin und Flutter]{Zeitlicher Verlauf von Stars der Github-Repositorys von Swift, Kotlin und Flutter\protect\footnotemark }
+  \label{fig:start_history}
+\end{figure}
+\footnotetext{https://star-history.com/\#flutter/flutter\&JetBrains/kotlin\&apple/swift\&Date}
+
+
+
 
 \section{Sonstiges}
 \subsubsection{Maintainability, Scalibility, Testability}
@@ -150,12 +163,8 @@ Vielleicht ist es gar nicht so sonnvoll feste Kriterien zu finden an denen man d
 Kriterien sind:
 -Programmlänge
 -Programmieraufwand
--Laufzeit effizienz
--Speicherplatzverbrauch
 - verfügbarkeit
-
 -Verfügbarkeit von Hilfestellungen und Fragen und Antworten
-
 - Code lesbarkeit[1]
 - Einfachheit[1]
 - Datentypen[1]
@@ -164,9 +173,6 @@ Kriterien sind:
 - Programmierfähigkeiten während Entwicklung ohne ständiges neu Compilen und schnelles Testen     von Sachen[1]
 - Possibilitys for reusability and dry code[1]
 - A language may be wonderful and amazing and increase developer productivity, but if no talented people are out there that know the language, how will you hire the best team?[1]
-
-- Support for internationalization [2]
-
 - Keine Änderung von Grundsätzlichen Strukturen und Funktionalitäten.
 
 - In general, we think you can write good software in Java, C\#, Python, PHP, or any other myriad languages. You can also write really bad software using any of those. To us, the adherence to widely accepted design principles and philosophies is more important than the specific language.[3]
