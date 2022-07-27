@@ -1,108 +1,68 @@
 \section{Entwicklung Cross-Plattform Applikation mit Flutter}
-Der dritte Ansatz der hier erklärt werden soll, ist eine Implementierung mit dem Flutter Framework.
+Der dritte Ansatz der hier erklärt werden soll, ist eine Cross-Plattform-Implementierung mit Hilfe des Flutter Frameworks.
 
 \subsection{Flutter Grundlagen}
-Flutter ist ein 2017 von Google veröffentlichtes Framework das mittlerweile das bedeutendste unter den Cross-Plattform-Frameworks darstellt. Als Programmiersprache wird dabei Dart benutzt, Das spannende an diesem Framework ist, dass Google, eines der wichtigsten Technologieunternehmen, nicht nur dahintersteht, sondern  ebenfalls stetig weiterentwickelt. Dadurch entstehen immer neue Tools und es werden mehr und mehr Plugins angeboten, um die Entwicklung einer Flutter App noch einfacher zu machen und dabei jede mögliche Funktionalität verfügbar anzubieten. Dazu kommt, dass die Entwickler bei Flutter auch dauerhaft bemüht sind, alle möglichen Plattformen zu unterstützen und neue Features oder Änderungen schnellstmöglich zu implementieren.
-Flutter ist außerdem im Vergleich zu vielen anderen Frameworks bereits sehr stark in den Markt integriert, sodass ein plötzliches Ende von Flutter nur sehr schwer vorstellbar ist. So hat etwa die Ubuntu
-\TODO{https://www.youtube.com/watch?v=wE7khGHVkYY}
+Flutter ist ein 2017 von Google veröffentlichtes Framework das mittlerweile zum bedeutendsten Cross-Plattform-Framework geworden ist\cite{statist_CP_Framework}. Neben viel Aufmerksamkeit von Entwicklern haben auch Firmen großes Interesse an Flutter. So hat etwa die Firma hinter Ubuntu, Canonical, angekündigt, dass alle von ihnen entwickelten Anwendungen, in Flutter programmiert werden\cite{Ubuntu_Flutter}. Als Programmiersprache wird dabei Dart benutzt, die je nach Plattform, mit unterschiedlichen Compilern übersetzt wird,
 
-Composition: Composing different existing widgets to a new one
-
-Durch voreinstellung und Erstellen eines Basic screen schon nach wenigen Minuten eine erste laufende "Version" zu sehen.
-
-Hot Reload zeigt sofort sichtbare Änderungen, so dass man gut UI debuggen umbauen und anpassen kann.
-
-Schwer herauszufinden welche Elemente es gibt, wie man sachen konfigurieren kann. Am Anfang nicht sehr intuitiv. Man muss sich auf jeden Fall gut in die Doku einlesen und vlt. auch ein kleines Tutorial machen, bzw. die genauen Sachen googlen.
-
-
-
-
-\subsubsection{Widgets}
-Widgets sind die Elemente in Flutter, die genutzt werden um die Applikation aufzubauen.
-Es gibt zwei Arten von Widgets:
-1. Statefull Widget
-2. Stateless Widget
-Der Unterschied ist, dass bei Statefull widgets, gibt es noch eine State Klasse, die den aktuellen Status des Elements speichert und bei einer Änderung die neuen Werte übernimmt und damit eine Änderung in dem Element ausführt. Am besten ist dies etwa mit einem Favoriten Button vorstellbar. Drückt man ihn, fügt man ihn zu den eigenen Favoriten hinzu und das Icon des Buttons ändert sich bspw. von einem Herzicon, das nur den Rahmen hat, zu einem was ausgefüllt ist.
-
-Bei der Erstellung gibt es einiges zu beachten. 
-Etwa kann man auch ein Widget erstellen wollen, dass in ein eigenes File auslagern, wie es mit tobBar.dart ist. Hier ist jedoch dann die übergabe von Parametern wieder wie bei normalen Klassen übergeben werden. Man kann sie aber auch erstellen wie bei topBar2.dart, wo man die einzelnen Parameter bennenen kann und auch besser nullabillity handln kann.
-\TODO{genauer untersuchen. Vorallem Statless Widgets, nullability wie bei topBar, und vieles mehr}
-
-Man kann aber auf jeden Fall sehr einfach ein eigenes Widget schreiben. Dies ist vorallem sinvoll, wenn man eine Komponente hat, die man wiederverwenden möchte. Man erstellt einfach die Widgetclasse mit den entsprechenden 
-\subsubsection{Plugins, Modules, Packages}
-Im Verlauf der Arbeit wurde ebenfalls Testweise ein eigenes Plugin geschrieben um zu testen wie hier der entsprechende Ablauf ist, und wie hiermit eventuelle nicht vorhandene Funktionalität mit nativen Programmiersprachen und API calls programmiert werden kann. Hierzu wurde einmal die Einführung von der google developer seite TODO: Link genutzt um ein iOS und Android keyboard zu schreiben das auf dem Gerät anhand von nativen APIs der Betriebssysteme die Töne erzeugt und dabei sowohl auf drauf drücken und loslassen reagiert.
-Das interessante an dieser Methode ist es , dass zur Kommunikation zwischen dem Dart Code und dem nativen Code channels zur Kommunikation genutzt werden, um dann die entsprechende native Funktionalität auszuführen. Ein zweiter interessanter Punkt ist, dass plugins asynchron auf eigenen Threads ausgeführt werden/können. Dies folgt der größeren Diurektive dass UI und Logik auf unterschiedlichen Threads laufen, um mögliche Blockaden nicht auf dem jeweils anderen Thread bem,erkbar zu machen.
-
-
-
-\subsubsection{Layout}
--Button
--Row
--Wrap
--Container: Dies ist das Wichtigste Widget von Flutter. Sobald man irgendwelche Platzhalter oder innere Abordnung oder sonst was nötig ist, braucht man oftmals das Widget Container. Man kann ganz einfach andere Elemente in ein Container hineinstecken und alle benötigten Sachen hinzufügen. Von Margin Paddings feste Größen und vieles mehr. Einfach Einen Container erstelle und die innenliegenden Elemente in einem ChildWidget hinzufügen.
--Scaffold
-\subsubsection{Aufbau}
--Widgets
--classes
--Stateclasses
--Navigator / Router
--Assets
-
-\subsubsection{Plugins / pubspec.yaml}
-\subsubsection{benutzte Plugins}
-\subsubsection{Lehre aus Unterhaltung mit Entwicklern von Plugins}
-Bei erstellen erster Seiten und hinzufügen ersten Packages Fehler aufgetreten betreffend Not implemented. Fehlermeldung und Fehler-stack nicht sehr aussagekräftig. Wurde evaluiert dass es an simple gradient text lag. Laut Dokumentationseite des Packages ist es kompatibel für alle Plattformen. Jedoch funtkionierte es nach hinzufügen der Vorgeschlagenen Lösung nur noch auf Android/mobile. Beim Nachforschen tut man sich schwer genaue Gründe herraus zu finden, da die Fehlermeldung und die Dokumentation hierfür leider keinerlei Hinweise gibt. 
-Es kam im Verlaufe der Fehlererforschung auch zum Kontakt mit dem Entwickler der sehr hilfsbereit die Fehlerforschung unterstütze.
-\TODO{Ergebniss der Issueunterhaltung mit Entwickler}
-Bei genauer untersuchung mit dem Entwickler zusammen kam herraus, dass meine Flutterversion eine ältere war, als die, die benötigt wurde, um das Plugin auf Web laufen zu lassen. Nachdem die Flutter version angepasst war, funktionierte es einwandfrei. Da es jedoch bei vielen Packages und auch bei diesem keine Angaben zur mindestens zu nutzenden Flutterversion gab, empfohl ich dem Entwickler doch dies in der Read.me hinzuzufügen, was auch prompt geschah. 
-An diesem Beispiel sieht man sehr gut, dass diese Community sehr aktiv und offen ist für Vorschläge und Veränderungen.
-Es hat mir jedoch auch gezeigt, dass einige Sachen hier Fehlen:
-1. Eine Angabe welche Flutterversion genutzt werden muss, damit alles gut funktioniert. Es gibt zwar eine Angabe unter welcher Version das Plugin getestet wurde, aber manchmal will man vlt. gar nicht sofort auf die neueste Version wechseln.
-2. Eine Anzeige welche Packete und Flutterversionen geupgraded werden können, fehlen. Es muss irgendein Anhaltspunkt geben um schnell zu sehen, welche Plugins bzw. Dependencies veraltet sind und was hier geupdated werden kann.
-
-
-\subsection{Layouting in Flutter}
-SpacerFürTODO
-\TODO{Eigentlich hat ja android das auch. Hier sind halt die Layout Files wirklich nur } 
-\TODO{reine Layout Files aber sie sind ja auch xml. Siehe vergleich mit HTML+CSS} 
-Flutter ist ersteinmal etwas anderes als die native Entwicklung. 
-\TODO{Mit iOS abgleichen}
-Containerisierter Aufbau Abgleich miut Kapitel zu Layout aus der Flutter - Doku
-
-Flutter ist ähnlich zu html+css Aufbau Man verschachtelt die verschiedenen Elemente ineinander um dann einen Container-Baum zu erhalten.
-Dies ist sehr ähnlich zum html baum. Der entsteht wenn man eine Website entwirft und die verschiedenen Elemente verschachtelt. 
-Allerdings kommt hier auch gleich noch css mit rein, da man die verschiedenen Attribute der Elemeente direkt beschreibt.
-Was anders ist, ist dass man für Layout spezifische Sachen manchmal noch einen Container braucht, während man ja etwa margin auf jedes Element drauf machen kann. Es ist aber dementsprechend auch wieder ähnlich, da etwa flex boxen manchmal in sogenannte divs eingebaut werden müssen, um zu funtktionieren. Was außerdem besonders ist, ist dass es schon sehr vordefinierte Plugins gibt, die das Layout vorgeben können. Einerseits gibt es rows und Columns, die ansonsten oft über divs mit bestimmten Klassen und Frontend UI Framewortks erreichrt werden können und es gibt oft auch schon spezifizierte Sachen für Buttons etwa. Hier kann man dann OutlinedButton, Button, TextButton oder auch IconButton nehmen um das Design hierfür nicht erst selber bauen zu müssen.
+Eine Grundlage von Flutter ist \verb|Composition over inheritance|. Dieses Konzept ist besonders gut sichtbar beim Aufbau der Nutzeroberfläche. Alles ist ein Widget. Bis auf die Geschäftslogik ist alles, wie etwa Gestenerkennung, Layouthelfer und tatsächlich Angezeigte Elemente ein Widget\cite{Thiele_2018}. Dabei werden Widgets baumartig verschachtelt, wobei die meisten Widgets wieder ein oder mehrere Kinderelemente haben, die ein Widget sind. In Abbildung \ref{fig:flutter_layout_tree} etwa ist der Widget-Baum einer Menüleiste zu sehen. Dabei sind Container Elemente, die um Widgets gebaut werden, um weitere Sachen wie Abstände oder anderes hinzufügen. Nur bei Widgets wie in diesem Fall etwa Text oder Icon, stoppt der Baum, da diese keine weiteren Kinder haben.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[height=7cm,keepaspectratio]{images/sample-flutter-layout.png} 
-  \caption{Hierachie einer Menüleiste Quelle: Flutter Doku}
+  \caption{Hierachie einer Menüleiste Quelle\protect\footnotemark}
   \label{fig:flutter_layout_tree}
 \end{figure}
 
-Abbildung \ref{fig:flutter_layout_tree}
+\footnotetext{https://docs.flutter.dev/development/ui/layout}
 
-Um Seiten zu erstellen gibt es verschiedene Methoden. Oft muss man die Seiten komplett selbst aufbauen. Das heißt man fängt beim Startelement an. Dem sogennanten Scaffold. Dieser hat verschiedene Elemente. So gibt es AppBar man kann einen Footer hinzufügen und vorallem gibt es einen Body. Der kann dann ein Widget als Child hinzugefügt werden. Hier kann nun über verschiedene Widgets wieder neue Sachen hinzugefügt werden und so Stück für Stück ein Layout gebaut werden. 
-Hierfür gibt es Grundsätzlich zwei verschiedene Arten von Widgets. 
-1. Widgets die Helfen die Seite zu strukturieren und Layouts zu verfeinern und aufzubauen.
-2. Widgets die Teil der Nutzeroberfläche sind und die unter Umständen noch weitere Childs zur ausgestaltung Besitzen, aber auf der Oberfläche angezeigt werden. So hat etwa ein TextButton noch ein Child Text wo dann der Text hinzugefügt wird, der im Button steht. Der Button ist allerdings ebenfalls ein Teil der UI. Anders als Container. Diese fügen eventuell eine Margin, also Abstand zu anderen Elementen hinzu oder ändern\TODO{Tun sie das wirklich?} unter Umständen auch mal den Hintergrund, sie sind allerdings keine Alleinstehenden Elemente und umgeben eigentlich nur das Child oder die Child Elemente.
+Anders als bei der nativen Implementierung wird in Flutter das Layoutfile mit der Funktionalität dahinter gemischt. Das bedeutet, dass die Funktionalität direkt beim definieren eines Knopfes zugeordnet wird. Dafür muss lediglich das Widget in den Baum eingefügt werden und danach das entsprechende Attribut gesetzt werden. Dadurch ist alles an einem Ort.
+
+Da Flutter einen großen wert auf Perfomance legt, ist eine Änderung auf der \ac{UI} so gebaut, dass nur Elemente neu gebaut werden, die ihren Inhalt geändert haben. Dafür hat Flutter für \verb|Stateful Widgets|, die eine extra State Klasse besitzen. In diesem werden Daten gespeichert und sobald er sich ändert, registriert Flutter die Änderung und baut daraufhin das geänderte Widget und die in der Hierachie folgenden neu\cite{9623025}. Dadurch kann häufiges und vor allem vollständiges Neubauen des Widgetsbaums verhindert werden. Jedoch benötigt nicht jedes Element einen State. Wenn etwa bereits zum Zeitpunkt des Erzeugens des Widgets, alle Daten feststehen und auch nicht mehr geändert werden, dann wird kein State benötigt und es reicht ein \verb|Stateless Widget| für die Implementierung\cite[Kapitel~4]{Flutter_Recipes}. Dadurch wird einerseits die Implementierung eines States ersparrt und bei einem Neubau des Baums, kann das Widget-Element wieder genutzt werden und muss lediglich neu gerendert werden, was bei Flutter jedoch sehr performant ist.
+
+Um sich wiederholenden Code zu sparen, kann in Flutter einfach ein eigene Widget geschrieben werden, dass im gesamten Projekt wie jedes andere Element auch, in den Widget-Tree eingefügt werden kann. Das Erstellen eines Widgets ist dabei der selbe Prozess wie das erstellen einer Seite. Es wird ein Knoten Element gewählt und dann mit anderen Elementen kombiniert, um die gewünschte Oberfläche zu erhalten. Außerdem muss entschieden werden, ob es ein Stateful oder Stateless Widget ist. Je nachdem muss noch ein zusätzlicher State implementiert werden.
 
 
+\subsection{benutzte Plugins}
+Das erste Plugin dass zu erwähnen ist, ist \verb|graphql\_flutter|\footnote{https://pub.dev/packages/graphql\_flutter}. Es ist ein Packet, dass ähnlich zu dem bereits erwähnten Apollo GraphQL einen Client zur Kommunikation mit einer GraphQL Schnittstelle. Damit der Client in allen Pages und Widgets verfügbar ist, muss die Konfiguration als Wurzel der Applikation gesetzt werden. Danach kann entweder über ein Widget oder über eine programmierte Funktion Die verschiedenen GraphQL Funktionen ausgeführt werden. Es ist ein Open Source von einer Community geschriebenes Plugin. Dies ist auch in der Nutzung spürbar. So sind einige Funktionalitäten nicht so sehr ausgereift wie bei der Apollo Implementierung. So muss etwa auf die einzelnen Felder der Antwort mit der JSON Zugriff \verb|Antwort.data[\"Feldname\"]|. Die Gefahr ist dabei hoch, dass durch ein Tippfehler der Zugriff schief läuft. Durch die Entwicklung von einer Community ist es allerdings einfacher Hilfe zu bekommen. So wurde während der Entwicklung ein paar Fragen auf dem dafür eingerichteten Discord-Server eingestellt, die professionell innerhalb einiger Stunden beantwortet wurden.
+
+Das zweite wichtige Plugin ist Hive\footnote{https://pub.dev/packages/hive}. Es ist ein einfacher und schneller Key-Value Speicher, der Daten auhc über einen Neustart der App hinaus, in einer Datei innerhalb des Applikationsordner speichert. Er wird dafür genutzt, um den Identifikationsstring für den Server zu speichern. Es ist vergleichbar mit den \verb|SharedPreferences| der nativen Entwicklung vergleichbar, ist jedoch umfangreicher, da auch Objekte mit der richtigen Konfiguration gespeichert werden können und ist beim lesen vergleichbar beziehungsweise beim Schreiben schneller.
+
+Ein drittes Plugin das hier noch erwähnt werden sollte ist \verb|simple\_gradient\_text|. Es ist ein Paket um ein Text mit Farbverlauf in der Schrift zu haben. Es ist also lediglich ein Paket, das zur Erstellung der Oberfläche genutzt wurde und ist dementsprechend hier nicht so wichtig. Jedoch zeigt sich hier wieder der Vorteil an einer aktiven Community. Bei der Installieren des Paketes gab es anfänglich einige Probleme, da es auf Android funktionierte aber auf anderen Plattformen nicht. Nach einer Unterhaltung mit dem Entwickler über ein erstelltes Problem auf GitHub ergab sich, dass das Plugin eine höhere Minimalversion von Dart benötigte, als in meiner Konfiguration eingestellt. Dadurch konnte bei mir der Fehler einfach behoben werden. Daraufhin wurde die Dokumentation des Paketes sowohl auf GitHub und dem zentralen Plugin Verzeichnis aktualisiert und um die entdeckte Anforderung erweitert.
+
+Als letzte wichtige Bibliothek, wurde \verb|sqflite\_common\_ffi|\footnote{https://pub.dev/packages/sqflite\_common\_ffi} für die Implementierung der Datenbank genutzt. Es ist eine Bibliothek, dass auf Basis von \verb|sqlite3| eine Datenbankimplementierung für alle Plattformen anbietet.
+Diese wird beim Start der Anwendung geöffnet und ist danach in der kompletten Anwendung verfügbar.
+Mit ihre können alle gängigen \ac{CRUD}-Operationen durchgeführt werden. Die Implementierung ist dabei denkbar einfach.
+Zum erstellen der Tabelle muss lediglich der SQL Befehl zum erstellen ausgeführt werden und danach kann über dedizierte \verb|insert| und \verb|query| Methoden die Daten gespeichert beziehungsweise abgefragt werden.
+Nebenbei kann jede Art von SQL-Befehl ausgeführt werden, um Befehle auszuführen, die über die normale Implementierung hinaus gehen.
 
 
-\subsection{Conclusion Flutter}
-Hier auf die Challanges mit Null safety und grundsätzlichen Änderungen zwischen den großen Versionen eingehen, die dazu führen, dass nicht nur unter anderem auch eigene Dokumentation und Codelabs Einträge nicht mehr funktionieren, sondern auch ein großteil der bestehenden Lösungen so nicht mehr einfach Copy Paste mäßig in die eigene Applikation gezogen werden kann.
-Dazu kommt, dass etwa reihenweiße Packages mit einem Update auf Flutter 3.0 wieder ein Update brauchen da hier wieder einige Sachen zu Nullsafety usw. siehe Screenshot mit Warnung aus Console und der Nutzer dann immer eine Warning bekommt, die er so schnell nicht ändern kann. Dazu kommt, dass das upgraden der Dependencys wie bei allen anderem aber auch, wieder zu häufigen Koabhängigkeiten und Upgrade Issues führt, sodass man immer genau aufpassen muss, ob man denn jetzt eine ältere bzw. neuere Version der Plugins nutzen kann. Deswegen gilt auch hier wie in vielem anderen. Versuche so viel wie möglich selbst zu machen. Hierzu vlt. aus dem Artikel zietieren mit jeder Import ist ein "Dept" und irgendwann muss man dann seine Schulden zurückzahlen. Natürlich gilt. Nur so viel wie sinnvoll. Denn man sollte bereits verfügbare Lösungen zu komplexen Problemen schon nutzen, um nicht unnötig Zeit zu verschwenden. jedoch sollte man hier darauf achten, dass man vlt. nur so viel importiert wie nötig ist, um möglich Cropssdependencie errors zu vermeiden.
-Ein weiterer Punkt ist die verfügbarkeit auf Plattformen. Nachdem mit Flutter 3 die Lücke der letzten Fehlenden Plattformen geschlossen wurde, heißt es nicht dass man jetzt einfach seine für Android und iOS entwickelte App nehmen kann und dann eine Plattform hinzufügen und dann der Meinung sein dass alles einfach funktioniert. Denn einige Plugins sind nur für bestimmte Plattformen geschrieben. So etwa das WebView Plugin für Flutter. Die populärste von Flutter "promoted(noch mal nachschauen)" Version ist nur für Android und iOS. Das ist ja eigentlich auch erst mal ok, da man ja bei allen anderne Versionen einfach eine Website aufrufen kann und dabei auch keine Layout probleme haben sollte. Aber wenn man sich vornimmt nun für eine andere PLattform eine App mit WebView zu bauen, so hat man leider nie das alles in einem Paket. So gibt es Plugins die unterstützen dann zusätzlich noch Windows Version oder die Webversion, oder eine andere die alle Laptop Plattformen (Mac, Linux, Windows) unterstützt, aber dann wieder nciht die Smatrphone Versionen. Hier muss man also bei Projektbeginn sich überlegen, für welche Plattformen man etwas entwickeln will, bzw. welche Plattformen man ausschließen kann und dann dementsprechen deine Plugins suchen, was eiunen auch stark einschränken kann. Natürlich gibt es jetzt die Möglichkeit einfach sein eigenes Plugin zu schreiben und dabei alle Plattformen zu unterstützen. Dafür muss man sich jedoch dann auch in jeder zu unterstützenden Plattformtypischen Programmiersprache auskennen.
+\subsection{Exkurs: Platform spezifische Funktionalität entwickeln}
+Im Verlaufe der Entwicklung kann es vorkommen, dass eine gewisse Funktionalität, die essentiell für die Anwendung ist, bisher nicht implementiert wurde oder die Verfügbaren Bibliotheken nicht die gewünschte Funktionalität hat oder gewisse Plattformen nicht unterstützt werden. Für diesen Fall kann eigener Plattformcode geschrieben werden. Dafür wird einerseits der benötigte Dart Code geschrieben und dann der jeweilig notwendige Plattformcode. Zur Kommunikation zwischen den Verschiedenen Teilen werden dabei Plattform-Channels genutzt.\cite[Kapitel~12.3]{Flutter_Recipes}
+
+Durch die Nutzung eines Kanals zur Kommunikation erlaubt es die Ausführung des Plattform Codes auf einem separaten Thread. Dadurch kann dieser asynchron ausgeführt werden und eine Blockade des Threads auf dem die \ac{UI} ausgeführt wird, verhindert werden\cite{plattform_code_flutter}.
+
+Um weiteren Entwicklern die entwickelte Erweiterung zur Verfügung zu stellen kann außerdem das Plugin in das offizielle Repository von Flutter hochladen.
+
+Es ist also möglich benötigte Funktionalität hinzuzufügen, solange sie auf den einzelnen Plattformen möglich ist. Jedoch werden für eine derartige Entwicklung das nötige Wissen benötigt, um den Plattformcode zu schreiben.
 
 \subsection{Exkurs: Firebase}
-Ein weiterer Aspekt, warum Flutter gerade bei kleineren App-Projekten gern genutzt wird ist die vollumfängliche Integrationsmöglichkeit von Firebase. Firebase ist eine Backend-as-a-service (BaaS) Lösung, die dabei helfen soll noch schneller und einfacher Anwendungen zu veröffentlichen. Es sind Produkte und Lösungen auf die man sich verlassen kann, während man seine App entwickelt \cite{firebase_documentation}.
+Ein weiterer Aspekt, warum Flutter gerade bei kleineren App-Projekten gern genutzt wird, ist die umfangreiche Integrationsmöglichkeit von Firebase. Eine aktuelle Untersuchung ergab, dass in Android Applikationen die eine Analyse Software integriert haben, 92\% der weltweiten Applikationen, Firebase nutzt \cite{statist_analytics_SDK}.
 
-Firebase ist eine Sammlung von verschiedensten Tools und Plugins, die einem Entwickler die Möglichkeit geben soll, eine Applikation zu schreiben, ohne sich groß Gedanken um ein Backend Gedanken machen zu müssen. Es umfasst Tools wie Analytics um Nutzungsdaten zu sammeln, ein fertiges Chatsystem oder auch eine umfangreiche Cloud gestützte Datenbank Lösung. So schreiben Guzzi et Al, dass man ein Developerteam anstellen könnte, das in monatelanger Arbeit ein Backend System programmieren könnte, dass sich mit einer Reihe von APIs zu einer Datenbank verbindet. Man könnte ja aber auch einfach ein bereits bestehendes System nehmen. Mit Firebase muss man nicht mehr tausende Zeilen Code schreiben, um über asynchrone Aufrufe und nebenläufige Prozesse eine reaktive App zu schreiben. Sondern durch Firebase erreicht man das in kürzester Zeit \cite[p.~608]{Flutter_Apprentice}.
+Firebase ist eine Backend-as-a-service Lösung, die dabei helfen soll, schnell und einfach Anwendungen zu entwickeln und zu betreiben\footnote{https://firebase.google.com/}. Es ist also eine Sammlung von verschiedensten Tools und Plugins, die einem Entwickler die Möglichkeit geben soll, sich auf Design und Funktionalität der App konzentrieren zu können. Es umfasst Tools wie eben Analyse Software um Nutzungsdaten zu sammeln und zu analysieren, ein fertiges Chatsystem oder auch eine Cloud gestützte Datenbank Lösung. So schreiben Guzzi et Al, dass entweder ein Team an Entwickler angestellt werden müssten, das in monatelanger Arbeit ein Backend System programmieren würde, um dann eine Schnittstelle zu einem Backend zu bauen. Andererseits kann auch ein bereits bestehendes System gennommen werden. Mit Firebase werden tausende Zeilen Code eingespart und erhält dabei die Möglichkeit, asynchrone Aufrufe und nebenläufige Prozesse für eine reaktive App zu nutzen \cite[p.~608]{Flutter_Apprentice}.
 
-Um eine Datenbank für seine App zu erstellen sind es wenige Schritte. So geht man auf die Firebase Website, legt eine neue Datenbank an, danach gibt man seine App-Id die ähnlich zu com.google.chrome ist und kann dann die jeweiligen Konfigurationsdateien für die Plattformen herunterladen. Danach fügt man diese nur noch den einzelnen Plattformen hinzu und kann dann mit der Datenstruktur lokal in der Flutter App entwerfen. Dafür muss man lediglich die Daten-klasse mit JSON Konvertierungen, ein Data-Access-Object (DAO) mit einer Methode zum speichern und holen der Daten und zuletzt noch einen Provider erzeugen. In die drei Datein werden noch die jeweiligen Imports hinzugefügt und schon hat man eine Verbindung zu Datenbank und kann seine Daten in der Datenbank speichern. Ein großer Vorteil, mit der richtigen Konfiguration erhält man gleichzeitig eine offline Datenbak, um so seiner App eine offline Funktionalität hinzuzufügen \cite{Flutter_Apprentice}.
+Um eine Datenbank für seine App zu erstellen sind es wenige Schritte. So kann auf der Webseite von Firebase eine neue Datenbank angelegt werden. Danach wird die erzeugte Konfigurationsdateien für die jeweiligen Plattformen heruntergeladen. Diese werden den jeweiligen Implementierungen hinzugefügt. Danach müssen die Datenstrukturen lokal in der App entworfen werden und eine Verbindung hergestellt. Dafür werden die Daten-klasse mit JSON Konvertierungen, ein \ac{DAO} mit einer Methode zum speichern und holen der Daten und zuletzt noch einen Provider erzeugt. Außerdem besteht die Möglichkeit, neben einer online Datenbank ebenfalls eine offline Version hinzuzufügen, die synchronisiert wird, sobald eine Internetverbindung hergestellt wird \cite{Flutter_Apprentice}.
 
-Ein weiterer Pluspunkt ist hier die Integration von Firebase-Authentifizierung. Dadurch erhält man nicht nur automatisch einen Login mit der Möglichkeit, Benutzer zu kategorisieren beziehungsweise die Nutzung einzuschränken. So kann man über Regeln in der Firebase-Website, einen autorisierte Datenzugriff gewährleisten. Ebenfalls kann man so sicherstellen, dass der Nutzer nur die Informationen bekommt, auf die er Zugriff haben soll \cite{Flutter_Apprentice}.
+Ein weiterer Pluspunkt ist die Integration von Firebase-Authentifizierung. Es bietet eine fertige Lösung zur Authentifizierung von Nutzern. Es besteht außerdem die Möglichkeit, Benutzer zu kategorisieren beziehungsweise die Nutzung einzuschränken. So kann über Regeln in der Firebase-Website, präzise definiert werden, welcher Nutzer auf welche Daten zugreifen kann. Weiter können Nutzer auch von der Nutzung des Dienstes ausgeschlossen werden oder nur bestimmte Emailadressen zugelassen. Es bietet also ein vielseitig und umfangreiches Nutzerverwaltungstool \cite{Flutter_Apprentice}.
 
-Firebase ist natürlich nicht nur für Flutter verfügbar, sondern genauso für die verschiedensten Programmiersprachen der Plattformen Android, iOS oder auch Web. Jedoch ist das Gesamtsystem das interessante, da man durch die Kombination einer Firebase Implementierung mit Hilfe von Flutter nur eine Implementierung machen muss. Es entsteht so kein doppelter Code, der unter Umständen Fehler enthalten kann und es können auch keine Unterschiede zwischen den Apps bei der Datenhaltung entstehen, die zu Problemen führen könnten, wenn ein Nutzer die Plattform wechseln würde. Außerdem kommt sowohl Flutter als auch Firebase von Google, wodurch von einem lang anhaltenden Support ausgegangen werden kann.  
+Firebase ist natürlich nicht nur für Flutter verfügbar, sondern genauso für die verschiedensten Programmiersprachen der Plattformen Android, iOS oder auch Web. Dennoch ist Flutter und Firebase ein interessantes Gesamtsystem. Denn durch Flutter muss lediglich einmal der Code zum Zugriff auf die Datenbak oder die anderen Dienste geschrieben werden. So wird nicht nur weiter Entwicklungszeit um sehr ähnlichen Code zu schreiben, sondern verhindert gleichzeitig eine unterschiedliche Definition der Entitäten oder anderen Elementen. Außerdem ist dadurch ein problemloser Wechsel von einem System zu einem anderen Möglich, da alle Anwendungen auf egal welcher Plattform gleich sind.
+
+\subsection{Conclusion Flutter}
+Durch die hier beschriebene Entwicklung kann mit Hilfe von einem Code, eine Anwendung geschrieben werden, die sowohl auf Android, iOS, Windows, Mac und Linux läuft. Lediglich die Web Implementierung funktioniert nicht, da der GraphQL Client hier keine richtige Verbindung erstellen kann. Für alle anderen Plattformen muss lediglich die Unterstützung deklariert, der Code in Plattform spezifischen Code compiliert und am Ende ausgeführt werden.
+
+Das Tempo mit dem eine Flutter Anwendung entwickelt werden kann ist ähnlich wie eine einzelne native Implementierung. Dabei entsteht aber, wie bereits erwähnt, nicht nur die Implementierung für eine Plattform, sondern 5. Selbst wenn der Fokus der Entwicklung zuerst nur auf einer Plattform liegt, kann es sinnvoll sein Flutter zu nutzen um in Zukunft weitere Plattformen hinzuzufügen. Denn alle Plattformen können nachträglich noch exportiert werden.
+
+Jedoch ist dies natürlich nicht immer möglich. Denn etwa der GraphQL Client ist nicht mit einer Web-Version kompatibel. Daher sollte bei der Wahl der Pakete darauf geachtet werden, welche Packete ausgewählt werden, um eine Inkompatibilität mit den gewünschten Plattformen zu verhindern. Wie bereits ausgeführt, kann versucht werden, solche Probleme durch eine eigene Implementierung zu lösen, dies ist jedoch mit einem erhöhten Aufwand und nötigen Wissen verbunden. Dabei ist die eigentliche Implementierung an sich nicht das eigentliche Problem, da auch hier dann native externe Bibliotheken genutzt werden können, jedoch ist die Konfiguration der Kommunikationsschnittstellen mitunter recht kompliziert und müssen sinnvoll implementiert sein, um die Performance nicht erheblich zu schwächen.
+
+Flutter ist außerdem noch recht neu. So werden bei regelmäßigen Updates auch Änderungen eingeführt, die die Qualität und Entwicklung verbessern, jedoch dabei auch umfangreiche Änderungen in allen Applikationen notwendig macht. So wurde etwa ein Update veröffentlicht, dass das Nullsafety verbessern sollte. In Folge dessen musste jede Bibliothek angepasst und auch große Teile von Applikationen angepasst werden. Dadurch sind auch einige Anleitungen für Flutter veraltet und funktionieren in der aktuellsten Version nicht ohne Anpassungen.
+
+Ein letzter Punkt ist, dass es keine Liste der verfügbaren Widgets innerhalb der Entwicklungsumgebung gibt. So muss alles, was nicht bereits bekannt ist gegoogelt werden. Hier wäre eine Übersicht über die typischen Elemente hilfreich um gerade für Anfänger den Einstieg zu erleichtern.

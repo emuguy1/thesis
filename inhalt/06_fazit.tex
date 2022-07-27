@@ -4,6 +4,31 @@
 \section{Entscheidung zu unterschiedlichen Ansätzen}
 Existiert eine Webseite
 
+\section{Disclaimer}
+Natürlich deckt diese Arbeit nicht alle Arten der möglichen Entwicklung ab. So wurde etwa für die Klasse der hybriden Applikation eine Entwicklung mit Hilfe eines WebContainers genutzt, auf dem lediglich eine im Internet gehostete Webseite angezeigt wird. Jedoch gibt es hier viele andere und mit sicher auch größere Frameworks. Cordova, PhoneGap, Ionic und viele mehr, nur mal um ein paar Namen zu nennen. Jedoch wurde in dieser Arbeit lediglich der erwähnte Ansatz genutzt, da dieser unter den Bedingungen dieser Arbeit der sinnvollste war. Außerdem steht der gewählte Ansatz etwa in Sachen Geräteauslastung keinem der anderen Frameworks nach, sondern dürfte hier sogar besser sein, da der Großteil der Anwendung auf einem externen Server läuft und dadurch nicht auf dem Gerät ausgeführt werden müssen. Es sollte außerdem in dieser Arbeit nicht gesagt werden, welcher Ansatz in den einzelnen Klassen ist, sondern sollte eine Übersicht über die verschiedenen Entwicklungsklassen geben und einen einfachen Orientierungskompass geben um den Entscheidungsweg zum richtigen Ansatz zu unterstützen.
+
+\section{Zusammenfassung}
+In einem Vortrag an der Ostbayerisch Technischen Hochschule Regensburg sagte der Vortragende Tobias Hoppenthaler:
+\begin{quote}
+Es gibt eigentlich keine richtigen Gründe mehr nativ zu entwickeln, wenn man mehrere Plattformen abgedeckt werden sollen.
+\end{quote}
+Trotzdem werden Apps oft noch mit Kotlin und und Swift geschrieben. Bei einer Entwicklerbefragung gaben 63\% aller Entwickler an immer noch nativ zu entwickeln\footnote{https://www.jetbrains.com/lp/devecosystem-2021/miscellaneous/}. Als Grund werden dabei oft Argumente wie schlechtere Performance oder fehlende Funktionalität als Hauptgründe angeführt. In dieser Arbeit wurden eben solche Aspekte untersucht und anhand von vier Beispielimplementierungen analysiert. 
+
+Es konnte so etwa tatsächlich eine bessere Performance bei der nativen Entwickelung festgestellt werden, jedoch war die Performance bei den anderen Ansätzen nicht derartig schlecht, dass es eine App besonders stark beeinflussen würde. 
+
+Beim Thema Funktionalität konnte kein Unterschied zwischen den Flutter und der nativen Applikation festgestellt werden, vor allem da Flutter jedgliche native Funktionalität durch ein Erweiterung, die auch selbst entwickelt werden kann, bei Bedarf hinzugefügt werden kann. Lediglich die hybride Applikation fällt hier heraus, da sie wegen ihres Aufbaus auf die Funktionalität von Webseiten beschränkt ist.
+
+Ein wichtiger Punkt jedoch bei dem die native Entwicklung aber hinten an ist, sind die Kosten der Implementierung. Denn bei einer Veröffentlichung einer App auf den Plattformen Android, iOS, Windows, Linux und MacOS würde hier in etwa die 5 fachen Kosten entstehen wie eine Flutter Implementierung, da eben 5 getrennte Applikationen geschrieben werden müssten. Dazu kommt, dass auch die Wartung und Weiterentwicklung jedes mal die 5 fache Arbeit bedeuten würde, während bei Flutter lediglich ein Code entwicklet werden muss. Der hybride Ansatz bietet hier einen Mittelweg, da ein großer Teil seines Code s auf den unterschiedlichen Plattformen wiederverwendet werden kann und nur einige Teile angepasst werden müssen. 
+
+Durch die Nutzung von einem Code kann sowohl bei den Flutter Lösungen als auch der hybriden Webapplikation ein über alle Plattformen hinaus gleiches System geschaffen werden, das keinerlei Unterschiede zwischen den Plattformen aufweist. 
+
+\TODO{Vielleicht hier eine Tabelle mit den einzelnen Faktoren hier zusammen gefasst}
+
+Wie im laufe der Arbeit offensichtlich geworden ist, gibt es viele verschiedene Ansätze um eine Applikation für die verschiedenen Plattformen zu entwickeln. Innerhalb dieser Ansätze gibt es auch nochmal viele verschiedene Frameworks und auch Programmiersprachen die genutzt werden können. Dazu kommt, dass täglich neue Technologien entstehen, die die Ergebnisse der Arbeit wieder komplett verändern könnten.
+
+
+
+
 \section{Future Work}
 Die Evaluation von Cross-Plattform Frameworks wurde in diesem Fall mit dem aktuell beliebtesten Framework Flutter gemacht. In einer zukünftigen Arbeit wäre eine Untersuchung weiterer Technologien sehr interessant. Dazu kommt, dass die untersuchten Technologien weiterentwickeln. So ist allein in der Zeit der Erstellung der Arbeit bei Flutter ein großer und 3 kleine Release herausgekommen. Dabei sind unter anderem Performance Verbesserungen oder auch neue Plattformen hinzugefügt wurden. Deswegen ist eine wiederholte Betrachtung nach einiger Zeit durchaus interessant zu sehen, wie die Ergebnisse dann aussehen würden.
 
@@ -19,4 +44,7 @@ Wenn nicht, so kann es von Anfang an spannend sein, ein Framework zu wählen, da
 Falls es bereits eine Webversion geben, so geht der Weg eher in Richtung von Nativen- bzw. Hybriden Applikationen, da meißt nur noch einzelne Teile der Applikation entwickelt werden müssen. Dies ist jedoch auch kein Grund eine Cross-Plattform-Entwicklung auszuschließen, da dadurch nur ein Code geschrieben werden muss um etwa beide vorherschenden mobilen Plattformen abzudecken: iOS und Android.
 
 '''Hier könnte man so ein Art Diagramm machen mit Fragen und dann Entscheidungswegen. So nach dem Motto finde dein Framework zur entwicklung einer mobilen Applikation.'''
+
+
+Andererseits hat man einen schnell sich ändernden Technologiemarkt. Flutter wurde erst 2017 auf den Markt gebracht und ist 2021 zum Führenden Framework aufgestiegen. Andererseits ist React Native von einem der viel versprechendsten Frameworks seit dem Erscheinen von Flutter auf dem Abeseigenden Mast und andere haben ganz und gar Ihre Bedeutung verloren.Etwa Apache Flex. Das auch seit 2017 nicht mehr weiter entwickelt wird. So zeigt sich, dass die Wahl auf das richtige Framework und die richtige Entwicklungsstrategie eine sehr wichtige ist und mit viel Vorsicht getroffen werden muss.
 \section{Ausblick und Zukunft}
