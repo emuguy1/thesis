@@ -1,12 +1,10 @@
-In dieser Arbeit wurden verschiedene Methoden genauer vorgestellt, um eine Multi-Plattform Anwendung für mobile Endgeräte zu Entwickeln. Dabei wurde die Implementierung auf eine Smartphone Android Implementierung beschränkt und vier verschiedene Ansätze programmiert. Dabei wurde einerseits eine native Android Implementierung mit Kotlin, eine hybride Applikation mit Kotlin, eine Cross-Compilierte Flutter Applikation und ein gemischter Ansatz einer hybriden Cross-Compilierten Flutter Applikation.
-
-\section{Entscheidung zu unterschiedlichen Ansätzen}
-Existiert eine Webseite
-
-\section{Disclaimer}
-Natürlich deckt diese Arbeit nicht alle Arten der möglichen Entwicklung ab. So wurde etwa für die Klasse der hybriden Applikation eine Entwicklung mit Hilfe eines WebContainers genutzt, auf dem lediglich eine im Internet gehostete Webseite angezeigt wird. Jedoch gibt es hier viele andere und mit sicher auch größere Frameworks. Cordova, PhoneGap, Ionic und viele mehr, nur mal um ein paar Namen zu nennen. Jedoch wurde in dieser Arbeit lediglich der erwähnte Ansatz genutzt, da dieser unter den Bedingungen dieser Arbeit der sinnvollste war. Außerdem steht der gewählte Ansatz etwa in Sachen Geräteauslastung keinem der anderen Frameworks nach, sondern dürfte hier sogar besser sein, da der Großteil der Anwendung auf einem externen Server läuft und dadurch nicht auf dem Gerät ausgeführt werden müssen. Es sollte außerdem in dieser Arbeit nicht gesagt werden, welcher Ansatz in den einzelnen Klassen ist, sondern sollte eine Übersicht über die verschiedenen Entwicklungsklassen geben und einen einfachen Orientierungskompass geben um den Entscheidungsweg zum richtigen Ansatz zu unterstützen.
+Im Folgenden werden die Erkenntnisse der Arbeit zusammengefasst und nocheinmal einige Hauptauffälligkeiten erwähnt werden. Im Anschluss wird ein Ausblick und mögliche Verbesserungen gegeben.
 
 \section{Zusammenfassung}
+In dieser Arbeit wurden verschiedene Methoden genauer vorgestellt, um eine Multi-Plattform Anwendung für mobile Endgeräte zu Entwickeln. Dabei wurde die Implementierung auf eine Smartphone Android Implementierung beschränkt und vier verschiedene Ansätze programmiert. Dabei wurde einerseits eine native Android Implementierung mit Kotlin, eine hybride Applikation mit Kotlin, eine Cross-Compilierte Flutter Applikation und ein gemischter Ansatz einer hybriden Cross-Compilierten Flutter Applikation. Nach der Implementierung dieser Ansätze wurden diese in verschiedenen Kriterien untersucht. So etwa die Performance. Dabei konnte festgestellt werden, dass in dem betrachteten Fall die native Implementierung die am schnellsten startende und am Ressourcenschonendste Implementierung ist, während die Mix Implementierung hierbei am schlechtesten abschnitt. Lediglich beim Rendern der Oberfläche war nativ hier nicht der schnellste Ansatz. Dafür ist er im Bereich der Entwicklergemeinschaft durch die längere Existenz und größere Verbreitung im Vorteil. Dabei gab es mehr beantwortete Fragen und teilweise besser ausgearbeitete Lösungen für Probleme wie der Serverkommunikation über GraphQL. Dabei zeigte sich jedoch auch das große Interesse das an Flutter existiert und der diesen Unterschied über die Zeit verringern könnte.
+
+Die hybride Implementierung konnte dafür in den Bereichen der Wiederverwendbarkeit und der Zeit bis zum Release überzeugen. Da
+
 In einem Vortrag an der Ostbayerisch Technischen Hochschule Regensburg sagte der Vortragende Tobias Hoppenthaler:
 \begin{quote}
 Es gibt eigentlich keine richtigen Gründe mehr nativ zu entwickeln, wenn man mehrere Plattformen abgedeckt werden sollen.
@@ -21,14 +19,11 @@ Ein wichtiger Punkt jedoch bei dem die native Entwicklung aber hinten an ist, si
 
 Durch die Nutzung von einem Code kann sowohl bei den Flutter Lösungen als auch der hybriden Webapplikation ein über alle Plattformen hinaus gleiches System geschaffen werden, das keinerlei Unterschiede zwischen den Plattformen aufweist. 
 
-\TODO{Vielleicht hier eine Tabelle mit den einzelnen Faktoren hier zusammen gefasst}
-
 Wie im laufe der Arbeit offensichtlich geworden ist, gibt es viele verschiedene Ansätze um eine Applikation für die verschiedenen Plattformen zu entwickeln. Innerhalb dieser Ansätze gibt es auch nochmal viele verschiedene Frameworks und auch Programmiersprachen die genutzt werden können. Dazu kommt, dass täglich neue Technologien entstehen, die die Ergebnisse der Arbeit wieder komplett verändern könnten.
 
-
-
-
 \section{Ausblick}
+Natürlich deckt diese Arbeit nicht alle Arten der möglichen Entwicklung ab. So wurde etwa für die Klasse der hybriden Applikation eine Entwicklung mit Hilfe eines WebContainers genutzt, auf dem lediglich eine im Internet gehostete Webseite angezeigt wird. Jedoch gibt es hier viele andere und mit sicher auch größere Frameworks. Cordova, PhoneGap, Ionic und viele mehr, nur mal um ein paar Namen zu nennen. Jedoch wurde in dieser Arbeit lediglich der erwähnte Ansatz genutzt, da dieser unter den Bedingungen dieser Arbeit der sinnvollste war. Außerdem steht der gewählte Ansatz etwa in Sachen Geräteauslastung keinem der anderen Frameworks nach, sondern dürfte hier sogar besser sein, da der Großteil der Anwendung auf einem externen Server läuft und dadurch nicht auf dem Gerät ausgeführt werden müssen. Es sollte außerdem in dieser Arbeit nicht gesagt werden, welcher Ansatz in den einzelnen Klassen ist, sondern sollte eine Übersicht über die verschiedenen Entwicklungsklassen geben und einen einfachen Orientierungskompass geben um den Entscheidungsweg zum richtigen Ansatz zu unterstützen.
+
 Die Evaluation von Cross-Plattform Frameworks wurde in diesem Fall mit dem aktuell beliebtesten Framework Flutter gemacht. In einer zukünftigen Arbeit wäre eine Untersuchung weiterer Technologien sehr interessant. Dazu kommt, dass die untersuchten Technologien weiterentwickeln. So ist allein in der Zeit der Erstellung der Arbeit bei Flutter ein großer und 3 kleine Release herausgekommen. Dabei sind unter anderem Performance Verbesserungen oder auch neue Plattformen hinzugefügt wurden. Deswegen ist eine wiederholte Betrachtung nach einiger Zeit durchaus interessant zu sehen, wie die Ergebnisse dann aussehen würden.
 
 ------
@@ -46,4 +41,3 @@ Falls es bereits eine Webversion geben, so geht der Weg eher in Richtung von Nat
 
 
 Andererseits hat man einen schnell sich ändernden Technologiemarkt. Flutter wurde erst 2017 auf den Markt gebracht und ist 2021 zum Führenden Framework aufgestiegen. Andererseits ist React Native von einem der viel versprechendsten Frameworks seit dem Erscheinen von Flutter auf dem Abeseigenden Mast und andere haben ganz und gar Ihre Bedeutung verloren.Etwa Apache Flex. Das auch seit 2017 nicht mehr weiter entwickelt wird. So zeigt sich, dass die Wahl auf das richtige Framework und die richtige Entwicklungsstrategie eine sehr wichtige ist und mit viel Vorsicht getroffen werden muss.
-\section{Ausblick und Zukunft}

@@ -68,6 +68,7 @@ Der Test wurde dabei für jede Implementierung 5 mal wiederholt und aus den Erge
 Renderzeit entspricht der Zeit, die gebraucht werden, bis die Änderungen geziechnet wurden und als Bild angezeigt werden können
 
 Hierbei ist erkennbar, dass die native Android App insgesamt die schnellste ist, während die Hybride Flutter App die am schlechtesten performende. Die schnellste Renderzeit hatten die Flutter-Applikationen, während die Auslastung des Rams bei den Android Applikationen deutlich geringer war. Überraschend zu sehen ist, dass die WebView Applikation mehr Ressourcen verbraucht als die nativ implementierte, obwohl sie lediglich einen WebContainer bauen muss. was außerdem auffällt, ist dass Flutter Applikationen etwa zwei mal so groß sind als die nativen. Eine weitere Sache ist, dass die die Android Apps und die reine Flutter App sehr vergleichbar sind, während die Hybride Flutter App in fast jeder Kategorie doppelt so viele Ressourcen verbraucht hat, wie die native Android Anwendungen.
+\TODO{Hier darauf eingehen war Flutter schneller die Oberfläche mit Canvas und dadurch besser als nativ}
 
 Was festhalten werden kann, ist, dass eine Flutter App zwar in der Performanz etwas den nativen geschriebenen Applikationen hinterherhängt, jedoch der Unterschied nicht derart groß ist, als dass er eine große Rolle spielen würde. Was jedoch auffält ist das die hybride Flutter App Performance technisch deutlich schlechter abschneidet als die native.  
 
@@ -250,6 +251,7 @@ Hier ist allerdings zu erwähnen, dass andere hybride Ansätze zwar auch Webtech
 Bei der Übersichtlichkeit ist es wieder eine Frage nach der Art der Implementierung. 
 
 \section{Fragekompass um eine Auswahl zu treffen}
+Im folgenden sollen ein paar Fragen vorgestellt, die die vorgestellten Ergebnisse kategorisieren um eine Auswahl treffen zu können.\TODO{umschreiben}
 1. Existiert bereits eine Webseite, die in eine App umgewandelt werden soll?
     Wenn eine Webseite bereits existiert, sind der hybride und der Web-Flutter Ansatz eine gute Option. Denn durch die Integration kann sowohl ein großer Teil der Implementierung vermieden werden, selbst wenn letztlich nicht die Webseite in der App angezeigt wird, sondern die echten HTML Datein. Denn diese können im Zweifelsfall kopiert und falls benötigt umgearbeitet werden.
     
