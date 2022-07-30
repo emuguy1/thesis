@@ -9,7 +9,7 @@ Eine Grundlage von Flutter ist \verb|Composition over inheritance|. Dieses Konze
 \begin{figure}[ht]
   \centering
   \includegraphics[height=7cm,keepaspectratio]{images/sample-flutter-layout.png} 
-  \caption{Hierachie einer Menüleiste Quelle\protect\footnotemark}
+  \caption[Hierachie einer Menüleiste]{Hierachie einer Menüleiste\protect\footnotemark}
   \label{fig:flutter_layout_tree}
 \end{figure}
 
@@ -37,13 +37,20 @@ Nebenbei kann jede Art von SQL-Befehl ausgeführt werden, um Befehle auszuführe
 
 
 \subsection{Exkurs: Platform spezifische Funktionalität entwickeln}
-Im Verlaufe der Entwicklung kann es vorkommen, dass eine gewisse Funktionalität, die essentiell für die Anwendung ist, bisher nicht implementiert wurde oder die Verfügbaren Bibliotheken nicht die gewünschte Funktionalität hat oder gewisse Plattformen nicht unterstützt werden. Für diesen Fall kann eigener Plattformcode geschrieben werden. Dafür wird einerseits der benötigte Dart Code geschrieben und dann der jeweilig notwendige Plattformcode. Zur Kommunikation zwischen den Verschiedenen Teilen werden dabei Plattform-Channels genutzt.\cite[Kapitel~12.3]{Flutter_Recipes}
+Im Verlaufe der Entwicklung kann es vorkommen, dass eine gewisse Funktionalität, die essentiell für die Anwendung ist, bisher nicht implementiert wurde oder die verfügbaren Bibliotheken nicht die gewünschte Funktionalität haben oder benötigte Plattformen nicht unterstützt werden. Für diesen Fall kann ein eigenes Plugin geschrieben werden. Der Aufbau eines solchen Plugins kann in Abbildung \ref{fig:flutter_plattform_specific} gesehen werden. Dabei wird einerseits der Dart-Code benötigt, der das Plugin definiert und die Daten eventuell weiterverarbeitet. Auf der anderen Seite steht der jeweilig notwendige Plattformcode, in dem die native Funktionalität implementiert ist. Zur Kommunikation ist dazwischen der sogenannte Plattform-Channel, der eine Kommunikation in beide Richtungen ermöglicht \cite[Kapitel~12.3]{Flutter_Recipes}.
 
-Durch die Nutzung eines Kanals zur Kommunikation erlaubt es die Ausführung des Plattform Codes auf einem separaten Thread. Dadurch kann dieser asynchron ausgeführt werden und eine Blockade des Threads auf dem die \ac{UI} ausgeführt wird, verhindert werden\cite{plattform_code_flutter}.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=9cm,keepaspectratio]{images/flutter-platform-channels.png} 
+  \caption[Aufbau eines Plugins mit plattformspezifischen Code]{Aufbau eines Plugins mit plattformspezifischen Code\protect\footnotemark}
+  \label{fig:flutter_plattform_specific}
+\end{figure}
 
-Um weiteren Entwicklern die entwickelte Erweiterung zur Verfügung zu stellen kann außerdem das Plugin in das offizielle Repository von Flutter hochladen.
+\footnotetext{https://docs.flutter.dev/resources/architectural-overview}
 
-Es ist also möglich benötigte Funktionalität hinzuzufügen, solange sie auf den einzelnen Plattformen möglich ist. Jedoch werden für eine derartige Entwicklung das nötige Wissen benötigt, um den Plattformcode zu schreiben.
+Durch die Nutzung dieser Kanäle wird gleichzeitig die Ausführung des Plattform Codes auf einem separaten Threads ermöglicht. Dadurch kann dieser asynchron ausgeführt werden und der Thread, auf dem die \ac{UI} ausgeführt wird, wird nicht blockiert\cite{plattform_code_flutter}.
+
+Es ist also möglich benötigte Funktionalität hinzuzufügen, solange sie auf den einzelnen Plattformen möglich ist. Jedoch wird hierfür der Code in der jeweiligen Programmiersprache der Plattform benötigt, was eine gewisse Kenntniss auf den Plattformen voraussetzt.
 
 \subsection{Exkurs: Firebase}
 Ein weiterer Aspekt, warum Flutter gerade bei kleineren App-Projekten gern genutzt wird, ist die umfangreiche Integrationsmöglichkeit von Firebase. Eine aktuelle Untersuchung ergab, dass in Android Applikationen die eine Analyse Software integriert haben, 92\% der weltweiten Applikationen, Firebase nutzt \cite{statist_analytics_SDK}.
@@ -56,7 +63,7 @@ Ein weiterer Pluspunkt ist die Integration von Firebase-Authentifizierung. Es bi
 
 Firebase ist natürlich nicht nur für Flutter verfügbar, sondern genauso für die verschiedensten Programmiersprachen der Plattformen Android, iOS oder auch Web. Dennoch ist Flutter und Firebase ein interessantes Gesamtsystem. Denn durch Flutter muss lediglich einmal der Code zum Zugriff auf die Datenbak oder die anderen Dienste geschrieben werden. So wird nicht nur weiter Entwicklungszeit um sehr ähnlichen Code zu schreiben, sondern verhindert gleichzeitig eine unterschiedliche Definition der Entitäten oder anderen Elementen. Außerdem ist dadurch ein problemloser Wechsel von einem System zu einem anderen Möglich, da alle Anwendungen auf egal welcher Plattform gleich sind.
 
-\subsection{Conclusion Flutter}
+\subsection{Fazit Flutter}
 Durch die hier beschriebene Entwicklung kann mit Hilfe von einem Code, eine Anwendung geschrieben werden, die sowohl auf Android, iOS, Windows, Mac und Linux läuft. Lediglich die Web Implementierung funktioniert nicht, da der GraphQL Client hier keine richtige Verbindung erstellen kann. Für alle anderen Plattformen muss lediglich die Unterstützung deklariert, der Code in Plattform spezifischen Code compiliert und am Ende ausgeführt werden.
 
 Das Tempo mit dem eine Flutter Anwendung entwickelt werden kann ist ähnlich wie eine einzelne native Implementierung. Dabei entsteht aber, wie bereits erwähnt, nicht nur die Implementierung für eine Plattform, sondern 5. Selbst wenn der Fokus der Entwicklung zuerst nur auf einer Plattform liegt, kann es sinnvoll sein Flutter zu nutzen um in Zukunft weitere Plattformen hinzuzufügen. Denn alle Plattformen können nachträglich noch exportiert werden.

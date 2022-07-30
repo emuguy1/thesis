@@ -110,8 +110,8 @@ Bei Debugging und Testing stehen zumindest in unseren Testfällen die Apps beim 
 
 Bei den hybriden Ansätzen ist die Debug und Test Möglichkeiten  durch die Web-Implementierung allerdings teils stark eingeschränkt. Wenn etwa wie in diesem Fall die Web-Implementierung nicht innerhalb der Applikation sonder auf einem externen Server läuft, müssen die beiden Teile getrennt betrachtet werden. Dies ist auch mit allen Frameworks möglich, bedeutet jedoch einen erhöhten Aufwand und erschwert die Fehlerfindung mitunter.
 
-\section{Community}
-Die Entwickler Community ist ein wichtiger Faktor für die Wahl eines Frameworks. Wenn es keine Community gibt, wird es schwer Entwickler oder auch Lösungen für Probleme zu finden, ohne sie selber zu entwickeln. Aber nicht nur Bibliotheken helfen dabei, schneller zu entwickeln sondern auch Frage-Antwort Communities wie Stackoverflow\footnote{https://stackoverflow.com/}.  Die genauen Zahlen der Community-Größe oder die Populärität sind dabei nicht genau bestimmbar. Sie können jedoch anhand einiger Faktoren annähernd bestimmt werden, bzw. verglichen werden.
+\section{Entwicklergemeinschaft}
+Die Entwicklergemeinschaft ist ein wichtiger Faktor für die Wahl eines Frameworks. Wenn es keine Community gibt, wird es schwer Entwickler oder auch Lösungen für Probleme zu finden, ohne sie selber zu entwickeln. Aber nicht nur Bibliotheken helfen dabei, schneller zu entwickeln sondern auch Frage-Antwort Communities wie Stackoverflow\footnote{https://stackoverflow.com/}.  Die genauen Zahlen der Community-Größe oder die Populärität sind dabei nicht genau bestimmbar. Sie können jedoch anhand einiger Faktoren annähernd bestimmt werden, bzw. verglichen werden.
 
 \subsubsection{Star-History}
 
@@ -130,11 +130,26 @@ Abbildung \ref{fig:star_history} zeigt ein mit Hilfe der GitHub-Api erstelltes D
 Besonders gut zu erkennen ist, wie stark das Interesse an Flutter ist. Nach der ersten Änkündigung 2018 und der darauf ersten veröffentlichten Version ist die Zahl der Interessierten innerhalb von 4 Jahren auf 140 000 angestiegen. Das Repository für Swift und Kotlin haben im gleichen Zeitraum gerade mal 20 000 Stars dazu erhalten. Dabei haben Swift und Flutter beide innerhalb des ersten Jahres nach Vorstellung etwa 30 000 Stars gemacht. Jedoch ist das Interesse an Swift danach abgeflacht und verläuft aktuell parallel zu Kotlin. Es zeigt also doch, dass das Interesse sehr hoch ist.
 
 \subsubsection{Stackoverflow}
-Ein weiterer Anhaltspunkt ist die Anzahl an gestellten Fragen auf Stackoverflow\footnote{https://stackoverflow.com/}. Stackoverflow ist für viele Entwickler ein guter Ort um Lösungen oder Code zu finden, um die aufgetretenen Probleme zu lösen. Stackoverflow kann durch Filterung etwa die Anzahl der Fragen ausgeben. Hierfür wurden die Anzahl der Fragen für Kotlin, Swift und Flutter der letzten 2 Jahre gesammelt. Dabei wurden auch eventuelle Überschneidungen herausgefiltert und es musste mindestens eine Antwort geben.
+Ein weiterer Anhaltspunkt ist die Anzahl an gestellten Fragen auf Stackoverflow\footnote{https://stackoverflow.com/}. Stackoverflow ist für viele Entwickler ein guter Ort um Lösungen oder Code zu finden, um die aufgetretenen Probleme zu lösen. Stackoverflow kann angemeldeten Nutzern, durch Filterung, die Anzahl der gestellten Fragen ausgeben. Hierfür wurde die Anzahl der Fragen für Kotlin, Swift und Flutter der letzten 2 Jahre gesammelt. Dabei wurden eventuelle Überschneidungen und Fragen ohne Antwort heraus gefiltert.
 
-Für Kotlin sind es 105 082\footnote{Filter: [kotlin] or [android][kotlin] or [android]-[flutter]-[java] lastactive:2y.. is:question answers:1..}, für Swift 71 749\footnote{Filter: [swift] or [ios][swift] or [ios]-[flutter]-[objectivc] lastactive:2y.. is:question answers:1..} und bei Flutter 77,568\footnote{Filter:[flutter] or [dart] -[ubuntu] lastactive:2y.. is:question answers:1..}Fragen.
+\begin{table}
+\centering
+\caption{Anzahl gefundener Fragen pro Programmiersprache}
+\begin{tabular}{ |p{3.7cm}||p{5cm}| p{5cm}|}
+ \hline
+ Programmiersprache & Anzahl gefundener Fragen der letzten 2 Jahre & insgesamt gefundene Fragen\\
+ \hline
+ Kotlin &  105 082\footnote{Filter: [kotlin] or [android][kotlin] or [android]-[flutter]-[java] lastactive:2y.. is:question answers:1..} & 920 585\\
+  \hline
+ Swift  & 71 749\footnote{Filter: [swift] or [ios][swift] or [ios]-[flutter]-[objectivc] lastactive:2y.. is:question answers:1..} & 670 697\\
+  \hline
+ Flutter & 77,568\footnote{Filter:[flutter] or [dart] -[ubuntu] lastactive:2y.. is:question answers:1..} & 115 533\\
+ \hline
+\end{tabular}
+\label{tab:evaluations_questions_stackoverflow}
+\end{table}
 
-Flutter hat also scheinbar ebenfalls eine aktive Community die durchaus mit der von Kotlin und Apple mithalten kann. Hier muss jedoch eingeschrenkt werden, dass manche Fragen schon vor dem untersuchten Zeitraum gestellt wurden und deswegen eine Frage nicht in dem untersuchten Zeitraum erneut auftaucht. Da sowohl Kotlin als auch Swift bereits länger auf dem Markt sind, dürfte die Anzahl der Fragen die deshalb nicht gestellt wurden, höher sein als bei Flutter, jedoch kann trotzdem festgestelt werden, dass es hier dennoch genügend Leute vorhanden sind, um Hilfe bei Problemen zu erhalten.
+Tabelle \ref{tab:evaluations_questions_stackoverflow} zeigt die ermittelten Werte. Flutter hat hierbei also eine ähnlich aktive Community, wie Kotlin und Apple. Hier muss jedoch eingeschrenkt werden, dass manche Fragen schon vor dem untersuchten Zeitraum gestellt wurden und deswegen eine Frage nicht in dem untersuchten Zeitraum erneut auftaucht. Da sowohl Kotlin als auch Swift bereits länger auf dem Markt sind, dürfte die Anzahl der Fragen die deshalb nicht gestellt wurden, höher sein als bei Flutter, jedoch kann trotzdem festgestelt werden, dass es hier dennoch genügend Leute vorhanden sind, um Hilfe bei Problemen zu erhalten.
 
 \subsubsection{Dokumentation}
 Ein weiterer wichtiger Faktor ist Dokumentation. Hierbei, haben sowohl Flutter als auch Kotlin eine umfangreiche und von den Entwicklern dauerhaft aktualisierte und erweiterte Dokumentationsseite. Wo jedoch Flutter einen Vorteil zu Kotlin hat, ist ein zentraler Ort\footnote{https://pub.dev/} wo man nach weiteren Plugins, Bibliotheken, Widgets und vielem mehr suchen kann. Hier sind nicht nur offizielle Flutter Repositorys verlinkt, sondern jeder aus der Community kann seine Plugins hier verlinken. Neben einem Punktesystem, dass diese bewertet, wie viele Richtlinien es einhält, wird außerdem angezeigt, für welche Plattformen das angezeigte Projekt funktioniert. So kann einfach nach den passenden Erweiterungen gesucht werden, ohne sich durch GitHub-Repositorys zu hangeln, um nach einer passenden Bibliothek zu suchen.
@@ -148,55 +163,7 @@ Bei den Programmiersprachen für Web, gaben  65\% an, JavaScript zu kennen und 5
 
 Zusammenfassend lässt sich sagen, dass es für alle Ansätze genügend Entwickler geben wird, jedoch haben die hybriden und die Flutter-Web Implementierung dahingegen einen Vorteil, dass ein wesentlicher Teil aus einer Webseite oder Webtechnologie besteht und es hier eine deutlich höhere Anzahl an Entwicklern gibt.
 
-\section{Sonstiges}
-\subsubsection{Aussehen der Applikationen}
-Grundsätzlich ist das Aussehen der Applikation vor allem davon abhängig, wie viel Zeit hierfür investiert wird. Jedoch können anhand der Applikationen dennoch einige Beobachtungen angestellt werden.
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[height=7cm,keepaspectratio]{images/Startbildschirm_vergleich.png} 
-  \caption[Vergleich des Startbildschirms der Implementierungen]{Vergleich des Startbildschirms der Implementierungen. Von links nach rechts: Hybride-Applikation, native Kotlin Applikation, Flutter Cross-Plattform-Applikation, Flutter Hybride Applikation}
-  \label{fig:startscreen}
-\end{figure}
-
-In Abbildung \ref{fig:startscreen} sind die Startbildschirme der verschiedenen Anwendungen zu sehen. Für alle wurde eine etwa gleich lange Maximalzeit verwendet, um das Ergebnis vergleichen zu können. Der erste Bildschirm ist von der Webversion. Für diese wurde am wenigsten Zeit genutzt, da an ihr nicht viel geändert werden konnte. Sie ist also die gleiche Darstellung wie wenn die Webseite im Browser aufgerufen werden würde.  Sie ist, wie es auffällt bereits stark für mobile Geräte optimiert und sieht dementsprechend gut nutzbar aus. Was bei ihrer jedoch negativ auffällt, sind die nicht nativen Elemente durch die reine Nutzung von JavaScript.
-So ist in Abbildung \ref{fig:sidemenu} die Seitenmenüanzeigen anhand von Flutter und durch die Webimplementierung gezeigt. Hier merkt man bei der Nutzung deutlich, dass die Web-Implementierung für PC Nutzer ausgelegt ist, mit dem Ziel gut für Smartphone Nutzer bedient zu werden, während die Flutter Implementierung deutlich besser für die Nutzung an einem Smartphone ausgelegt ist. Dies ist besonders gut spürbar, da das Menü der Webseite nur über einen Knopf und manuelles drücken nutzbar ist, während in der Flutter Implementierung von der Seite gewischt werden kann um die Vorteile eines Touchscreens auszunutzen.
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[height=7cm,keepaspectratio]{images/Seitenmenü_vergleich.png} 
-  \caption[Vergleich des Seitenmenüs bei nativer Implementierung und JavaScript Implementierung]{Vergleich des Seitenmenüs bei nativer Implementierung (links) und JavaScript Implementierung (rechts).}
-  \label{fig:sidemenu}
-\end{figure}
-
-Während auf der Webseite einiges an Zeit und ein extra Designpakete genutzt wurden, um das insgesamte Aussehen der Anwendung zu verändern, wurde bei den getroffenen Implementierungen lediglich die Farben angepasst. Bei der Flutter Implementierung wirken die Elemente dabei deutlich moderner und angepasst für eine Smartphone-Applikation. Das wird besonders deutlich, wenn die Login-Screens verglichen werden.
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[height=7cm,keepaspectratio]{images/Login_vergleich.png} 
-  \caption[Vergleich des Login-Bildschirms von Kotlin und Flutter Implementierung.]{Vergleich des Login-Bildschirms von Kotlin (links) und Flutter (rechts) Implementierung.}
-  \label{fig:loginscreen}
-\end{figure}
-
-In Abbildung \ref{fig:loginscreen} ist der Loginscreen der nativen und des Cross-compilierten Ansatzes zu sehen. Hier wurde bis auf Farbanpassungen keine größeren Anpassungen vorgenommen, um einen Eindruck für das Standardaussehen der einzelnen Komponenten zu erhalten. Wie bereits erwähnt hat Flutter ein deutlich besseres Out-of-the-Box Design Paket. Die Input Felder bei der Koltin Implementierung wirken dabei recht unscheinbar und unauffällig, so dass diese für ein fertiges Produkt noch einmal angepasst werden müssten, um Nutzerfreundlich zu sein.
-
-Das Aussehen der einzelnen Apps ist aber durch Erweiterungen und sonstigen stark anpassbar, sodass mit genügend Zeit und Wille alle Applikationen egal mit welchen Ansatz sehr ähnlich aussehen könnten. Wie aber ersichtlich geworden ist, bietet Flutter die am modernsten und passend wirkende Standardkonfigutration für die Benutzeroberflächen. So ist die Entwicklung einer \ac{UI} in Flutter deutlich schneller und mit weniger Konfigurationsaufwand verbunden, als mit jeder anderen betrachteten Implementierung.
-
-\subsubsection{Konsistenz über Plattformen hinweg}
-Ein weiterer Aspekt bei der Entwicklung der Nutzeroberfläche ist die Konsistenz über Plattformen hinweg. Das Ziel ist es dabei, dass der Nutzer keinen Unterschied bemerkt, wenn er von einer Plattform zu einer anderen wechselt. 
-Dies bedeutet, dass wo immer unterschiedliche Implementierungen für die Plattformen geschrieben werden, die Gefahr für Inkonsistenz am höchsten ist.
-Dementsprechend sind Implementierungen die für mehrere Plattformen wieder verwendet werden können ein positiver Faktor um die Konsistenz zu fördern.
-Auf die in dieser Arbeit vorgestellten Implementierungen bezogen, bedeutet dies, dass die reine native Implementierung eine höhere Gefahr von Inkonsistenz besitzt, als etwa die hybride oder Flutter Applikation.
-Dabei ist allerdings zu erwähnen, dass auch die nativen Applikationen einen hohen Grad an Konsistenz erreichen können. Dies bedeutet jedoch häufig einen höheren Aufwand bei der Implementierung und eine enge Zusammenarbeit der Entwickler der verschiedenen Plattformen.
-
-\subsubsection{Plattformabdeckung \& Wiederverwendbarkeit}
-Wie an mehreren Stellen der Arbeit bereits erwähnt sind nativ entwickelte Applikationen immer nur für eine Plattform entwickelt. Sie haben dementsprechend auch den am wenigsten wiederverwendbaren Code, da lediglich die Logik geteilt werden kann, jedoch die genaue Implementierung für jede Plattform unterschiedlich ist. Jedoch kann für jede Plattform eine native Apllikation geschrieben werden.
-
-Hybride Apps haben hier bereits einen deutlich höheren Wiederverwenbarkeitsgrad, da bei ihnen ja lediglich die Anzeigelogik ausgetauscht werden muss, aber die iegentliche Implementierung in einer Webtechnologie getan wurde, wodurch sie auf fast jeden Gerät genutzt werden kann. Jedoch können einige Technologien auf ein paar Plattformen beschränkt sein. Desweiteren kann es bei dieser Klasse durchaus Probleme geben, wenn sie zu einem großen Anteil aus der Ansicht der Webseite besteht. So wurde ja bereits die Richtlinien von Apple erwähnt, die diese Klasse zu einem gewissen Grad aus dem App-Store verbannt. Da hybride Applikationen außerdem einen nativen Code-Teil besitzen, sind sie wieder nur auf einer Plattform installierbar. 
-
-Cross-Plattform-Applikationen werden mit einer Technologie gebaut, um mehr als eine Plattform mit einem Code abzudecken. Dabei ist dies zwar von der genau genutzten Technologie abhängig, aber in dem vorgestellten Fall sind 5 Plattformen damit abdeckbar. Mit Flutter und der Wahl der richtigen Erweiterungen sind nach aktuellem Stand sogar 6 Plattformen möglich. Außerdem kann durch die Wahl von Flutter der gleiche Code für alle Plattformen genutzt werden. Eine Wiederverwendbarkeit ist so gesehen also nicht bewertbar, da es theoretisch nicht nötig ist den Code für eine andere Implementierung wiederzuverwenden. Wenn allerdings der Code für eine andere Implementierung genutzt werden sollte ist es wie im nativen Fall, dass nur die Applikationslogik nutzbar ist, da die Anwendung in ihrer eigenen Programmiersprache geschrieben ist.
-
-Die Flutter-Web Implementierung ist in diesem Aspekt ähnlich zu der Flutter Implementierung. So gelten grundsätzlich die gleichen Aussagen, jedoch mit Einschränkung der Anzahl der abgedeckten mobilen Endgeräte. So ist diese Implementierung lediglich auf den beiden Plattformen Android und iOS nutzbar. Wie bereits erwähnt ist dies Abhängig von der Web-Container Implementierung und kann mit der Wahl eines passenderen Containers oder Eigenentwicklung eines eigenen Browser-Plugins auf die restlichen Plattformen erweitert werden.
+\section{Entwicklungsdauer}
 
 \subsubsection{Programmieraufwand}
 Der genaue Programmieraufwand ist immer stark abhängig von den genauen Vorkenntnissen, der genutzten Technologie und externen Bibliotheken und natürlich dem Umfang der Anwendung. Ein Anhaltspunkt sind die \ac{LOC} die für die einzelnen Implementierungen geschrieben wurden, um dies ein wenig vergleichen zu können. Dafür wurden die einzelnen Daten mit Hilfe des Statistics\footnote{https://plugins.jetbrains.com/plugin/4509-statistic} Plug in gesammelt. Dabei wurden die gesammelten Daten in die drei Typen Konfiguration, Oberfläche/UI und Logik unterteilt. Bei den zwei Implementierungen die außerdem noch Teile der Webseite mit anzeigen, wurden außerdem die in der Anwendung abgedeckten Programmteile erfasst, da diese für eine Implementierung auf dem Stand genauso notwendig ist. Zusätzlich wurde der benötigte Code untersucht um die Liste der Gegenstände anzuzeigen. Also sowohl die Layoutdatein, als auch die benötigte Anwendungslogik.\TODO{Weiß nicht ob Logik hier der richtige Begriff ist, da dies ja auch das hinzufügen der Oberflächenfunktionalität ist.}
@@ -239,6 +206,58 @@ Wenn jedoch die Webseite bereits existiert und dementsprechend nicht bei der Imp
 
 Der Flutter-Web Mixansatz kann außerdem noch von hohem Vorteil sein, wenn eine Webseite in eine App verwandelt werden soll. Denn hier kann wie bei der hybriden Implementierung eine anfängliche Version veröffentlicht werden, die lediglich die Webseite öffnet und danach Stück für Stück die Webseite durch Flutter Seiten ersetzen. So kann der Nutzer jederzeit die komplette Anwendung nutzen und bekommt Stück für Stück eine angepasste Appversion.
 
+\section{Nutzeroberfläche}
+\subsubsection{Aussehen der Applikationen}
+Grundsätzlich ist das Aussehen der Applikation vor allem davon abhängig, wie viel Zeit hierfür investiert wird. Jedoch können anhand der Applikationen dennoch einige Beobachtungen angestellt werden.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[height=7cm,keepaspectratio]{images/Startbildschirm_vergleich.png} 
+  \caption[Vergleich des Startbildschirms der Implementierungen]{Vergleich des Startbildschirms der Implementierungen. Von links nach rechts: Hybride-Applikation, native Kotlin Applikation, Flutter Cross-Plattform-Applikation, Flutter Hybride Applikation}
+  \label{fig:startscreen}
+\end{figure}
+
+In Abbildung \ref{fig:startscreen} sind die Startbildschirme der verschiedenen Anwendungen zu sehen. Für alle wurde eine etwa gleich lange Maximalzeit verwendet, um das Ergebnis vergleichen zu können. Der erste Bildschirm ist von der Webversion. Für diese wurde am wenigsten Zeit genutzt, da an ihr nicht viel geändert werden konnte. Sie ist also die gleiche Darstellung wie wenn die Webseite im Browser aufgerufen werden würde.  Sie ist, wie es auffällt bereits stark für mobile Geräte optimiert und sieht dementsprechend gut nutzbar aus. Was bei ihrer jedoch negativ auffällt, sind die nicht nativen Elemente durch die reine Nutzung von JavaScript.
+So ist in Abbildung \ref{fig:sidemenu} die Seitenmenüanzeigen anhand von Flutter und durch die Webimplementierung gezeigt. Hier merkt man bei der Nutzung deutlich, dass die Web-Implementierung für PC Nutzer ausgelegt ist, mit dem Ziel gut für Smartphone Nutzer bedient zu werden, während die Flutter Implementierung deutlich besser für die Nutzung an einem Smartphone ausgelegt ist. Dies ist besonders gut spürbar, da das Menü der Webseite nur über einen Knopf und manuelles drücken nutzbar ist, während in der Flutter Implementierung von der Seite gewischt werden kann um die Vorteile eines Touchscreens auszunutzen.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[height=7cm,keepaspectratio]{images/Seitenmenü_vergleich.png} 
+  \caption[Vergleich des Seitenmenüs bei nativer Implementierung und JavaScript Implementierung]{Vergleich des Seitenmenüs bei nativer Implementierung (links) und JavaScript Implementierung (rechts).}
+  \label{fig:sidemenu}
+\end{figure}
+
+Während auf der Webseite einiges an Zeit und ein extra Designpakete genutzt wurden, um das insgesamte Aussehen der Anwendung zu verändern, wurde bei den getroffenen Implementierungen lediglich die Farben angepasst. Bei der Flutter Implementierung wirken die Elemente dabei deutlich moderner und angepasst für eine Smartphone-Applikation. Das wird besonders deutlich, wenn die Login-Screens verglichen werden.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[height=7cm,keepaspectratio]{images/Login_vergleich.png} 
+  \caption[Vergleich des Login-Bildschirms von Kotlin und Flutter Implementierung.]{Vergleich des Login-Bildschirms von Kotlin (links) und Flutter (rechts) Implementierung.}
+  \label{fig:loginscreen}
+\end{figure}
+
+In Abbildung \ref{fig:loginscreen} ist der Loginscreen der nativen und des Cross-compilierten Ansatzes zu sehen. Hier wurde bis auf Farbanpassungen keine größeren Anpassungen vorgenommen, um einen Eindruck für das Standardaussehen der einzelnen Komponenten zu erhalten. Wie bereits erwähnt hat Flutter ein deutlich besseres Out-of-the-Box Design Paket. Die Input Felder bei der Koltin Implementierung wirken dabei recht unscheinbar und unauffällig, so dass diese für ein fertiges Produkt noch einmal angepasst werden müssten, um Nutzerfreundlich zu sein.
+
+Das Aussehen der einzelnen Apps ist aber durch Erweiterungen und sonstigen stark anpassbar, sodass mit genügend Zeit und Wille alle Applikationen egal mit welchen Ansatz sehr ähnlich aussehen könnten. Wie aber ersichtlich geworden ist, bietet Flutter die am modernsten und passend wirkende Standardkonfigutration für die Benutzeroberflächen. So ist die Entwicklung einer \ac{UI} in Flutter deutlich schneller und mit weniger Konfigurationsaufwand verbunden, als mit jeder anderen betrachteten Implementierung.
+
+\subsubsection{Konsistenz über Plattformen hinweg}
+Ein weiterer Aspekt bei der Entwicklung der Nutzeroberfläche ist die Konsistenz über Plattformen hinweg. Das Ziel ist es dabei, dass der Nutzer keinen Unterschied bemerkt, wenn er von einer Plattform zu einer anderen wechselt. 
+Dies bedeutet, dass wo immer unterschiedliche Implementierungen für die Plattformen geschrieben werden, die Gefahr für Inkonsistenz am höchsten ist.
+Dementsprechend sind Implementierungen die für mehrere Plattformen wieder verwendet werden können ein positiver Faktor um die Konsistenz zu fördern.
+Auf die in dieser Arbeit vorgestellten Implementierungen bezogen, bedeutet dies, dass die reine native Implementierung eine höhere Gefahr von Inkonsistenz besitzt, als etwa die hybride oder Flutter Applikation.
+Dabei ist allerdings zu erwähnen, dass auch die nativen Applikationen einen hohen Grad an Konsistenz erreichen können. Dies bedeutet jedoch häufig einen höheren Aufwand bei der Implementierung und eine enge Zusammenarbeit der Entwickler der verschiedenen Plattformen.
+
+\section{Sonstiges - Funktionalität- noch nicht richtiger Titel}
+
+\subsubsection{Plattformabdeckung \& Wiederverwendbarkeit}
+Wie an mehreren Stellen der Arbeit bereits erwähnt sind nativ entwickelte Applikationen immer nur für eine Plattform entwickelt. Sie haben dementsprechend auch den am wenigsten wiederverwendbaren Code, da lediglich die Logik geteilt werden kann, jedoch die genaue Implementierung für jede Plattform unterschiedlich ist. Jedoch kann für jede Plattform eine native Apllikation geschrieben werden.
+
+Hybride Apps haben hier bereits einen deutlich höheren Wiederverwenbarkeitsgrad, da bei ihnen ja lediglich die Anzeigelogik ausgetauscht werden muss, aber die iegentliche Implementierung in einer Webtechnologie getan wurde, wodurch sie auf fast jeden Gerät genutzt werden kann. Jedoch können einige Technologien auf ein paar Plattformen beschränkt sein. Desweiteren kann es bei dieser Klasse durchaus Probleme geben, wenn sie zu einem großen Anteil aus der Ansicht der Webseite besteht. So wurde ja bereits die Richtlinien von Apple erwähnt, die diese Klasse zu einem gewissen Grad aus dem App-Store verbannt. Da hybride Applikationen außerdem einen nativen Code-Teil besitzen, sind sie wieder nur auf einer Plattform installierbar. 
+
+Cross-Plattform-Applikationen werden mit einer Technologie gebaut, um mehr als eine Plattform mit einem Code abzudecken. Dabei ist dies zwar von der genau genutzten Technologie abhängig, aber in dem vorgestellten Fall sind 5 Plattformen damit abdeckbar. Mit Flutter und der Wahl der richtigen Erweiterungen sind nach aktuellem Stand sogar 6 Plattformen möglich. Außerdem kann durch die Wahl von Flutter der gleiche Code für alle Plattformen genutzt werden. Eine Wiederverwendbarkeit ist so gesehen also nicht bewertbar, da es theoretisch nicht nötig ist den Code für eine andere Implementierung wiederzuverwenden. Wenn allerdings der Code für eine andere Implementierung genutzt werden sollte ist es wie im nativen Fall, dass nur die Applikationslogik nutzbar ist, da die Anwendung in ihrer eigenen Programmiersprache geschrieben ist.
+
+Die Flutter-Web Implementierung ist in diesem Aspekt ähnlich zu der Flutter Implementierung. So gelten grundsätzlich die gleichen Aussagen, jedoch mit Einschränkung der Anzahl der abgedeckten mobilen Endgeräte. So ist diese Implementierung lediglich auf den beiden Plattformen Android und iOS nutzbar. Wie bereits erwähnt ist dies Abhängig von der Web-Container Implementierung und kann mit der Wahl eines passenderen Containers oder Eigenentwicklung eines eigenen Browser-Plugins auf die restlichen Plattformen erweitert werden.
+
 \subsubsection{Offline Funktionalität}
 Es gibt einige Fälle in denen der Nutzer unter Umständen eine Applikation weiter nutzen will, auch wenn er aktuell keine aktive Internetverbindung hat. In diesem Fall benötigt die Applikation eine offline Funktionalität.
 
@@ -246,21 +265,34 @@ Wie bereits an mehreren Stellen in dieser Arbeit erwähnt haben die Implementier
 
 Hier ist allerdings zu erwähnen, dass andere hybride Ansätze zwar auch Webtechnologie nutzen, jedoch die Daten alle lokal auf dem Gerät gespeichert werden. In diesem Fall hätte auch der hybride Ansatz offline funktionieren. Der in diese Arbeit gewählte Ansatz jedoch nicht.
 
+\subsubsection{Nutzung von Plattformfunktionalität}
+Sowohl die nativen als auch die Cross-Compilierte Lösung mit Flutter hat die Möglichkeit, mit der richtigen Programmierung, alle Funktionalitäten der Hardware zu nutzen.
+\TODO{Quellen}
+Die hybriden und Web-Applikationen haben hierbei den Nachteil, dass Webseiten nur auf die Funtkionalitäten unterstützt, den auch Browser unterstützen. Jedoch die hybriden Ansätze die zwar mit einer Webtechnologie funktionieren, aber auf dem Gerät lokal laufen können über Schnittstellen ebenfalls auf die Funktionalität zugreifen
+\TODO{Vielleicht auch raus.}
 
-\subsubsection{Lesbarkeit und Übersichtlichkeit der Implementierung}
-Bei der Übersichtlichkeit ist es wieder eine Frage nach der Art der Implementierung. 
+Einen Vorteil den native Applikationen haben ist, dass alle verfügbare Funktionalität in die eigene Applikation eingebunden werden können, selbst wenn es sie auf anderen Plattformen nicht existiert.
 
-\section{Fragekompass um eine Auswahl zu treffen}
-Im folgenden sollen ein paar Fragen vorgestellt, die die vorgestellten Ergebnisse kategorisieren um eine Auswahl treffen zu können.\TODO{umschreiben}
-1. Existiert bereits eine Webseite, die in eine App umgewandelt werden soll?
-    Wenn eine Webseite bereits existiert, sind der hybride und der Web-Flutter Ansatz eine gute Option. Denn durch die Integration kann sowohl ein großer Teil der Implementierung vermieden werden, selbst wenn letztlich nicht die Webseite in der App angezeigt wird, sondern die echten HTML Datein. Denn diese können im Zweifelsfall kopiert und falls benötigt umgearbeitet werden.
+Um dies zu erreichen, müsste bei Cross-Plattform Ansätzen eine Unterscheidung zwischen Plattformen stattfinden, wie dies etwa in Flutter mit Hilfe der Abfrage der TargetPlatform\footnote{https://api.flutter.dev/flutter/foundation/defaultTargetPlatform.html} geschehen kann. Die Frage ist dann jedoch wie sinnvoll dies ist, da dadurch Unterschiede zwischen den Plattformen entstehen, die bei den Cross-Platformen eben nicht entstehen sollen.
+
+%\subsubsection{Lesbarkeit und Übersichtlichkeit der Implementierung}
+%Bei der Übersichtlichkeit ist es wieder eine Frage nach der Art der Implementierung. 
+
+%\section{Fragekompass um eine Auswahl zu treffen}
+%Im folgenden sollen ein paar Fragen vorgestellt, die die vorgestellten Ergebnisse kategorisieren um eine Auswahl treffen zu können.\TODO{umschreiben}
+%1. Existiert bereits eine Webseite, die in eine App umgewandelt werden soll?
+%    Wenn eine Webseite bereits existiert, sind der hybride und der Web-Flutter Ansatz eine gute Option. Denn durch die Integration kann sowohl ein großer Teil der Implementierung vermieden werden, selbst wenn letztlich nicht die Webseite in der App angezeigt wird, sondern die echten HTML Datein. Denn diese können im Zweifelsfall kopiert und falls benötigt umgearbeitet werden.
     
-    Es kann einen fließenden Übergang von Webseite zu komplett Implementierter Applikation geben soll. So kann bei dem entwickelten gemixten Ansatz eine erste Version schnell entwickelt werden, die ausschließlich aus der Webseite besteht und dann Stück f
-2. Ist Performance Priorität Nummer 1 ?
+ %   Es kann einen fließenden Übergang von Webseite zu komplett Implementierter Applikation geben soll. So kann bei dem entwickelten gemixten Ansatz eine erste Version schnell entwickelt werden, die ausschließlich aus der Webseite besteht und dann Stück f
+%2. Ist Performance Priorität Nummer 1 ?
 
-3. Sollen mehr als nur eine Plattform abgedeckt werden ?
+%3. Sollen mehr als nur eine Plattform abgedeckt werden ?
 
-4. Existiert bereits eine Applikation die nur etwas geändert werden soll?
+%4. Existiert bereits eine Applikation die nur etwas geändert werden soll?
 
-5. 
+%5. 
+%Eine der ersten Fragen die dabei im Raum steht. Gibt es bereits eine Webversion der Applikation.
+%Wenn nicht, so kann es von Anfang an spannend sein, ein Framework zu wählen, dass wie Flutter eine Cross-Plattform-Applikation erzeugt, wo auch eine Webversion mit gehostet werden kann. Falls es bereits eine Webversion geben, so geht der Weg eher in Richtung von Nativen- bzw. Hybriden Applikationen, da meißt nur noch einzelne Teile der Applikation entwickelt werden müssen. Dies ist jedoch auch kein Grund eine Cross-Plattform-Entwicklung auszuschließen, da dadurch nur ein Code geschrieben werden muss um etwa beide vorherschenden mobilen Plattformen abzudecken: iOS und Android.
+
+%Andererseits hat man einen schnell sich ändernden Technologiemarkt. Flutter wurde erst 2017 auf den Markt gebracht und ist 2021 zum Führenden Framework aufgestiegen. Andererseits ist React Native von einem der viel versprechendsten Frameworks seit dem Erscheinen von Flutter auf dem Abeseigenden Mast und andere haben ganz und gar Ihre Bedeutung verloren.Etwa Apache Flex. Das auch seit 2017 nicht mehr weiter entwickelt wird. So zeigt sich, dass die Wahl auf das richtige Framework und die richtige Entwicklungsstrategie eine sehr wichtige ist und mit viel Vorsicht getroffen werden muss.
 
