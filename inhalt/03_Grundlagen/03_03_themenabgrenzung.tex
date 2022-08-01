@@ -1,17 +1,12 @@
 \section{Themenabgrenzung}
-In dieser Arbeit sollen nicht die verschiedenen Programmiersprachen oder Frameworks innerhalb der einzelnen Ansätze verglichen werden, sondern viel mehr die Ansätze gegenseitig. Daher wird für eine Cross-Plattform Implementierung das Framework Flutter\footnote{https://flutter.dev/} genutzt, da dies das aktuell am meisten genutzte Framework\cite{statist_CP_Framework} ist und somit einen guten Repräsentanten für diese Gruppe darstellt. Für die Android Implementierungen wurde als Programmiersprache Kotlin\footnote{https://kotlinlang.org/} genutzt. 
+\label{cha:3_3abgrenzung}
+In dieser Arbeit sollen nicht die verschiedenen Programmiersprachen oder Frameworks innerhalb der einzelnen Ansätze verglichen werden, sondern viel mehr die Ansätze gegenseitig. Daher wird für zwei Implementierung das Framework Flutter genutzt, da dies das aktuell am meisten genutzte Framework\cite{statist_CP_Framework} unter den Cross-Plattform Framworks ist und somit einen guten Repräsentanten für diese Gruppe darstellt. Für die anderen beiden Implementierungen wurde die Android typische Programmiersprache Kotlin\footnote{https://kotlinlang.org/} genutzt. 
 
-Die nativen Implementierungen werden in dieser Arbeit auf eine Android Implementierung beschränkt. 
-Einerseits sind iOS und Android vergleichbar, da beide nativ auf die vollständigen Funktionalitäten der Betriebssysteme zugreifen.
-Dabei sind es nicht die verschiedenen Programmiersprachen und ihre Kleinigkeiten die entscheidend sind, um native Apps zu entwickeln, sondern die Konzepte.
+Die in dieser Arbeit vorgestellten Implementierungen werden auf die Android Plattform beschränkt. 
+Dies hat verschiedene Gründe. Einerseits ist die Programmierung von Android und iOS vergleichbar.
 So sagen Goadrich et al \cite{iOSvsAndroid} in einer Untersuchung, welche Plattform für einen Universitätskurs passend wäre, dass beide Umgebungen die für den Kurs benötigten Funktionalität haben.
 Weiter sagen sie, dass Studenten dadurch praktische Erfahrung in der Applikationsentwicklung bekommen würden. Sie kommen am Ende auf den Schluss, dass es kein Unterschied macht welche Plattform dabei behandelt werden würde und beide Plattformen helfen, eine Grundlage zur Lehre der Grundideen für mobile Endgeräte Programmierung bilden würden.
 Auch in Sachen Performance gibt es zwischen den Plattformen keine größere Unterschiede. So zeigt eine Untersuchung von Győrödi et al \cite{Android_IOS_Performance_comparison}, dass es zwar kleinere Unterschiede in der Performance gibt, es aber keine Plattform gibt, die insgesamt gesehen besser ist, als die andere.
-Desweiteren stellt Android die deutlich größere Nutzergruppe dar. So besagen aktuelle Statistiken, dass Android aktuell einen Marktanteil von etwa 70\% hat, während iOS nur auf 30\% kommt \cite{statist_OS_worldwide}.  
+Des weiteren stellt Android die deutlich größere Nutzergruppe dar. So besagen aktuelle Statistiken, dass Android aktuell einen Marktanteil von etwa 70\% hat, während iOS nur auf 30\% kommt \cite{statist_OS_worldwide}. Deswegen führt bei der Entwicklung einer Multi-Plattform-Anwendung in den meisten Fällen kein Weg an einer Android Implementierung vorbei, 
 
-Die betrachteten Implementierungen umfassen ebenfalls keine Spieleimplementierung. Diese stellen zwar einen signifikanten Teil der in den Appstores vorhandenen Anwendungen dar, jedoch sind dies keine typischen Apps die von Appagenturen oder privaten Entwicklern produziert werden, sondern eher von Unternehmen mit Grafik- oder Spieleentwicklungshintergrund. Außerdem werden die meisten Apps nicht in Kotlin oder Swift direkt entwickelt, sondern mit Game- und Grafikprogrammen wie Unity oder ähnlichem gebaut. 
-
-
-
-Der Schwerpunkt der Arbeit liegt außerdem auf Smartphone-Applikationen. Zwar sind in der Klasse der mobilen Endgeräte auch Laptops mit den Betriebssystemen Windows, MacOS oder die verschiedenen Linux distributionen, dennoch werden Applikationen primär für den Smartphone Markt entwickelt, während für mobile Rechner dann eher ein Programm schreibt.
-\TODO{Warum auf Smartphone bei Untersuchung beschränkt?}
+Die betrachteten Implementierungen umfassen ebenfalls keine Spieleimplementierung. Diese stellen zwar einen signifikanten Teil der in den Appstores vorhandenen Anwendungen dar, jedoch sind dies keine typischen Apps die von Appagenturen oder privaten Entwicklern produziert werden, sondern eher von Unternehmen mit Grafik- oder Spieleentwicklungshintergrund. Außerdem werden die meisten Spiele nicht in Kotlin oder Swift direkt entwickelt, sondern mit Spiele- und Grafikprogrammen wie Unity oder ähnlichem erstellt.

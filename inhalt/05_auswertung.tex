@@ -101,14 +101,14 @@ Auffällig ist, dass die CPU auslastung bei beiden gleichmäßig ansteigt, währ
 \label{tab:evaluations_performance_Overhead_database}
 \end{table}
 
-Grundsätzlich kann festgehalten werden, dass native Entwicklungen meistens die beste Performance haben werden, Jedoch ist mit Flutter ein Framework auf den Markt gekommen, das dies in Frage stellt. Denn Flutter ist wie bereits erwähnt ein Framework, dass den geschriebenen Dart-Code in Nativen Code umwandelt. Es hat sich außerdem zum Ziel gesetzt, möglichst performant zu sein. Eine Untersuchung von Biørn-Hansen et al hat ergeben, das Nativ zwar immer noch am performantesten ist, Flutter in einigen Kategorien auch noch etwas hinten an ist, jedoch dieser Unterschied nicht besonders groß ist  \cite{BirnHansen.2020}.
+Grundsätzlich kann festgehalten werden, dass native Entwicklungen meistens die beste Performance haben werden, Jedoch ist mit Flutter ein Framework auf den Markt gekommen, das diesen Unterschied gering hält. Denn Flutter ist wie bereits erwähnt ein Framework, dass den geschriebenen Dart-Code in Nativen Code umwandelt. Es hat sich außerdem zum Ziel gesetzt, möglichst performant zu sein. Dies kann sowohl in dieser Untersuchung als auch in den vorgestellten verwandten Arbeiten gesehen werden.
 
-Eine andere Untersuchung zeigte, dass  es darauf ankommt, was man macht\TODO{Hier fehlt noch was}
+\subsubsection{Debuggen / Testen}
+Bei Debuggen und Testen haben technisch gesehen alle Apps die gleichen Voraussetzungen. So können alle hier benutzten Programmiersprachen sowohl Konsolenausgaben und Breakpoints im Code. Auch Test sind bei allen betrachteten Fällen implementierbar. Jedoch unterscheiden sie sich in dem Aufwand der hierfür benötigt wird.
 
-\subsubsection{Debugging/Testing}
-Bei Debugging und Testing stehen zumindest in unseren Testfällen die Apps beim Applikationscode in keinem Teil nach. Bei allen kann man sowohl Breakpoints als auch Konsolenausgaben veranlassen. Es können auch für alle Arten Tests geschrieben werden.
+Bei den hybriden Ansätzen etwa müssen die beiden Teile der Implementierung getrennt betrachtet werden, wenn eine Web-Implementierung nicht innerhalb der Applikation sonder auf einem externen Server läuft. Bei nativen Implementierungen entsteht der erhöhte Aufwand, da dies für jede einzelne unterstützte Plattform getan werden muss, da sie unterschiedliche Implementierungen haben. Bei der Cross-kompilierten Anwendung muss dies dafür lediglich einmal getan werden, da alle unterschiedlichen Plattformen auf einem Code aufbauen.
 
-Bei den hybriden Ansätzen ist die Debug und Test Möglichkeiten  durch die Web-Implementierung allerdings teils stark eingeschränkt. Wenn etwa wie in diesem Fall die Web-Implementierung nicht innerhalb der Applikation sonder auf einem externen Server läuft, müssen die beiden Teile getrennt betrachtet werden. Dies ist auch mit allen Frameworks möglich, bedeutet jedoch einen erhöhten Aufwand und erschwert die Fehlerfindung mitunter.
+Durch nur einen Code lassen sich außerdem einfacher Fehler finden, da diese auf allen Geräten auftreten, wenn nicht ein Fehler wegen Inkompatibilität oder falscher Frameworkimplementierung auftritt. Außerdem müssen Tests lediglich einmal geschrieben werden und sind so auf allen Plattformen verfügbar.
 
 \section{Entwicklergemeinschaft}
 Die Entwicklergemeinschaft ist ein wichtiger Faktor für die Wahl eines Frameworks. Wenn es keine Community gibt, wird es schwer Entwickler oder auch Lösungen für Probleme zu finden, ohne sie selber zu entwickeln. Aber nicht nur Bibliotheken helfen dabei, schneller zu entwickeln sondern auch Frage-Antwort Communities wie Stackoverflow\footnote{https://stackoverflow.com/}.  Die genauen Zahlen der Community-Größe oder die Populärität sind dabei nicht genau bestimmbar. Sie können jedoch anhand einiger Faktoren annähernd bestimmt werden, bzw. verglichen werden.

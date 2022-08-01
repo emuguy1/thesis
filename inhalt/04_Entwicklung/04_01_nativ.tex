@@ -25,16 +25,16 @@ Durch die Nutzung kann die Performance verbessert werden. Es werden unnötige me
 
 
 \subsection{Genutzte Bibliotheken}
-Die erste Bibliothek, die zur GraphQl-Kommunikation gewählt wurde, ist Apollo Kotlin. 
-\TODO{Nochmal überlegen wegen dem wörtlichen Zitat}
-"Apollo Kotlin ist ein GraphQL Client, der Kotlin und Java Modelle von GraphQL Queries erzeugt."\cite{Apollo_kotlin_docs} 
+Die Bibliothek, die zur GraphQl-Kommunikation gewählt wurde, ist Apollo Kotlin\footnote{https://www.apollographql.com/docs/kotlin/}. 
+Es ist ein GraphQL Client, der geschriebenen GraphQL Queries in Kotlin und Java Modelle umwandelt, die daraufhin wie normale Objekte in der Implementierung aufgerufen werden können. 
 Anfänglich wird eine Konfigurationsdatei erstellt, in der Sachen wie der GraphQL-Endpunkt definiert werden. 
 Danach stellt der Client eine Verbindung zu der GraphQL-\ac{API} her und fragt die Schnittstellendefinition ab, die im Anschluss gespeichert werden. 
-Danach können die einzelnen GraphQL Befehle in einzelne Datein geschrieben werden. Aus diesen werden dann Modelle erstellt, die wie einfache Klassen im Applikationscode aufgerufen werden können.
-Da Apollo die genaue Schnittstellendefinition hat, erzeugt es automatisch aus der \ac{JSON} Antwort des Servers ein Antwortobjekt und ordnet den einzelnen Stufen der Antwort die jeweiligen Datentypen zu.
-Der Client wird der Applikation als globales Attribut hinzugefügt. Dadurch haben alle Activities darauf Zugriff und er kann einfach global geändert werden , wenn der Authentifizierungsstatus geändert wird.
+Danach können die einzelnen GraphQL Befehle in einzelne Datein geschrieben werden, die wie bereits erwähnt automatisch in aufrufbare Objekte verwandelt werden.
 
-Die zweite wichtige Bibliothek die genutzt wird, ist Room\footnote{https://developer.android.com/training/data-storage/room}. Sie ist Teil von Android Jetpack, dass ein Set an Bibliotheken ist, dass helfen soll, einfach und sauber Apps zu bauen, die über die verschiedenen Android-Versionen hinweg funktionieren \cite{Jetpack_android}. Room selber ist dabei der Teil, der es ermöglichen soll einen möglichst effizienten Datenbank Zugriff zu haben. 
+Da Apollo die genaue Schnittstellendefinition kennt, erzeugt es automatisch aus der \ac{JSON}-Antwort des Servers ein Objekt und ordnet den einzelnen Stufen der Antwort die jeweiligen Datentypen zu.
+Damit der Client in der kompletten Applikation genutzt und wenn nötig abgeändert werden kann, wird er der Applikation als globales Attribut hinzugefügt.
+
+Die zweite wichtige Bibliothek die genutzt wird, ist Room\footnote{https://developer.android.com/training/data-storage/room}. Sie ist Teil von Android Jetpack\footnote{https://developer.android.com/jetpack}, dass ein Set an Bibliotheken ist, dass helfen soll, einfach und sauber Apps zu bauen, die über die verschiedenen Android-Versionen hinweg funktionieren \cite{Jetpack_android}. Room selber ist dabei der Teil, der es ermöglichen soll einen möglichst effizienten Datenbank Zugriff zu haben. 
 Die Besonderheit ist, dass Room eine Zwischenebene darstellt, die sowohl die geschriebenen SQL Befehle überprüft und validiert, die asynchronität der Datenbankoperationen vereinfacht und durch Annotation redundanten Code verhindert \cite{Room_docs}.
 
 Zum Speichern des Authentifizierungsstrings wurden sogenannte Shared-Preferences\footnote{https://developer.android.com/reference/android/content/SharedPreferences} genutzt. Sie sind ein weiterer Teil von Android Jetpack. Sie werden genutzt, um Key-Value Werte ohne großen Aufwand innerhalb der Applikation zu speichern. Sie können von innerhalb der ganzen Applikation abgefragt hinzugefügt, geändert oder gelöscht werden. Hierfür muss keine eigene Entität in der Datenbank angelegt werden und der Zugriff ist schneller. Sie sind jedoch nur für einfache Daten geeignet, da lediglich primitive Datentypen genutzt werden können. Daher werden sie vor allem für Werte wie Authentifizierung oder bestimmte Flags geeignet um den Status der App zu bestimmen.
@@ -43,4 +43,4 @@ Zum Speichern des Authentifizierungsstrings wurden sogenannte Shared-Preferences
 \subsection{Fazit Android Nativ}
 Nativ hat einige Vorteile. Es ist ein gut dokumentierter Ansatz, für den es für fast alle Probleme eine erprobte und funktionierende Lösung gibt. So war das Finden einer passenden GraphQL Bibliothek eine Leichtigkeit, da Apollo in diesem Bereich für Kotlin als Standardbibliothek gilt. Dazu kommt, dass es viele Bibliotheken gibt, die Google/JetBrains selber anbieten, um die Entwicklung von Apps zu vereinfachen und zu standardisieren.
 
-Ein Vorteil der Layoutentwicklung in diesem Bereich ist, dass man das Layout in einer sofortigen Anzeige zusammenbauen kann und somit immer sofort sehen kann wie es aussieht. Jedoch ist dies eine Anzeige die nur die Oberfläche ohne Funktionalität oder von der Activity hinzugefügte Daten anzeigt. Wenn also hier Änderungen betrachtet oder getestet werden sollen, so muss die App neugebaut werden. Neben der Zeit, die es dauert die Änderungen zu laden, startet die App außerdem wieder vom Startbildschirm. Dadurch wird der Entwicklungsprozess verlangsamt und erschwert,
+Ein Vorteil der Layoutentwicklung in diesem Bereich ist, dass das Layout in einer sofortigen Anzeige zusammengebaut werden kann und somit das Aussehen sofort ersichtlich ist. Dies ist dabei sowohl bei der nativen Android als auch der nativen iOS Entwicklung möglich. Jedoch ist diese Anzeige nur auf die Oberfläche ohne Funktionalität oder von der \verb|Activity| hinzugefügte Daten beschränkt. Wenn also Änderungen betrachtet oder getestet werden sollen, so muss die App dennoch neu gebaut werden. Neben der Zeit, die es dauert die Änderungen zu laden, startet die App dabei wieder vom Startbildschirm. Dadurch wird der Entwicklungsprozess verlangsamt und erschwert,
