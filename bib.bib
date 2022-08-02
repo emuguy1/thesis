@@ -17,8 +17,9 @@
   publisher={Springer}
 }
 
- @phdthesis{mobiledraft_cross_plattform, 
-    title={UNTERSUCHUNG VON ANSÄTZEN FÜR PLATTFORM-ÜBERGREIFENDE SMARTPHONE-ANWENDUNGEN},
+%%%Maybe another Quelle
+ @INPROCEEDINGS{mobiledraft_cross_plattform, 
+    title={Untersuchung von Ansätzen für PlattformÜbergreifende Smartphone-Anwendungen},
     url={http://mobiledraft.com/bachelor-thesis/inhaltsverzeichnis/}, 
     author={Piotrowski, Jan}, 
     year={2010} 
@@ -28,7 +29,6 @@
     author = {Huynh, Minh Q. and Ghimire, Prashant and Truong, Donny},
     title = {Hybrid App Approach: Could It Mark the End of Native App Domination?},
     year = {2017},
-    url = {https://doi.org/10.28945/3723},
     doi = {10.28945/3723},
     booktitle = {Issues in Informing Science and Information Technology}
 }
@@ -42,14 +42,23 @@
     doi={10.1109/TrustCom.2016.0097}
 }
 
+@ARTICLE{Serrano_mobile, 
+author={Serrano, Nicolás and Hernantes, Josune and Gallardo, Gorka}, 
+journal={IEEE Software},   
+title={Mobile Web Apps},   
+year={2013},  
+volume={30},  
+number={5},  
+pages={22-27},  
+doi={10.1109/MS.2013.111}
+}
+
 @inproceedings{2014Mulit_plattform_definition,
     author = {Duc, Anh Nguyen and Mockus, Audris and Hackbarth, Randy and Palframan, John},
     title = {Forking and Coordination in Multi-Platform Development: A Case Study},
     year = {2014},
-    isbn = {9781450327749},
     publisher = {Association for Computing Machinery},
     address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/2652524.2652546},
     doi = {10.1145/2652524.2652546},
     booktitle = {Proceedings of the 8th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement}
 }
@@ -64,25 +73,26 @@
     doi={10.1109/CIST.2014.7016616}
 }
 
- @phdthesis{Andersson_2022, 
+ @INPROCEEDINGS{Andersson_2022, 
     title={A Comparison of the Performance of an Android Application Developed in Native and Cross-Platform: Using the Native Android SDK and Flutter},
     url={http://urn.kb.se/resolve?urn=urn:nbn:se:bth-23080}, 
     author={Andersson, Henry}, 
     year={2022} 
 }
 
- @phdthesis{Olsson_2020, 
+ @INPROCEEDINGS{Olsson_2020, 
     title={A Comparison of Performance and Looks Between Flutter and Native Applications},
-    url={https://www.diva-portal.org/smash/get/diva2:1442804/FULLTEXT01.pdf}, 
+    url={http://urn.kb.se/resolve?urn=urn%3Anbn%3Ase%3Abth-19712}, 
     author={Olsson, Matilda}, 
     year={2022} 
 }
 
- @phdthesis{Thiele_2018, 
+ @INPROCEEDINGS{Thiele_2018, 
     title={Cross-Plattform-Entwicklung einer mobilen Anwendung mit Flutter – Konzeption und prototypische Umsetzung},
-    url={https://reposit.haw-hamburg.de/bitstream/20.500.12738/8585/1/Bachelorarbeit_2222407.pdf}, 
     author={Thiele, Leonard}, 
-    year={2018} 
+    year={2018},
+    type = {bachelorThesis},
+    doi={20.500.12738/8585}
 }
 
 @article{Denko_performance,
@@ -128,9 +138,9 @@
  title = {Flutter Recipes},
  edition = {1. Auflage},
  publisher = {{Apress Berkeley, CA}},
- isbn = {978-1-4842-4982-6}
+ doi={10.1007/978-1-4842-4982-6},
+ year = {2019}
 }
-
 
 @book{vanderAalst.2013,
  abstract = {This book contains the thoroughly refereed and revised best papers from the 8th International Conference on Web Information Systems and Technologies, WEBIST 2012, held in Porto, Portugal, in April 2012, and organized by the Institute for Systems and Technologies of Information, Control and Communication (INSTICC), in collaboration with ACM SIGMIS.The 23 papers presented in this book were carefully reviewed and selected from 184 submissions. The papers were selected from those with the best reviews also taking into account the quality of their presentation at the conference. The papers are grouped into parts on Internet Technology; Web Interfaces and Applications; Society, e-Business, and e-Government; Web Intelligence; and Mobile Information Systems},
@@ -145,14 +155,24 @@
  doi = {10.1007/978-3-642-36608-6}
 }
 
+@article{ELKASSAS2017163,
+title = {Taxonomy of Cross-Platform Mobile Applications Development Approaches},
+journal = {Ain Shams Engineering Journal},
+volume = {8},
+number = {2},
+pages = {163-190},
+year = {2017},
+doi = {10.1016/j.asej.2015.08.004},
+author = {Wafaa S. El-Kassas and Bassem A. Abdullah and Ahmed H. Yousef and Ayman M. Wahba},
+keywords = {Cross-platform mobile development, Interpretation approach, Cloud computing, Compilation approach, Component-Based approach, Model-Driven Engineering}
+}
+
 @inproceedings{iOSvsAndroid,
 author = {Goadrich, Mark H. and Rogers, Michael P.},
 title = {Smart Smartphone Development: IOS versus Android},
 year = {2011},
-isbn = {9781450305006},
 publisher = {Association for Computing Machinery},
 address = {New York, NY, USA},
-url = {https://doi.org/10.1145/1953163.1953330},
 doi = {10.1145/1953163.1953330},
 booktitle = {Proceedings of the 42nd ACM Technical Symposium on Computer Science Education},
 pages = {607–612},
@@ -162,6 +182,7 @@ location = {Dallas, TX, USA},
 series = {SIGCSE '11}
 }
 
+%%IF removed new Firebase Source
 @book{Flutter_Apprentice,
  abstract = {Build for iOS {\&} Android with Flutter ! Flutter is an exciting development toolkit that lets you build apps for iOS, Android and even web and desktop, all from a single codebase. It uses a declarative approach to UI development. You can {\textquotedbl}hot reload{\textquotedbl} code while developing, and apps will perform at native speed thanks to its custom rendering engine. With Flutter and Flutter Apprentice, you can achieve the dream of building fast applications, faster.},
  year = {2021},
@@ -210,7 +231,6 @@ series = {SIGCSE '11}
  pages = {2997--3040},
  volume = {25},
  number = {4},
- issn = {1573-7616},
  journal = {Empirical Software Engineering},
  doi = {10.1007/s10664-020-09827-6}
 }
@@ -235,11 +255,11 @@ series = {SIGCSE '11}
     
 @article{Android_IOS_Performance_comparison,
   title={A Comparative Study between Applications Developed for Android and iOS},
-  author={Robert Gyorodi and Doina R. Zmaranda and Vlad Georgian Adrian and Cornelia Gyorodi},
+  author = {Gyorodi, Robert and Zmaranda, Doina and Georgian, Vlad and Győrödi, Cornelia},
   journal={International Journal of Advanced Computer Science and Applications},
   year={2017},
   volume={8},
-  url={https://pdfs.semanticscholar.org/71e9/75dd9dedaf434b4e18b2eb6612524443ef25.pdf}
+  doi = {10.14569/IJACSA.2017.081123}
 }
 
 @INPROCEEDINGS{9623025,  
@@ -273,7 +293,7 @@ series = {SIGCSE '11}
 
 %%%%%%
 @online{Jetpack_android,
-    author = {Android Jetpack},
+    author = {{Android Jetpack}},
     title = {Android Jetpack},
     url = {https://developer.android.com/jetpack},
     urldate = {2022-07-07},
@@ -281,7 +301,7 @@ series = {SIGCSE '11}
 }
 %%%%%
 @online{Room_docs,
-    author = {Android Developer},
+    author = {{Android Developer}},
     title = {Save data in a local database using Room},
     url = {https://developer.android.com/training/data-storage/room},
     urldate = {2022-07-07},
@@ -306,7 +326,7 @@ series = {SIGCSE '11}
 }
 %%%%%%
 @online{Apollo_kotlin_docs,
-    author = {Apollo Graph Inc.},
+    author = {{Apollo Graph Inc.}},
     title = {Introduction to Apollo Kotlin},
     url = {https://www.apollographql.com/docs/kotlin},
     urldate = {2022-07-06},
@@ -314,7 +334,7 @@ series = {SIGCSE '11}
 }
 
 @online{statist_analytics_SDK,
-    author = { L. Ceci},
+    author = { Laura Ceci},
     title = {Most popular installed analytics software development kits (SDKs) across Android apps worldwide as of July 2022},
     url = {https://www.statista.com/statistics/1035612/leading-mobile-app-analytics-sdks-android/},
     urldate = {2022-07-23},
@@ -358,6 +378,14 @@ series = {SIGCSE '11}
     title = {React Native at Airbnb},
     url = {https://medium.com/airbnb-engineering/react-native-at-airbnb-f95aa460be1c},
     urldate = {2022-06-25},
+    keywords={online}
+}
+
+@online{Airbnb_technology,
+    author = {Gabriel Peal},
+    title = {React Native at Airbnb: The Technology},
+    url = {https://medium.com/airbnb-engineering/react-native-at-airbnb-the-technology-dafd0b43838},
+    urldate = {2022-08-01},
     keywords={online}
 }
 
@@ -425,3 +453,21 @@ series = {SIGCSE '11}
     urldate = {2022-07-30},
     keywords={online}
 }
+
+@online{medium_Lehtimäki,
+    author = {Juhani Lehtimäki},
+    title = {The Fundamental Problems with cross-platform frameworks},
+    url = {https://medium.com/snapp-mobile/the-fundamental-problems-with-cross-platform-frameworks-cea57ac18fef},
+    urldate = {2022-08-02},
+    keywords={online}
+}
+
+@online{medium_Swift_Kotlin,
+    author = {Andrew Cherkashyn},
+    title = {Kotlin and Swift. Is it a whole new era in Mobile Development?},
+    url = {https://medium.com/codeburst/kotlin-and-swift-is-it-a-new-mobile-development-era-b4c5e81feb08},
+    urldate = {2022-08-02},
+    keywords={online}
+}
+
+

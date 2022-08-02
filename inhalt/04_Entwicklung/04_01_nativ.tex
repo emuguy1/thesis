@@ -1,21 +1,20 @@
 \section{Entwicklung Nativer Android Applikation}
 Die native Entwicklung ist die ursprünglichste von allen Arten. Android etwa wurde 2008 vorgestellt. 
 Damals wurden die Apps für Android noch in Java entwickelt, eine Sprache die in der Anwendungsentwicklung damals und heute noch sehr gut bekannt ist und auch oft noch als Programmiersprachen an den Universitäten gelehrt wird. 
-2019 jedoch änderte Google die offiziell bevorzugte Programmiersprache zu Kotlin. 
-Kotlin ist von Jetbrains entwickelt um einen Ersatz für Java zu finden. 
+Jedoch änderte Google die offiziell bevorzugte Programmiersprache 2019 zu Kotlin\footnote{https://developer.android.com/kotlin}. 
+Kotlin wurde von Jetbrains entwickelt, um einen Ersatz für Java zu finden. 
 Sie entwickelten eine Sprache die alle benötigten Funktionen für eine effektive Appentwicklung hat, jedoch genauso schnell kompiliert werden kann. 
-Eine ähnliche Entwicklung fand auch bei Apple statt, die in Folge dessen von Objectiv-C zu Swift wechselten. 
-Durch die Entwicklung eigener Sprachen haben sie die Kontrolle was in den Sprachen passiert und können diese perfekt für ihre Bedürfnisse anpassen.
-
-Im folgenden wird die Implementierung eine native Android Applikation betrachtet werden.
+Eine ähnliche Entwicklung fand auch bei Apple statt, bei der von Objectiv-C zu Swift gewechselt wurde. 
+Durch die Entwicklung eigener Programmiersprachen, haben die Plattformentwickler die Kontrolle, welche Funktionalitäten hinzugefügt oder entfernt werden und können diese perfekt für ihre Bedürfnisse anpassen \cite{medium_Swift_Kotlin}.
 
 \subsection{Grundlagen}
+Die Entwicklung einer nativen Android \acp{App} besteht aus zwei separaten Teilen, 
 
-Die Entwicklung einer nativen Android \acp{App} besteht aus zwei separaten Teilen, Der erste Teil ist das Layout. Dabei wird ein Design für die Seite und eventuelle Elemente mit Hilfe der XML-Notation erstellt.
-In der XML Datei wird ähnlich zu einer HTML Seite, die Oberfläche aufgebaut. Als Wurzelelement einer Seite ist ein Layoutelement. Neben einem linearem Layout oder einem Tabellenlayout, gibt es hier vor allem das so genannte \verb|Constraint-Layout|\footnote{https://developer.android.com/guide/topics/large-screens/support-different-screen-sizes}. 
-Es ist das wichtigste Layout in Android, da wie der Name bereits andeutet, die Positionen der Elemente abhängig von anderen Elementen definiert ist. Durch diese Eigenschaft, eignet es sich besonders gut, um Designs für unterschiedliche Bildschirmgrößen zu erstellen. Es bietet dabei nicht nur die Möglichkeit, die Position, sondern auch die Größe abhängig davon zu definieren. Grundsätzlich hat Android nur zwei Optionen um die Größe eines Elements zu definieren. Es kann die größe des umgebenden Elements annehmen oder eine eindeutig definierte Größe. Durch das \verb|Constraint-Layout| kann jedoch über die Abhängigkeit zu beiden Seiten einer Richtung dazu gebracht werden, den verfügbaren Platz auszufüllen.
+Der erste Teil ist das Layout. Dabei wird das Design für die UI und eventuelle Elemente mit Hilfe der XML-Notation erstellt.
+In der XML Datei wird ähnlich zu einer HTML Datei, die Oberfläche aufgebaut. Als Wurzelelement hat eine Seite dabei ein Layoutelement. Neben einem linearem Layout oder einem Tabellenlayout, gibt es hier vor allem das so genannte Constraint-Layout\footnote{https://developer.android.com/guide/topics/large-screens/support-different-screen-sizes}. 
+Es ist das wichtigste Layout in Android, da wie der Name bereits andeutet, die Positionen der Elemente abhängig von anderen Elementen definiert ist. Durch diese Eigenschaft, eignet es sich, um Designs für unterschiedliche Bildschirmgrößen zu erstellen. Es bietet dabei nicht nur die Möglichkeit, die Position, sondern auch die Größe abhängig von anderen Elementen zu definieren. In dem gewählten Layoutelement wird danach die restliche Oberfläche durch andere Elemente abgebildet. Dabei kann sowohl vordefinierte Elemente von Android genutzt werden, als auch in anderen Dateien definierte Elemente. Die erstellte Datei beinhaltet dabei lediglich das Layout und keinerlei Funktionalität.
 
-Der zweite Teil der Implementierung ist die Logik. Sie ist dabei in drei Klassen unterteilt. 
+Der zweite Teil der Implementierung ist die Logik. Sie kann in drei Klassen unterteilt werden. 
 Die erste Klasse, die sogenannte Activity ist die Hauptklasse für eine Seite. In ihr wird alles gesteuert. Das Layout wird aufgerufen und der aktuellen Seite hinzugefügt, es werden alle Funktionalitäten zu den Elementen der Benutzeroberfläche hinzugefügt und ordnet der Oberfläche die Daten und den Listen ihre separaten Controller zu.
 
 Dies ist ebenfalls die zweite Klasse. ListAdapter sind die Controller Klassen für Listen in Android. Listen werden dabei mit Elementen gebaut , die wiederverwendet werden, sobald sie außerhalb des Sichtfeldes sind. Dafür benötigt jede Liste einen Adapter, der dafür verantwortlich ist, die richtigen Elemente auszuwählen und Funktionalität und Daten hinzuzufügen.
