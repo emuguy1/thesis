@@ -19,13 +19,13 @@
 {3174817}						% Matrikelnummer
 {Informatik}					% Studiengang
 
-\MyTitelseite{}					% Optionales Logo des extern betreuenden Unternehmens
-% \MyTitelseite{pics/mathcomm}	% Optionales Logo des extern betreuenden Unternehmens
+\MyTitelseite{images/logo.svg}					% Optionales Logo des extern betreuenden Unternehmens
+%+ \MyTitelseite{pics/mathcomm}	% Optionales Logo des extern betreuenden Unternehmens
 {1}								% Style der Titelseite (1 oder 2)
 {Bachelorarbeit}				% Typ der Abschlussarbeit (\in {Bachelorarbeit, Masterarbeit})
 {Vergleich verschiedener Ansätze der Multiplattform Applikationsentwicklung anhand einer Beispiel-Anwendung}				% Thema der Arbeit						
 {Prof.\ Dr.-Ing.\ Kai Selgrad}		% Betreuer
-{Prof.\ Dr.\ Wolfgang Mauerer}	% Zweitgutachter
+{Prof.\ Dr. rer.\ nat. Wolfgang Mauerer}	% Zweitgutachter
 {15.09.\the\year}				% Abgabedatum
 
 \thispagestyle{empty}
@@ -57,9 +57,9 @@
 % % ----------------------------------------------------------------------------------------------------------
 % % Tabellenverzeichnis (optional)
 % % ----------------------------------------------------------------------------------------------------------
-% \listoftables
-% \vfill
-% \pagebreak
+\listoftables
+\vfill
+\pagebreak
 
 % ----------------------------------------------------------------------------------------------------------
 % Listingsverzeichnis (optional; Code nur, wenn wirklich sinnvoll und wichtig)
@@ -85,6 +85,7 @@
 \chapter{Grundlagen}
 \input{inhalt/03_Grundlagen/03_00_grundlagen}
 \chapter{Entwicklung}
+\label{cha:4_Entwicklung}
 \input{inhalt/04_Entwicklung/04_00_einleitung}
 \chapter{Auswertung}
 \input{inhalt/05_auswertung}

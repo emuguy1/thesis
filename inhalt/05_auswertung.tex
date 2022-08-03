@@ -1,45 +1,12 @@
-In dem folgenden Kapitel sollen die Ergebnisse der Implementierungen ausgewertet und analysiert werden. Dafür wurden einige Kriterien ausgewählt und die Implementierungen und sonstige Quellen daraufhin untersucht und verglichen.
+In dem folgenden Kapitel sollen die Ergebnisse der Implementierungen ausgewertet und analysiert werden. Dafür werden einige ausgewählte Kriterien anhand der Implementierungen wund weiteren Quellen analysiert und verglichen.
 
 \section{Performance und Entwicklung}
-Bei einigen Implementierung geht es auch stark um die Performance der entwickelten Anwendungen. Die Performance und einige andere Faktoren der Entwicklung sollen im folgenden etwas genauer unter anderem durch gemessene Werte analysiert werden.
-
-\subsubsection{Dauer typischer Entwicklungsoperationen}
-Wenn es um Entwicklungzeit und Fortschritt geht, dann ist oft auch ein Faktor, wie lange die App braucht um gebaut zu werden und wie lange es dauert um Änderungen in der App anzuzeigen. Oft muss bei der Entwicklung von Oberflächen einige Kleinigkeiten geändert und dann überprüft werden, ob die Änderung den gewünschten Effekt hatte. Deshalb sind vor allem kurze ladezeiten von Änderungen besonders wichtig.
-
-Für diesen Test wurde die Dauer des erstmaligen Compilieren, die Dauer eines Neubauens auf Basis eines bestehenden Caches, die Dauer bis Layoutänderungen und bis Anwendungslogik geladen wurde, im Debug Modus durchgeführt. Es wurde außerdem die Compilierzeit im Release Modus aufgezeichnet.
-Die Tests hierfür wurden jeweils fünf mal ausgeführt und dann am Ende ein Durchschnitt gebildet. Als Hardware wurde ein PC mit 32GB RAM und einer Ryzen 5 2600 6-Kern CPU genutzt. 
-Die genauen Zahlen sind von der genutzten Hardware und der Projektgröße abhängig, geben aber einen Einblick ob hier einzelne Ansätze einen Vorteil haben. 
-
-\begin{table}
-\centering
-\caption{Dauer typischer Entwicklungsoperationen in Sekunden}
-\begin{tabular}{ |p{4cm}||p{3cm}|p{2cm}|p{2cm}|p{3cm}|p{3cm}| }
- \hline
- Funktion & Flutter-Hybrid & Flutter & Kotlin-Nativ & Kotlin-WebView \\
- \hline
- Build Zeit Release       &   59,2&   54,22& 40,92& 22,42\\
-  \hline
- Build Zeit Debug  & 33,78& 28,76& 20,2& 20,19\\
-  \hline
- Erneuter Build mit Cache & 8,8& 8,36& 3,36& 3,21\\
-  \hline
- Neuladen nach Layoutänderg & 0,59& 0,6& 2,59& 2,64\\
-  \hline
- Neuladen nach Logikänderung & 0,626& 0,622& 3,18& 2,63\\
-  \hline
-\end{tabular}
-\label{tab:evaluations_build_time}
-\end{table}
-
-Bei der Analyse der Daten fällt auf, dass grundsätzlich bei der Build Zeit die Flutter Apps schlechter abschließen. Sowohl beim Erstellen einer Release oder auch Debug \ac{APK} sind die Kotlin Applikationen schneller. Bei der Debug \ac{APK} ist der Unterschied jedoch deutlich geringer und selbst die Kotlin-WebView App benötigt in etwa gleich lang, wie die native Kotlin Implementierung. Beim Compilieren einer Release App scheint es daher tatsächlich mehr um den Umfang der Applikation zu gehen, als bei der Debug Version.
-
-Der auffälligste Unterschied ist jedoch die Neuladezeit nach einer Änderung im Quellcode. Denn Flutter schneidet dank des HotReload Features hier deutlich besser ab und benötigt somit gerade mal 1/5 der Zeit die die mit Koltin implementierten Applikationen benötigen. Dazu kommt, dass beim Neustarten bei Android, die Applikation vom Startbildschirm neustartet, während Flutter nur die Änderungen in die aktuelle Seite lädt und diese neustartet. Dadurch muss nicht erst wieder zu der aktuell entwickelten Stelle zurückgekehrt werden. So wrid etwa die Farbe eines Textes im Fluttercode geändert und innerhalb von 600ms wird die Änderung angezeigt. So wird nicht nur Zeit gesparrt, sondern es kann sich auch besser darauf konzentriert werden, eine ordentliche Nutzeroberfläche zu entwickeln.
+Ein wichtiger Faktor für die Entwicklung einer Applikation ist die Performance und die Entwicklung. Einerseits ist die Performance ein wichtiger Faktor, der die Erfahrung bei der Benutzung beeinflusst. Andererseits sollten Apps möglichst performant laufen, um die Ressourcen des Gerätes zu schonen und einen flüssigen Ablauf zu ermöglichen. Außerdem benötigen Entwickler einen einfachen und zeitsparenden Ablauf für typische Entwicklungsoperationen, wie etwa das anfängliche Kompilieren, oder das Laden von Änderungen. Auch die Möglichkeiten des Debuggen und Testen spielen bei der Entwicklung eine Rolle. Diese Faktoren sollen im Folgenden analysiert werden.
 
 \subsubsection{Performance}
 
 \begin{table}
 \centering
-\caption{Performancemessung der verschiedenen Applikationen }
 \begin{tabular}{ |p{4cm}||p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
  \hline
  Parameter & Flutter-Hybrid & Flutter & Kotlin-Nativ & Kotlin-WebView \\
@@ -52,23 +19,33 @@ Der auffälligste Unterschied ist jedoch die Neuladezeit nach einer Änderung im
   \hline
  Maximale RAM- Auslastung & 238MB& 175,46MB& 100,64MB& 117,06MB\\
   \hline
- App-Größe & 8,6MB& 8,4MB& 5,2MB& 4,4MB\\
+ App-Größe & 7,4MB& 7,2MB& 5,2MB& 4,4MB\\
   \hline
  Maximale Startzeit & 532ms& 452ms& 263ms& 486,6ms\\
  \hline
- Durchschnittliche Renderzeit &8,68ms& 5,12ms& 9,04& 21,88ms\\
+ Durchschnittliche Renderzeit &8,68ms& 5,12ms& 9,04ms& 21,88ms\\
  \hline
 \end{tabular}
+\caption{Performancemessung der verschiedenen Applikationen}
 \label{tab:evaluations_performance}
 \end{table}
 
-In Tabelle \ref{tab:evaluations_performance} sind die Ergebnisse der Performance-Messungen zu sehen, die an den beschriebenen Implementierungen durchgeführt wurden.
-Die Messungen wurden mit dem Programm Apptim durchgeführt. Dies zeichnet die Performance von Apps während der Nutzung einer App auf. Die Tests wurden auf einem Google Pixel 5 durchgeführt mit Android Level 12 oder auch API Level 31. Es hat dabei 8GB DDR4-Ram und einer 8-Kern-CPU, die mit 6x1,8GHz, 1x2,2GHz und 1x2,4GHz getaktet sind.
-Der Test wurde dabei für jede Implementierung 5 mal wiederholt und aus den Ergebnissen dann ein Durchschnittswert gebildet. Die Apps wurden nach jeder Nutzung zurückgesetzt und alle anderen Apps wurden während der Tests beendet. Die Apps waren dafür jeweils als Release-Version installiert, so dass die Apps bei bester Leistung wie auch bei einem Endbenutzer laufen würden.
-Renderzeit entspricht der Zeit, die gebraucht werden, bis die Änderungen geziechnet wurden und als Bild angezeigt werden können
+In Tabelle \ref{tab:evaluations_performance} sind die Ergebnisse der Performance-Messungen zu sehen, die an den in Kapitel \ref{cha:4_Entwicklung} beschriebenen Implementierungen durchgeführt wurden.
+Die Messungen wurden mit dem Programm Apptim\footnote{https://www.apptim.com/} durchgeführt. Dieses zeichnet die Performance von Applikationen während der Nutzung auf einem verbundenen Gerät auf. Die Tests wurden auf einem Google Pixel 5 durchgeführt das mit Android 12 beziehungsweise API Level 31 läuft. Es hat dabei 8GB DDR4-Ram und eine 8-Kern-CPU, die mit 6x1,8GHz, 1x2,2GHz und 1x2,4GHz getaktet sind.
+Der Test wurde dabei für jede Implementierung 5 mal wiederholt und am Ende aus den Ergebnissen ein Durchschnittswert gebildet.
+Die Apps wurden nach jeder Nutzung zurückgesetzt und alle anderen Applikationen wurden während der Tests beendet.
+Außerdem wurde jeweils die Release-Version installiert, so dass die Apps wie bei einem Endnutzer laufen würden und keine zusätzlichen Entwicklungsabhängigkeiten die Messung beeinflussen.
+Die Renderzeit entspricht der Zeit, die benötigt wird, bis eine Änderungen der Nutzeroberfläche fertig verarbeitet und die neue UI angezeigt werden kann.
 
-Hierbei ist erkennbar, dass die native Android App insgesamt die schnellste ist, während die Hybride Flutter App die am schlechtesten performende. Die schnellste Renderzeit hatten die Flutter-Applikationen, während die Auslastung des Rams bei den Android Applikationen deutlich geringer war. Überraschend zu sehen ist, dass die WebView Applikation mehr Ressourcen verbraucht als die nativ implementierte, obwohl sie lediglich einen WebContainer bauen muss. was außerdem auffällt, ist dass Flutter Applikationen etwa zwei mal so groß sind als die nativen. Eine weitere Sache ist, dass die die Android Apps und die reine Flutter App sehr vergleichbar sind, während die Hybride Flutter App in fast jeder Kategorie doppelt so viele Ressourcen verbraucht hat, wie die native Android Anwendungen.
-\TODO{Hier darauf eingehen war Flutter schneller die Oberfläche mit Canvas und dadurch besser als nativ}
+Hierbei ist erkennbar, dass die native Implementierung insgesamt die performanteste ist und dabei gerade einmal etwa die Hälfte der Auslastung erreicht wie die Flutter Applikation.
+Hingegen hat die hybride Flutter App im Vergleich die höchste Auslastung und Startzeit.
+Auf die Programmiersprachen betrachtet, haben die mit Dart programmierten Flutter Applikationen die geringste Renderzeit, während die Auslastung des RAMs bei den Android Applikationen deutlich geringer war.
+Die Implementierungen mit einem WebContainer, also die hybride und Cross-kompilierte hybride, schneiden dabei, trotz  
+
+
+dass die die Android Apps und die reine Flutter App sehr vergleichbar sind, während die Hybride Flutter App in fast jeder Kategorie doppelt so viele Ressourcen verbraucht hat, wie die native Android Anwendungen.
+
+Dies dürfte an der Art liegen wie Flutter seine UI aufbaut. Denn anstatt die nativen Elemente zu nutzen, setzt Flutter auf einen nativen Canvas, auf dem die Flutter eigene Rendering\TODO{Hier darauf eingehen war Flutter schneller die Oberfläche mit Canvas und dadurch besser als nativ}
 
 Was festhalten werden kann, ist, dass eine Flutter App zwar in der Performanz etwas den nativen geschriebenen Applikationen hinterherhängt, jedoch der Unterschied nicht derart groß ist, als dass er eine große Rolle spielen würde. Was jedoch auffält ist das die hybride Flutter App Performance technisch deutlich schlechter abschneidet als die native.  
 
@@ -78,7 +55,6 @@ Auffällig ist, dass die CPU auslastung bei beiden gleichmäßig ansteigt, währ
 
 \begin{table}
 \centering
-\caption{Unterschied bei Implementierung mit zusätzlicher Datenbankimplementierung}
 \begin{tabular}{ |p{7cm}||wc{3.5cm}|wc{3.5cm}|}
  \hline
  Parameter & Flutter &  Kotlin-Nativ \\
@@ -98,10 +74,43 @@ Auffällig ist, dass die CPU auslastung bei beiden gleichmäßig ansteigt, währ
  Durchschnittliche Renderzeit &0,82ms& 4,68ms\\
  \hline
 \end{tabular}
+\caption{Unterschied bei Implementierung mit zusätzlicher Datenbankimplementierung}
 \label{tab:evaluations_performance_Overhead_database}
 \end{table}
 
 Grundsätzlich kann festgehalten werden, dass native Entwicklungen meistens die beste Performance haben werden, Jedoch ist mit Flutter ein Framework auf den Markt gekommen, das diesen Unterschied gering hält. Denn Flutter ist wie bereits erwähnt ein Framework, dass den geschriebenen Dart-Code in Nativen Code umwandelt. Es hat sich außerdem zum Ziel gesetzt, möglichst performant zu sein. Dies kann sowohl in dieser Untersuchung als auch in den vorgestellten verwandten Arbeiten gesehen werden.
+
+\subsubsection{Dauer typischer Entwicklungsoperationen}
+Wenn es um Entwicklungzeit und Fortschritt geht, dann ist oft auch ein Faktor, wie lange die App braucht um gebaut zu werden und wie lange es dauert um Änderungen in der App anzuzeigen. Oft muss bei der Entwicklung von Oberflächen einige Kleinigkeiten geändert und dann überprüft werden, ob die Änderung den gewünschten Effekt hatte. Deshalb sind vor allem kurze ladezeiten von Änderungen besonders wichtig.
+
+Für diesen Test wurde die Dauer des erstmaligen Compilieren, die Dauer eines Neubauens auf Basis eines bestehenden Caches, die Dauer bis Layoutänderungen und bis Anwendungslogik geladen wurde, im Debug Modus durchgeführt. Es wurde außerdem die Compilierzeit im Release Modus aufgezeichnet.
+Die Tests hierfür wurden jeweils fünf mal ausgeführt und dann am Ende ein Durchschnitt gebildet. Als Hardware wurde ein PC mit 32GB RAM und einer Ryzen 5 2600 6-Kern CPU genutzt. 
+Die genauen Zahlen sind von der genutzten Hardware und der Projektgröße abhängig, geben aber einen Einblick ob hier einzelne Ansätze einen Vorteil haben. 
+
+\begin{table}
+\centering
+\begin{tabular}{ |p{4cm}||p{3cm}|p{2cm}|p{2cm}|p{3cm}|p{3cm}| }
+ \hline
+ Funktion & Flutter-Hybrid & Flutter & Kotlin-Nativ & Kotlin-WebView \\
+ \hline
+ Build Zeit Release       &   59,2&   54,22& 40,92& 22,42\\
+  \hline
+ Build Zeit Debug  & 33,78& 28,76& 20,2& 20,19\\
+  \hline
+ Erneuter Build mit Cache & 8,8& 8,36& 3,36& 3,21\\
+  \hline
+ Neuladen nach Layoutänderg & 0,59& 0,6& 2,59& 2,64\\
+  \hline
+ Neuladen nach Logikänderung & 0,626& 0,622& 3,18& 2,63\\
+  \hline
+\end{tabular}
+\caption{Dauer typischer Entwicklungsoperationen in Sekunden}
+\label{tab:evaluations_build_time}
+\end{table}
+
+Bei der Analyse der Daten fällt auf, dass grundsätzlich bei der Build Zeit die Flutter Apps schlechter abschließen. Sowohl beim Erstellen einer Release oder auch Debug \ac{APK} sind die Kotlin Applikationen schneller. Bei der Debug \ac{APK} ist der Unterschied jedoch deutlich geringer und selbst die Kotlin-WebView App benötigt in etwa gleich lang, wie die native Kotlin Implementierung. Beim Compilieren einer Release App scheint es daher tatsächlich mehr um den Umfang der Applikation zu gehen, als bei der Debug Version.
+
+Der auffälligste Unterschied ist jedoch die Neuladezeit nach einer Änderung im Quellcode. Denn Flutter schneidet dank des HotReload Features hier deutlich besser ab und benötigt somit gerade mal 1/5 der Zeit die die mit Koltin implementierten Applikationen benötigen. Dazu kommt, dass beim Neustarten bei Android, die Applikation vom Startbildschirm neustartet, während Flutter nur die Änderungen in die aktuelle Seite lädt und diese neustartet. Dadurch muss nicht erst wieder zu der aktuell entwickelten Stelle zurückgekehrt werden. So wrid etwa die Farbe eines Textes im Fluttercode geändert und innerhalb von 600ms wird die Änderung angezeigt. So wird nicht nur Zeit gesparrt, sondern es kann sich auch besser darauf konzentriert werden, eine ordentliche Nutzeroberfläche zu entwickeln.
 
 \subsubsection{Debuggen / Testen}
 Bei Debuggen und Testen haben technisch gesehen alle Apps die gleichen Voraussetzungen. So können alle hier benutzten Programmiersprachen sowohl Konsolenausgaben und Breakpoints im Code. Auch Test sind bei allen betrachteten Fällen implementierbar. Jedoch unterscheiden sie sich in dem Aufwand der hierfür benötigt wird.
@@ -134,7 +143,6 @@ Ein weiterer Anhaltspunkt ist die Anzahl an gestellten Fragen auf Stackoverflow\
 
 \begin{table}
 \centering
-\caption{Anzahl gefundener Fragen pro Programmiersprache}
 \begin{tabular}{ |p{3.7cm}||p{5cm}| p{5cm}|}
  \hline
  Programmiersprache & Anzahl gefundener Fragen der letzten 2 Jahre & insgesamt gefundene Fragen\\
@@ -146,6 +154,7 @@ Ein weiterer Anhaltspunkt ist die Anzahl an gestellten Fragen auf Stackoverflow\
  Flutter & 77,568\footnote{Filter:[flutter] or [dart] -[ubuntu] lastactive:2y.. is:question answers:1..} & 115 533\\
  \hline
 \end{tabular}
+\caption{Anzahl gefundener Fragen pro Programmiersprache}
 \label{tab:evaluations_questions_stackoverflow}
 \end{table}
 
@@ -171,7 +180,6 @@ Bei den Implementierungen, bei denen Flutter genutzt wurde, ist die Oberflächen
 
 \begin{table}
 \centering
-\caption{Programmlänge der verschiedenen Implementierungen in \ac{LOC}}
 \begin{tabular}{ |p{4.5cm}||p{3cm}|p{2cm}|p{2cm}|p{3cm}|p{3cm}| }
  \hline
  Programmteile in Lines of Code & Flutter-Web & Flutter & Kotlin-Nativ & Kotlin-Hybrid \\
@@ -188,6 +196,7 @@ Bei den Implementierungen, bei denen Flutter genutzt wurde, ist die Oberflächen
  Beispeil: Liste an Gegenständen & 65 & 65 & 178 & 71(Web)\\
   \hline
 \end{tabular}
+\caption{Programmlänge der verschiedenen Implementierungen in \ac{LOC}}
 \label{tab:lines_of_code}
 \end{table}
 
