@@ -17,14 +17,38 @@ Einige Arbeiten vergleichen auch lediglich die Unterschiede zwischen zwei unters
 
 Die Arbeiten von Andersson und Denko et al identifizierten die Performance als keinen eindeutigen Faktor um eine Wahl treffen zu können. Deswegen soll in dieser Arbeit weitere Faktoren in den Vergleich einbezogen werden.
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=10cm,keepaspectratio]{images/Biorn-Hansen_Result_table.jpg}
-  \caption[Ergebnisstabelle der Untersuchung von Biørn-Hansen et al]{Ergebnisstabelle der Untersuchung von Biørn-Hansen et al \cite{BirnHansen.2020}}
-  \label{fig:result_table_Biorn}
-\end{figure}
 
-Biørn-Hansen et al \cite{BirnHansen.2020} konzentrieren sich in ihrer Untersuchung vor allem auf die Nutzung Plattformspezifischer Schnittstellen, wie etwa der Geo-Daten oder Kontakte-API. Bei ihrer Auswertung der 5 Kriterien gewichten sie jeden, der 6 implementierten Ansätzen, anhand einer Zahl von 1 - 6, wobei 6 die Implementierung bekommt, die am besten in diesem Bereich abgeschlossen hat und 1, die die schlechtesten Ergebnisse lieferte. Danach werden die einzelnen erreichten Punkte zusammengerechnet. Wie in Abbildung \ref{fig:result_table_Biorn} zu sehen ist, erreichte Nativ dabei den 1. Platz mit einer Punktzahl von 24 Punkten. Das Cross-Plattform Framework Flutter hingegen landete auf dem vorletzten Platz mit gerade einmal 15 Punkten. In ihrem Fazit halten sie dementsprechend fest, dass die Nutzung von anderen Technologien zu einer Performanceverschlechterung führen kann, jedoch einige Frameworks in gewissen Bereichen besser abschneiden als die native Implementierung und es somit auf die genauen Anforderungen ankommt.
+\begin{table}[ht]
+    \centering
+    \caption[Ergebnisstabelle der Untersuchung von Biørn-Hansen et al]{Ergebnisstabelle der Untersuchung von Biørn-Hansen et al \cite{BirnHansen.2020}}
+    \begin{tabularx}{13.27cm} { 
+  | >{\raggedright\arraybackslash}r 
+  || >{\raggedleft\arraybackslash}r 
+  | >{\raggedleft\arraybackslash}r 
+  | >{\raggedleft\arraybackslash}r
+  | >{\raggedleft\arraybackslash}r 
+  | >{\raggedleft\arraybackslash}r 
+  | >{\raggedleft\arraybackslash}r | }
+        \hline
+        Framework & TTC & CPU & PreRAM & RAM & ComputedRAM & $\sum_{}{}$\\
+        \hline
+        Native & 5 & 4 & 6 & 6 & 3 & 24\\
+        \hline
+        MAML/MD$_2$  & 4 & 5 & 5 & 5 & 4 & 23\\
+        \hline
+        NativeScript & 6 & 6 & 3 & 3 & 2 & 20\\
+        \hline
+        React Native & 2 & 1 & 4 & 4 & 5 & 16\\
+        \hline
+        Flutter & 3 & 3 & 1 & 2 & 6 & 15\\
+        \hline
+        Ionic & 1 & 2 & 2 & 1 & 1 & 7\\
+        \hline
+    \end{tabularx}
+    \label{fig:result_table_Biorn}
+\end{table}
+
+Biørn-Hansen et al \cite{BirnHansen.2020} konzentrieren sich in ihrer Untersuchung vor allem auf die Nutzung Plattformspezifischer Schnittstellen, wie etwa der Geo-Daten oder Kontakte-API. Bei ihrer Auswertung der fünf Kriterien gewichten sie jeden, der sechs implementierten Ansätzen, anhand einer Zahl von eins bis sechs, wobei sechs die Implementierung bekommt, die am besten in diesem Bereich abgeschlossen hat und eins, die die schlechtesten Ergebnisse lieferte. Danach werden die einzelnen erreichten Punkte zusammengerechnet. Wie in Tabelle \ref{fig:result_table_Biorn} zu sehen ist, erreichte Nativ dabei den Ersten Platz mit einer Punktzahl von 24 Punkten. Das Cross-Plattform Framework Flutter hingegen landete auf dem vorletzten Platz mit gerade einmal 15 Punkten. In ihrem Fazit halten sie dementsprechend fest, dass die Nutzung von anderen Technologien zu einer Performanceverschlechterung führen kann, jedoch einige Frameworks in gewissen Bereichen besser abschneiden als die native Implementierung und es somit auf die genauen Anforderungen ankommt.
 
 In ihrer Arbeit bewerten Biørn-Hansen et al die verschiedenen Ansätze anhand der gemessenen Werte. Dies führt dabei jedoch zu einer Verzerrung der Ergebnisse, da in einigen Kategorien die Unterschiede nur sehr gering waren, dies jedoch in ihrer Bewertung nicht berücksichtigt wird. Deswegen soll in der Arbeit von einer Gewichtung abgesehen werden und anhand von Kriterien Empfehlungen zu gewissen Technologien aufgeführt werden.
 
