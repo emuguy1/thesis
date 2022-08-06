@@ -1,11 +1,11 @@
 In dem folgenden Kapitel sollen die Ergebnisse der Implementierungen ausgewertet und analysiert werden. Dafür werden einige ausgewählte Kriterien anhand der Implementierungen wund weiteren Quellen analysiert und verglichen.
 
 \section{Performance und Entwicklung}
-Ein wichtiger Faktor für die Entwicklung einer Applikation ist die Performance und die Entwicklung. Einerseits ist die Performance ein wichtiger Faktor, der die Erfahrung bei der Benutzung beeinflusst. Andererseits sollten Apps möglichst performant laufen, um die Ressourcen des Gerätes zu schonen und einen flüssigen Ablauf zu ermöglichen. Außerdem benötigen Entwickler einen einfachen und zeitsparenden Ablauf für typische Entwicklungsoperationen, wie etwa das anfängliche Kompilieren, oder das Laden von Änderungen. Auch die Möglichkeiten des Debuggen und Testen spielen bei der Entwicklung eine Rolle. Diese Faktoren sollen im Folgenden analysiert werden.
+Ein wichtiger Faktor für die Entwicklung einer Applikation ist die Performance und die Entwicklung. Dabei ist die Performance ein wichtiger Faktor, der die Erfahrung bei der Benutzung beeinflusst. Daher sollten Apps möglichst performant laufen, um die Ressourcen des Gerätes zu schonen und einen flüssigen Ablauf zu ermöglichen. Außerdem benötigen Entwickler einen einfachen und zeitsparenden Ablauf für typische Entwicklungsoperationen, wie etwa das anfängliche Kompilieren, oder das Laden von Änderungen. Auch die Möglichkeiten des Debuggen und Testen spielen bei der Entwicklung eine Rolle. Diese Faktoren sollen im Folgenden analysiert werden.
 
 \subsubsection{Performance}
 
-\begin{table}
+\begin{table}[ht]
 \centering
 \caption{Performancemessung der verschiedenen Applikationen}
 \begin{tabular}{ |p{4cm}||p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
@@ -18,11 +18,11 @@ Ein wichtiger Faktor für die Entwicklung einer Applikation ist die Performance 
   \hline
  Durchschnittliche RAM-Auslastung & 215,38 MB& 150,68MB& 86,74MB& 107,68MB\\
   \hline
- Maximale RAM- Auslastung & 238MB& 175,46MB& 100,64MB& 117,06MB\\
+ Maximale RAM- Auslastung & 238,00MB& 175,46MB& 100,64MB& 117,06MB\\
   \hline
  App-Größe & 7,4MB& 7,2MB& 5,2MB& 4,4MB\\
   \hline
- Maximale Startzeit & 532ms& 452ms& 263ms& 486,6ms\\
+ Maximale Startzeit & 532ms& 452ms& 263ms& 486ms\\
  \hline
  Durchschnittliche Renderzeit &8,68ms& 5,12ms& 9,04ms& 21,88ms\\
  \hline
@@ -30,28 +30,24 @@ Ein wichtiger Faktor für die Entwicklung einer Applikation ist die Performance 
 \label{tab:evaluations_performance}
 \end{table}
 
-In Tabelle \ref{tab:evaluations_performance} sind die Ergebnisse der Performance-Messungen zu sehen, die an den in Kapitel \ref{cha:4_Entwicklung} beschriebenen Implementierungen durchgeführt wurden.
-Die Messungen wurden mit dem Programm Apptim\footnote{https://www.apptim.com/} durchgeführt. Dieses zeichnet die Performance von Applikationen während der Nutzung auf einem verbundenen Gerät auf. Die Tests wurden auf einem Google Pixel 5 durchgeführt das mit Android 12 beziehungsweise API Level 31 läuft. Es hat dabei 8GB DDR4-Ram und eine 8-Kern-CPU, die mit 6x1,8GHz, 1x2,2GHz und 1x2,4GHz getaktet sind.
+In Tabelle \ref{tab:evaluations_performance} sind die Ergebnisse der Performance-Messungen zu sehen, die an den in Kapitel \ref{cha:4_Entwicklung} beschriebenen Implementierungen durchgeführt wurden. Dabei wurden die Durchscnittliche und maximale Auslastung der CPU und des RAMs, sowie die App-Größe, Maximale Startzeit der Applikation und durchschnittliche Renderzeit gemessen. 
+Die Renderzeit entspricht dabei der Zeit, die benötigt wird, bis eine Änderungen der Benutzeroberfläche fertig verarbeitet und die Änderungen angezeigt werden kann.
+
+Die Messungen wurden mit dem Programm Apptim\footnote{https://www.apptim.com/} durchgeführt. Dieses zeichnet die Performance von Applikationen während der Nutzung auf einem verbundenen Gerät auf. Die Tests wurden auf einem Google Pixel 5 durchgeführt das mit Android 12 beziehungsweise API Level 31 läuft. Es hat dabei 8GB DDR4-RAM und eine 8-Kern-CPU, die mit durchschnittlich 1,9 GHz getaktet ist.
 Der Test wurde dabei für jede Implementierung 5 mal wiederholt und am Ende aus den Ergebnissen ein Durchschnittswert gebildet.
 Die Apps wurden nach jeder Nutzung zurückgesetzt und alle anderen Applikationen wurden während der Tests beendet.
-Außerdem wurde jeweils die Release-Version installiert, so dass die Apps wie bei einem Endnutzer laufen würden und keine zusätzlichen Entwicklungsabhängigkeiten die Messung beeinflussen.
-Die Renderzeit entspricht der Zeit, die benötigt wird, bis eine Änderungen der Nutzeroberfläche fertig verarbeitet und die neue UI angezeigt werden kann.
+Außerdem wurde jeweils die Release-Version der Applikationen installiert, so dass die Performance gemessen wird, die auch ein Nutzer so messen könnte.
 
 Hierbei ist erkennbar, dass die native Implementierung insgesamt die performanteste ist und dabei gerade einmal etwa die Hälfte der Auslastung erreicht wie die Flutter Applikation.
 Hingegen hat die hybride Flutter App im Vergleich die höchste Auslastung und Startzeit.
 Auf die Programmiersprachen betrachtet, haben die mit Dart programmierten Flutter Applikationen die geringste Renderzeit, während die Auslastung des RAMs bei den Android Applikationen deutlich geringer ist.
-Die Implementierungen mit einem WebContainer, also die hybride und Cross-kompilierte hybride, verschlechtern sich, im Vergleich zu den anderen beiden Implementierungen, in der Performance deutlich. Das lässt darauf schließen, dass ein WebContainer eine  Performanceverschlechterung bedeutet. So ist etwa die hybride Applikation ähnlich zu der Cross-kompilierten, hat jedoch lediglich einen Web-Container mit etwas zusätzlicher Konfiguration, während die andere den komplett betrachteten Teil der Applikation inklusive eines Clienten zur Kommunikation eines Backends enthält.  
+Die Implementierungen mit einem WebContainer, also die hybride und cross-kompilierte hybride, verschlechtern sich, im Vergleich zu den anderen beiden Implementierungen, in der Performance deutlich. Das lässt darauf schließen, dass ein Web-Container eine  Performanceverschlechterung bedeutet. So ist etwa die hybride Applikation in den Messwerten ähnlich zu der cross-kompilierten Applikation, obwohl sie lediglich einen Web-Container ausführt und anzeigt, während die Flutter App die komplette Benutzeroberfläche und Kommunikation mit dem Server ausführt. Dies ist auch in der deutlich geringeren App-Größe der WebView-Applikation zu erkennen.  
 
-Die geringere Renderzeit ist insofern unerwartet, da Flutter die Applikation in nativen Code übersetzt und damit eine ähnliche bis schlechtere Leistung erwartet werden würde. Jedoch nutzt Flutter für die UI keinen nativen Code, sondern seinen eigenen  
-Dies dürfte an der Art liegen wie Flutter seine UI aufbaut. Denn anstatt die nativen Elemente zu nutzen, setzt Flutter auf einen nativen Canvas, auf dem die restlichen Elemente nativ aussehend hinzugefügt werden. eigene Rendering\TODO{Hier darauf eingehen war Flutter schneller die Oberfläche mit Canvas und dadurch besser als nativ}
+Die geringere Renderzeit der Flutter Applikationen ist insofern unerwartet, da Flutter die Applikation in nativen Code übersetzt und somit eine ähnliche bis schlechtere Leistung erwartet werden würde. Jedoch nutzt Flutter für die UI keinen nativen Code, sondern eine eigene Grafikbibliothek namens Skia\footnote{https://skia.org/}. Mit Hilfe von Skia sind Flutter Apps von der Renderpipeline des nativen Systems unabhängig und erreichen dadurch eine kürzere Renderzeit \cite{Thiele_2018}. Dabei wird bei Flutter die einzelnen Elemente der Benutzeroberfläche auf eine Art Leinwand gemalt. Die Oberfläche wirkt dabei jedoch nativ für die Plattformen Android und iOS, da je nach Plattform unterschiedliche Designgrundlagen verwendet werden, um die UI zu erstellen\cite{jose_flutter}.
 
-Was festhalten werden kann, ist, dass eine Flutter App zwar in der Performanz etwas den nativen geschriebenen Applikationen hinterherhängt, jedoch der Unterschied nicht derart groß ist, als dass er eine große Rolle spielen würde. Was jedoch auffält ist das die hybride Flutter App Performance technisch deutlich schlechter abschneidet als die native.  
+Biorn Hansen et al\cite{BirnHansen.2020} sagen in ihrer Auswertung, dass sie einen deutlichen Verschlechterung der Performance von Flutter bei der Nutzung einer Datenbank feststellen konnten. Deshalb wurde sowohl die Flutter App als auch die native Android App  jeweils mit und ohne einer Datenbank gemessen und der Unterschied zwischen den zwei Messungen berechnet. Das Ergebnis ist dabei in Tabelle \ref{tab:evaluations_performance_Overhead_database} zu sehen.
 
-Biorn Hansen et al\cite{BirnHansen.2020} sagen in ihrer Auswertung, dass sie einen deutlichen Anstieg bei Datenbankbenutzung sehen konnten. Deshalb wurde bei der Flutter App und der nativen Android App  jeweils eine Datenbankimplementierung nach der Dokumentation der einzelnen Plattformen eingefügt. Daraufhin wurden beide Apps wieder wie oben beschrieben getestet und am Ende der Anstieg in den einzelnen eine Applikationen ausgewertet und in Tabelle \ref{tab:evaluations_performance_Overhead_database} zusammengetragen.
-
-Auffällig ist, dass die CPU auslastung bei beiden gleichmäßig ansteigt, während bei der Nativen die RAM Nutzung deutlich mehr ansteigt, als bei der Flutter. Wenn Tabelle \ref{tab:evaluations_performance} miteinbezogen wird, nutzt die native App damit immer noch weniger Ram als die normale Flutter, da diese bereits ohne Datenbank eine recht hohe RAM Nutzung hat. Bei der App Startzeit ist die Flutter App, die nochmal 60 ms mehr länger braucht als die Android und somit nun 36\% langsamer ist als die Native. Bei der Renderzeit zeigt sich weiterhin die stärke von Flutter, da hier ein deutlich geringerer Anstieg zu verzeichnen ist.
-
-\begin{table}
+\begin{table}[ht]
 \centering
 \caption{Unterschied bei Implementierung mit zusätzlicher Datenbankimplementierung}
 \begin{tabular}{ |p{7cm}||wc{3.5cm}|wc{3.5cm}|}
@@ -68,7 +64,7 @@ Auffällig ist, dass die CPU auslastung bei beiden gleichmäßig ansteigt, währ
   \hline
  App-Größe & 0,1MB& 0,1MB\\
   \hline
- Maximale Startzeit & 221ms& 162,6ms\\
+ Maximale Startzeit & 221ms& 162ms\\
  \hline
  Durchschnittliche Renderzeit &0,82ms& 4,68ms\\
  \hline
@@ -76,14 +72,17 @@ Auffällig ist, dass die CPU auslastung bei beiden gleichmäßig ansteigt, währ
 \label{tab:evaluations_performance_Overhead_database}
 \end{table}
 
-Grundsätzlich kann festgehalten werden, dass native Entwicklungen meistens die beste Performance haben werden, Jedoch ist mit Flutter ein Framework auf den Markt gekommen, das diesen Unterschied gering hält. Denn Flutter ist wie bereits erwähnt ein Framework, dass den geschriebenen Dart-Code in Nativen Code umwandelt. Es hat sich außerdem zum Ziel gesetzt, möglichst performant zu sein. Dies kann sowohl in dieser Untersuchung als auch in den vorgestellten verwandten Arbeiten gesehen werden.
+Die Ergebnisse zeigen einen Anstieg der RAM Auslastung, der bei der nativen Implementierung etwa drei mal so hoch ist, wie bei der Flutter implementierung. Dafür ist die Startzeit und durchschnittliche CPU Auslastung bei der Flutter Implementierung mehr erhöht als bei der Nativen. In Bezug auf Tabelle \ref{tab:evaluations_performance} und ihrer Auswertung nehmen, lässt sich jedoch sagen, dass kein deutlicher Unterschied in der Auswirkung auf die Performance der Applikation zu erkennen ist.
+
+Für den Aspekt der Performance kann insgesamt festgestellt werden, dass die native Implementierung außer in der Renderzeit am besten war. Flutter kann durch die schnelle Renderzeit überzeugen und ist auch insgesamt für den Nutzer nicht spürbar langsamer, da die Unterschiede im Millisekunden- beziehungsweise im Einstelligen Prozentebereich liegen. Die Nutzung einer WebView wie sie die hybride Flutter App und die hybride App benutzen hat sich außerdem als negativen Faktor für die Performance dargestellt.
+Insgesamt lässt dies den Schluss zu, dass bei einer hohen Dringlichkeit der Performance eine native Entwicklung ratsam ist, jedoch eine cross-kompilierte Flutter-Implementierung ebenfalls möglich ist.
 
 \subsubsection{Dauer typischer Entwicklungsoperationen}
-Wenn es um Entwicklungzeit und Fortschritt geht, dann ist oft auch ein Faktor, wie lange die App braucht um gebaut zu werden und wie lange es dauert um Änderungen in der App anzuzeigen. Oft muss bei der Entwicklung von Oberflächen einige Kleinigkeiten geändert und dann überprüft werden, ob die Änderung den gewünschten Effekt hatte. Deshalb sind vor allem kurze ladezeiten von Änderungen besonders wichtig.
+Wenn es um Entwicklungszeit und Fortschritt in der Entwicklung geht, dann ist ein großer Faktor, wie lange die App braucht um gebaut zu werden und wie lange es dauert um Änderungen in der App anzuzeigen. Oft muss bei der Entwicklung von Oberflächen einige Kleinigkeiten geändert und dann überprüft werden, ob die Änderung den gewünschten Effekt hatte. Deshalb sind vor allem kurze Ladezeiten von Änderungen besonders wichtig.
 
-Für diesen Test wurde die Dauer des erstmaligen Compilieren, die Dauer eines Neubauens auf Basis eines bestehenden Caches, die Dauer bis Layoutänderungen und bis Anwendungslogik geladen wurde, im Debug Modus durchgeführt. Es wurde außerdem die Compilierzeit im Release Modus aufgezeichnet.
-Die Tests hierfür wurden jeweils fünf mal ausgeführt und dann am Ende ein Durchschnitt gebildet. Als Hardware wurde ein PC mit 32GB RAM und einer Ryzen 5 2600 6-Kern CPU genutzt. 
-Die genauen Zahlen sind von der genutzten Hardware und der Projektgröße abhängig, geben aber einen Einblick ob hier einzelne Ansätze einen Vorteil haben. 
+Die genauen Zahlen sind immer von der genutzten Hardware und der Projektgröße abhängig, sie können aber gut genutzt werden um den Unterschied zu vergleichen. 
+Für diese Arbeit wurden die Tests wieder fünf mal wiederholt und am Ende ein Durchschnitt gebildet. Als Hardware wurde ein PC mit 32GB RAM und einer Ryzen 5 2600 CPU genutzt. 
+Die betrachteten Parameter sind dabei die Dauer des erstmaligen kompilieren, die Dauer eines Neubaus auf Basis eines bestehenden Caches, die Dauer bis Layoutänderungen und bis Anwendungslogik geladen wurde. Diese Tests für diese Werte wurden im Debug-Modus durchgeführt. Dieser ist der typische Modus während der Entwicklung , da er einige Einstellungen besitzt, die das Debuggen oder ähnliches ermöglichen. Neben diesen Parametern wurde außerdem noch die Kompilierzeit im Release Modus aufgezeichnet, um zu messen, wie lange es dauert eine Version zur Veröffentlichung zu bauen. Die Ergebnisse sind in Tabelle \ref{tab:evaluations_build_time} zu sehen.
 
 \begin{table}
 \centering
@@ -92,40 +91,46 @@ Die genauen Zahlen sind von der genutzten Hardware und der Projektgröße abhän
  \hline
  Funktion & Flutter-Hybrid & Flutter & Kotlin-Nativ & Kotlin-WebView \\
  \hline
- Build Zeit Release       &   59,2&   54,22& 40,92& 22,42\\
+ Build Zeit Release       &   59,20&   54,22& 40,92& 22,42\\
   \hline
- Build Zeit Debug  & 33,78& 28,76& 20,2& 20,19\\
+ Build Zeit Debug  & 33,78& 28,76& 20,20& 20,19\\
   \hline
- Erneuter Build mit Cache & 8,8& 8,36& 3,36& 3,21\\
+ Erneuter Build mit Cache & 8,80& 8,36& 3,36& 3,21\\
   \hline
- Neuladen nach Layoutänderg & 0,59& 0,6& 2,59& 2,64\\
+ Neuladen nach Layoutänderg & 0,59& 0,60& 2,59& 2,64\\
   \hline
- Neuladen nach Logikänderung & 0,626& 0,622& 3,18& 2,63\\
+ Neuladen nach Logikänderung & 0,626& 0,622& 3,183& 2,635\\
   \hline
 \end{tabular}
 \label{tab:evaluations_build_time}
 \end{table}
 
-Bei der Analyse der Daten fällt auf, dass grundsätzlich bei der Build Zeit die Flutter Apps schlechter abschließen. Sowohl beim Erstellen einer Release oder auch Debug \ac{APK} sind die Kotlin Applikationen schneller. Bei der Debug \ac{APK} ist der Unterschied jedoch deutlich geringer und selbst die Kotlin-WebView App benötigt in etwa gleich lang, wie die native Kotlin Implementierung. Beim Compilieren einer Release App scheint es daher tatsächlich mehr um den Umfang der Applikation zu gehen, als bei der Debug Version.
+Bei der Analyse der Daten fällt auf, dass die Zeit zum Bauen der Applikationen  bei Flutter Applikationen im Vergleich zu den mit Kotlin implementierten Ansätzen höher ist. 
+Auch bei dem erneuten Bauen mit vorhandenen Build-Cache sind die Kotlin-Versionen etwa doppelt so schnell wie die Flutter Implementierungen.
+Bis auf den hybriden Ansatz braucht die Erstellung der Release-Version etwa doppelt so lang wie der Debug-Version. 
+Bei der hybriden Version ist hier kein großer Unterschied, was an der geringen Größe der Programmierung liegen dürfte.
 
-Ein auffälliger Unterschied ist jedoch die Neuladezeit nach einer Änderung im Quellcode. Denn Flutter schneidet dank des HotReload Features hier deutlich besser ab und benötigt somit gerade einmal 1/5 der Zeit die die mit Koltin implementierten Applikationen benötigen. Dazu kommt, dass beim Neustarten bei Android, die Applikation vom Startbildschirm neustartet, während Flutter nur die Änderungen in die aktuelle Seite lädt und diese neustartet. Dadurch muss nicht erst wieder zu der aktuell entwickelten Stelle zurückgekehrt werden. So wrid etwa die Farbe eines Textes im Fluttercode geändert und innerhalb von 600ms wird die Änderung angezeigt. So wird nicht nur Zeit gesparrt, sondern es kann sich auch besser darauf konzentriert werden, eine ordentliche Nutzeroberfläche zu entwickeln.
+Ein großer Unterschied ist jedoch die Neuladezeit nach einer Änderung im Quellcode. Denn Flutter ist dank des so genannten HotReload Features deutlich schneller und benötigt somit gerade einmal 1/5 der Zeit der Koltin Applikationen. Dazu kommt, dass beim Neuladen mit Kotlin, die Applikation vom Startbildschirm neu startet, während Flutter nur die Änderungen in die aktuelle Seite lädt und diese neu rendert. Dadurch muss nicht erst wieder zu der aktuell entwickelten Stelle zurückgekehrt werden. So wird etwa die Farbe eines Textes im Fluttercode geändert und innerhalb von 600ms angezeigt. So wird nicht nur Zeit gespart, sondern es kann sich auch besser darauf konzentriert werden, eine ordentliche Benutzeroberfläche zu entwickeln.
 
-Dies hat mit der Art der Kompilierung während der Entwicklung zu tun. Während Flutter die auf den Plattformen veröffentlichte Release-Version einer App im Vorherein als ahead of time(AOT) kopiliert, wird während der Entwicklung just in time (JIT), also kurz vor der Ausführung kompiliert. So muss während der Entwicklung die Änderung lediglich in den Dart Code geladen werden und das neukomilieren wird gesparrt. Dadurch erhält man eine sehr schnelle Ladezeit von Änderungen und die Applikation lädt lediglich die gerade Angezeigt Oberfläche neu.\TODO{Quelle} 
-\TODO{Vlt. hier erwähnen dass Flutter in Debug Just in Time compilation}
+Ein Grund für die Geschwindigkeit der Flutter Applikation beim Laden von Änderung liegt in der Architektur von Flutter. So ist Flutter zwar im Release Modus eine cross-kompilierte Anwendung. Jedoch ist Flutter im Debug-Modus eine interpretierte Anwendung \cite{flutter_debug_dart}. So wird Dart in diesem Modus nicht im vorherein kompiliert sondern erst wenn der Code ausgeführt wird. So müssen die Änderungen nur an die entsprechende Stelle geladen werden und die aktuell angezeigte Seite neu gebaut werden. Dadurch sinkt jedoch die Performance der Applikation, da wie bei interpretierten Applikationen typisch, der Code vor jeder Ausführung compiliert werden muss. Dies ist jedoch im Debug Modus nicht schlimm, da es hier auf die Fähigkeit zur Entwicklung ankommt. Dart bietet noch einen dritten Modus an, in dem eine Applikation auf einem Gerät installiert werden kann, dem sogenannten Profile-Modus \footnote{https://docs.flutter.dev/testing/build-modes\#profile}\cite{flutter_debug_dart}. 
+Dieser wird benötigt um eine Überprüfung der korrekten Funktionalität der kompilierten Version zu ermöglichen, dabei jedoch immer noch die Möglichkeit zu haben, den Code zu debuggen. Daher wird in diesem Modus die App bereits im vornherein kompiliert, jedoch noch keine Optmierungen am Code vorgenommen.
 
-\subsubsection{Debuggen / Testen}
-Bei Debuggen und Testen haben technisch gesehen alle Apps die gleichen Voraussetzungen. So können alle hier benutzten Programmiersprachen sowohl Konsolenausgaben und Breakpoints im Code. Auch Test sind bei allen betrachteten Fällen implementierbar. Jedoch unterscheiden sie sich in dem Aufwand der hierfür benötigt wird.
+Wie festgestellt werden konnte, hat der Vergleich der Dauer typischer Entwicklungsoperationen weniger mit dem Ansatz als mit der gewählten Programmiersprache oder Framework zu tun. Dabei sind die mit Kotlin implementierten Anwendungen zwar schneller kompiliert, jedoch kann Flutter durch die intelligente Nutzung verschiedener Compiler für verschiedene Applikationsmodi bei dem Laden von Änderungen in die App überzeugen.
 
-Bei den hybriden Ansätzen etwa müssen die beiden Teile der Implementierung getrennt betrachtet werden, wenn eine Web-Implementierung nicht innerhalb der Applikation sonder auf einem externen Server läuft. Bei nativen Implementierungen entsteht der erhöhte Aufwand, da dies für jede einzelne unterstützte Plattform getan werden muss, da sie unterschiedliche Implementierungen haben. Bei der Cross-kompilierten Anwendung muss dies dafür lediglich einmal getan werden, da alle unterschiedlichen Plattformen auf einem Code aufbauen.
+\subsubsection{Debuggen und Testen}
+Bei Debuggen und Testen haben technisch gesehen alle Apps die gleichen Voraussetzungen. So unterstützen alle hier benutzten Programmiersprachen sowohl Konsolenausgaben und Breakpoints im Code. Auch Tests sind bei allen betrachteten Fällen implementierbar.
 
-Durch nur einen Code lassen sich außerdem einfacher Fehler finden, da diese auf allen Geräten auftreten, wenn nicht ein Fehler wegen Inkompatibilität oder falscher Frameworkimplementierung auftritt. Außerdem müssen Tests lediglich einmal geschrieben werden und sind so auf allen Plattformen verfügbar.
+Allerdings unterscheiden sich die verschiedenen Ansätze im Aufwand. So muss bei dem hybriden und dem gemischten Ansatz die beiden Teile der Implementierung getrennt betrachtet werden, wenn die Web-Implementierung nicht innerhalb der Applikation, sonder auf einem externen Server läuft. Bei nativen Implementierungen entsteht ein erhöhter Aufwand, da Tests für jede einzelne programmierte Implementierung definiert werden müssen. Bei der cross-kompilierten Anwendung muss dies lediglich einmal getan werden, da alle unterschiedlichen Plattformen auf einer Codebasis aufbauen.
+
+Auf den Cross-Plattform Ansätzen, also allen außer dem Nativen, lassen sich Implementierungsfehler einfacher reproduzieren, da diese auf allen unterstützten Geräten auftreten. Dies ist bei den nativen Applikationen nicht der Fall, da hier Fehler nur in einer Implementierung sein können.
+
+Beim Faktor Debuggen und Testen kann also festgestellt werden, dass Implementierungen mit einem Fehler einen geringeren Aufwand und bessere Reproduzierbarkeit bedeuten. Jedoch ist sowohl das Testen und Debuggen bei allen Ansätzen Problemlos möglich, lediglich der Aufwand unterscheidet sich.
 
 \section{Entwicklergemeinschaft}
-Die Entwicklergemeinschaft ist ein wichtiger Faktor für die Wahl eines Frameworks. Wenn es keine Community gibt, wird es schwer Entwickler oder auch Lösungen für Probleme zu finden, ohne sie selber zu entwickeln. Aber nicht nur Bibliotheken helfen dabei, schneller zu entwickeln sondern auch Frage-Antwort Communities wie Stackoverflow\footnote{https://stackoverflow.com/}.  Die genauen Zahlen der Community-Größe oder die Populärität sind dabei nicht genau bestimmbar. Sie können jedoch anhand einiger Faktoren annähernd bestimmt werden, bzw. verglichen werden.
+Die Entwicklergemeinschaft ist ein weiterer Faktor für die Wahl einer Technologie. Denn wenn es keine Community gibt, wird es schwer Entwickler oder auch Lösungen für Probleme zu finden, ohne sie selber zu entwickeln. Dabei helfen neben Bibliotheken und Dokumentation auch die Zahl der aktiven Leute auf Frage und Antwort Plattformen wie Stackoverflow\footnote{https://stackoverflow.com/}.  Die genauen Zahlen derEntwickler beziehugnsweise der Populärität sind dabei nicht genau bestimmbar. Sie können jedoch anhand einiger Faktoren annähernd bestimmt beziehungsweise verglichen werden.
 
 \subsubsection{Star-History}
-
-Ein erster Anhaltspunkt ist die Sogenannte Star-Anzahl von Github-Repositorys. Es gibt an, wie viele Leute sich die Repositories mit einem Stern markiert haben, um über Neuerungen informiert zu werden. Es gibt also keine absolute Zahl wie viele Leute mit einem Framework oder Programmiersprache entwickeln, es zeigt jedoch ganz gut wie viel Interesse Leute an der Entwicklung dieser haben.
+Ein erster Anhaltspunkt ist die Anzahl der sogennatnen Stars auf den Github-Repositories der Programmiersprachen bzw. Frameworks. Es gibt an, wie viele Leute sich die Repositories mit einem Stern markiert haben, um über Neuerungen informiert zu werden. Es gibt also keine absolute Zahl wie viele Leute mit einem Framework oder Programmiersprache entwickeln, es zeigt jedoch ganz gut wie viel Interesse an der Entwicklung besteht.
 
 \begin{figure}[ht]
   \centering
@@ -137,10 +142,10 @@ Ein erster Anhaltspunkt ist die Sogenannte Star-Anzahl von Github-Repositorys. E
 
 
 Abbildung \ref{fig:star_history} zeigt ein mit Hilfe der GitHub-Api erstelltes Diagramm der Anzahl der Stars der Swift, Kotlin und Flutter Repositories im zeitlichen Verlauf. 
-Besonders gut zu erkennen ist, wie stark das Interesse an Flutter ist. Nach der ersten Änkündigung 2018 und der darauf ersten veröffentlichten Version ist die Zahl der Interessierten innerhalb von 4 Jahren auf 140 000 angestiegen. Das Repository für Swift und Kotlin haben im gleichen Zeitraum gerade mal 20 000 Stars dazu erhalten. Dabei haben Swift und Flutter beide innerhalb des ersten Jahres nach Vorstellung etwa 30 000 Stars gemacht. Jedoch ist das Interesse an Swift danach abgeflacht und verläuft aktuell parallel zu Kotlin. Es zeigt also doch, dass das Interesse sehr hoch ist.
+Besonders gut zu erkennen ist, wie stark das Interesse an Flutter ist. Nach der ersten Änkündigung 2018 und der darauf ersten veröffentlichten Version ist die Zahl der Interessierten innerhalb von 4 Jahren auf 140 000 angestiegen. Das Repository für Swift und Kotlin haben im gleichen Zeitraum gerade mal 20 000 Stars dazu erhalten. Dabei haben Swift und Flutter beide innerhalb des ersten Jahres nach Vorstellung etwa 30 000 Stars gemacht. Jedoch ist das Interesse an Swift danach abgeflacht und verläuft aktuell parallel zu Kotlin. Die Grafik zeigt, dass das Interesse an Flutter hoch ist, jedoch auch Kotlin und Swift Aufmerksamkeit erhält.
 
 \subsubsection{Stackoverflow}
-Ein weiterer Anhaltspunkt ist die Anzahl an gestellten Fragen auf Stackoverflow\footnote{https://stackoverflow.com/}. Stackoverflow ist für viele Entwickler ein guter Ort um Lösungen oder Code zu finden, um die aufgetretenen Probleme zu lösen. Stackoverflow kann angemeldeten Nutzern, durch Filterung, die Anzahl der gestellten Fragen ausgeben. Hierfür wurde die Anzahl der Fragen für Kotlin, Swift und Flutter der letzten 2 Jahre gesammelt. Dabei wurden eventuelle Überschneidungen und Fragen ohne Antwort heraus gefiltert.
+Ein weiterer Anhaltspunkt ist die Anzahl an gestellten Fragen auf Stackoverflow\footnote{https://stackoverflow.com/}. Stackoverflow ist für viele Entwickler ein guter Ort für Erklärungen oder Code, um die während der Entwicklung aufgetretenen Probleme zu lösen. Stackoverflow kann angemeldeten Nutzern, durch Filterung, die Anzahl der gestellten Fragen für einen Suchbegriff ausgeben. Hierfür wurde die Anzahl der Fragen für Kotlin, Swift und Flutter der letzten 2 Jahre gesammelt. Dabei wurden eventuelle Überschneidungen und Fragen ohne Antwort heraus gefiltert.
 
 \begin{table}
 \centering
@@ -159,10 +164,10 @@ Ein weiterer Anhaltspunkt ist die Anzahl an gestellten Fragen auf Stackoverflow\
 \label{tab:evaluations_questions_stackoverflow}
 \end{table}
 
-Tabelle \ref{tab:evaluations_questions_stackoverflow} zeigt die ermittelten Werte. Flutter hat hierbei also eine ähnlich aktive Community, wie Kotlin und Apple. Hier muss jedoch eingeschrenkt werden, dass manche Fragen schon vor dem untersuchten Zeitraum gestellt wurden und deswegen eine Frage nicht in dem untersuchten Zeitraum erneut auftaucht. Da sowohl Kotlin als auch Swift bereits länger auf dem Markt sind, dürfte die Anzahl der Fragen die deshalb nicht gestellt wurden, höher sein als bei Flutter, jedoch kann trotzdem festgestelt werden, dass es hier dennoch genügend Leute vorhanden sind, um Hilfe bei Problemen zu erhalten.
+Tabelle \ref{tab:evaluations_questions_stackoverflow} zeigt die ermittelten Werte. Flutter hat hierbei also eine ähnlich aktive Community, wie Kotlin und Apple. Hier muss jedoch eingeschränkt werden, dass manche Fragen schon vor dem untersuchten Zeitraum gestellt wurden und deswegen eine Frage nicht in dem untersuchten Zeitraum erneut auftaucht. So ist die Anzahl der insgesammt gefundenen Fragen mit mindestens einer Antwort sowohl bei Kotlin als auch Swift deutlich höher. Jedoch gibt es diese auch bereits eine längere Zeit. So zeigt sich, dass es sowohl für Kotlin als auch Swift genügend Fragen und Antworten gibt, um eine hohe Entwicklerzahl beziehungsweise vielen Hilfestellungen zu vermuten. Jedoch zeigt sich bei Flutter, dass es bereits in den letzten zwei Jahren mit den anderen beiden mithalten konnte und somit die Community stark am wachsen ist.
 
 \subsubsection{Dokumentation}
-Ein weiterer wichtiger Faktor ist Dokumentation. Hierbei, haben sowohl Flutter als auch Kotlin eine umfangreiche und von den Entwicklern dauerhaft aktualisierte und erweiterte Dokumentationsseite. Wo jedoch Flutter einen Vorteil zu Kotlin hat, ist ein zentraler Ort\footnote{https://pub.dev/} wo man nach weiteren Plugins, Bibliotheken, Widgets und vielem mehr suchen kann. Hier sind nicht nur offizielle Flutter Repositorys verlinkt, sondern jeder aus der Community kann seine Plugins hier verlinken. Neben einem Punktesystem, dass diese bewertet, wie viele Richtlinien es einhält, wird außerdem angezeigt, für welche Plattformen das angezeigte Projekt funktioniert. So kann einfach nach den passenden Erweiterungen gesucht werden, ohne sich durch GitHub-Repositorys zu hangeln, um nach einer passenden Bibliothek zu suchen.
+Ein weiterer Faktor ist Dokumentation. Hierbei, haben sowohl Flutter als auch Kotlin und Swift eine umfangreiche und von den Entwicklern dauerhaft aktualisierte und erweiterte Dokumentationsseite. Wo jedoch Flutter einen Vorteil zu Kotlin hat, ist ein zentraler Ort\footnote{https://pub.dev/}, um nach weiteren Plugins, Bibliotheken, Widgets und vielem mehr zu suchen. Hier sind neben offizielle Flutter Repositorys, auch von der Community entwickelte Plugins verlinkt. In der Summe können hier bereits über 27000 Erweiterungen gefunden werden\footnote{https://pub.dev/packages?q=}. Neben einem Punktesystem, dass diese danach bewertet, wie viele Richtlinien eingehalten werden, wird außerdem angezeigt, welche Plattformen unterstützt werden. Zwar gibt es auch Ansätze bei Kotlin ein solches Verzeichnis einzuführen, jedoch sind diese nicht offiziell von der Entwicklerfirma betrieben und oft auch nicht vollständig. So muss teilweise nach GitHub-Repositories gesucht werden, um eine passende Bibliothek zu finden.
 
 Die Dokumentation für die verschiedenen Ansätze ist allerdings etwas anders. So gelten alle bisherig getroffenen Aussagen vor allem für die native und Cross-Plattform Lösung, da hier die Frameworks und ihre Programmiersprachen dafür eingesetzt werden, wofür sie entwickelt wurden. Für die hybride beziehungsweise die Mix-Implementierung ist dies anders. So kann zwar die in der Regel gute Dokumentation für die gewählte Grundlagen und die Web Implementierung genutzt werden, jedoch ist eine Dokumentation für den genauen Ansatz selten oder nur begrenzt vorhanden. So gibt es etwa einige Tutorials und Seiten Dokumentation für den implementierten hybriden Ansatz, für den hybriden Flutter Ansatz hingegen gab es nur Tutorials für Teile der Implementierung, jedoch nicht für den kompletten Ansatz. 
 

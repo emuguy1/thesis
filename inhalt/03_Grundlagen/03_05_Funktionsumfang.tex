@@ -5,12 +5,12 @@ Das in der Arbeit betrachtete Projekt beschränkt sich dabei auf folgende Funkti
 Allgemein soll eine App gebaut werden, die sich an der bestehende Web-Anwendung orientiert und einen Teil der Funktionalität durch die Programmierung abbildet. Dabei können die Implementierungen in zwei Gruppen unterteilt werden, die im folgenden genauer beschrieben werden.
 
 \subsubsection{Funktionalität mit Applikationscode}
-Bei der Nativen und der Cross-kompilierten Applikation wird die komplette Funktionalität innerhalb der implementierten Applikation abgebildet. Die Verbindungen zwischen den umgesetzten Benutzeroberflächen ist in Abbildung \ref{fig:pageflow} dargestellt. Dabei sind Pfeile mit flacher Spitze Weiterleitungen die automatisch passieren und Pfeile ohne eine Beschriftung Abläufe die durch das Drücken eines Buttons implementiert sind. Außerdem entsprechen die Zustände in der Abbildung den einzelnen Seiten der Anwendung. Diese sind eine Start-, Login- , Profil- , Kommunikations- und eine Chatseite. Dadurch können die oben genannte Aspekte vollständig abgedeckt werden. So ist etwa durch den Login das Statusmanagment und die Kommunikation über ein Netzwerk abgedeckt. 
+Bei der Nativen und der cross-kompilierten Applikation wird die komplette Funktionalität innerhalb der implementierten Applikation abgebildet. Die Verbindungen zwischen den umgesetzten Benutzeroberflächen ist in Abbildung \ref{fig:pageflow} dargestellt. Dabei sind Pfeile mit flacher Spitze Weiterleitungen die automatisch passieren und Pfeile ohne eine Beschriftung Abläufe die durch das Drücken eines Buttons implementiert sind. Außerdem entsprechen die Zustände in der Abbildung den einzelnen Seiten der Anwendung. Diese sind eine Start-, Login- , Profil- , Kommunikations- und eine Chatseite. Dadurch können die oben genannte Aspekte vollständig abgedeckt werden. So ist etwa durch den Login das Statusmanagment und die Kommunikation über ein Netzwerk abgedeckt. 
 
 \begin{figure}[ht]
   \centering
   \includegraphics[height=7cm,keepaspectratio]{images/Pageflow_native_flutter.drawio.pdf} 
-  \caption[Seitenablauf der implemierten nativen und Cross-kompilierten Applikation]{Verbindungen zwischen den Seiten der implementierten Applikation des nativen und des Cross-kompilierten Ansatzes}
+  \caption[Seitenablauf der implemierten nativen und cross-kompilierten Applikation]{Verbindungen zwischen den Seiten der implementierten Applikation des nativen und des cross-kompilierten Ansatzes}
   \label{fig:pageflow}
 \end{figure}
 
@@ -19,6 +19,6 @@ Der Nutzer verwendet die Anwendung, wie im folgenden beschrieben. Zunächst wird
 \subsubsection{Funktionalität mit Web-Integrierung}
 In dieser Gruppe wird ein Teil oder auch die komplette Applikationslogik durch das Einbinden der Web-Anwendung in die Applikation ersetzt. So wird bei der Implementierung des hybriden Ansatz die bereits existierende Website in eine native programmierte Applikation eingebunden. Der Applikationscode übernimmt dabei die Aufgaben, die klassischer Weise durch ein Framework erfüllt werden würde. Sie ist jedoch durch die spezifische Implementierung der Webseite stark in der Funktionalität eingeschränkt.
 
-Bei der vierten Implementierung wird zwischen der Web-Anwendung und Benutzeroberflächen, die mit dem Cross-Compiler Framework Flutter erstellt wurden gewechselt. Dabei wird insbesondere der Login, die Profilseite und das Chat System durch Flutter Seiten ersetzt, während der Rest der Anwendung durch die Web-Anwendung dargestellt wird. Daher ist dieser Ansatz eine Mischung aus dem hybriden und dem Cross-kompilierten Ansatz.
+Bei der vierten Implementierung wird zwischen der Web-Anwendung und Benutzeroberflächen, die mit dem Cross-Compiler Framework Flutter erstellt wurden gewechselt. Dabei wird insbesondere der Login, die Profilseite und das Chat System durch Flutter Seiten ersetzt, während der Rest der Anwendung durch die Web-Anwendung dargestellt wird. Daher ist dieser Ansatz eine Mischung aus dem hybriden und dem cross-kompilierten Ansatz.
 
 
