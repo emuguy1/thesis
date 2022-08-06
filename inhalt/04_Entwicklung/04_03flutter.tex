@@ -1,21 +1,21 @@
-\section{Entwicklung Cross-Plattform Applikation mit Flutter}
-Der dritte Ansatz der hier erklärt werden soll, ist eine Cross-Plattform-Implementierung mit Hilfe des Flutter Frameworks.
+\section{Entwicklung einer Cross-kompilierten Applikation mit Flutter}
+Der dritte Ansatz ist eine Cross-kompilierte Implementierung mit Hilfe des Flutter Frameworks.
 
 \subsection{Flutter Grundlagen}
-Flutter ist ein 2017 von Google veröffentlichtes Framework das mittlerweile zum bedeutendsten Cross-Plattform-Framework geworden ist\cite{statist_CP_Framework}. Neben viel Aufmerksamkeit von Entwicklern haben auch Firmen großes Interesse an Flutter. So hat etwa die Firma hinter Ubuntu, Canonical, angekündigt, dass alle von ihnen entwickelten Anwendungen, in Flutter programmiert werden\cite{Ubuntu_Flutter}. Als Programmiersprache wird dabei Dart benutzt, die je nach Plattform, mit unterschiedlichen Compilern übersetzt wird,
+Flutter ist ein 2017 von Google veröffentlichtes Framework das mittlerweile zum meistgenutzten Cross-Plattform-Framework geworden ist \cite{statist_CP_Framework}. Die Aufmerksamkeit um Flutter lässt sich auch darin sehen, dass etwa Canonical\footnote{https://canonical.com/} , die Firma hinter Ubuntu, angekündigt hat, dass alle von ihnen entwickelten Anwendungen, in Flutter programmiert werden\cite{Ubuntu_Flutter}. Als Programmiersprache wird dabei Dart benutzt, die je nach Plattform, mit einem Compilern in nativen Code übersetzt wird.
 
-Eine Grundlage von Flutter ist \verb|Composition over inheritance|. Dieses Konzept ist besonders gut sichtbar beim Aufbau der Nutzeroberfläche. Alles ist ein Widget. Bis auf die Geschäftslogik ist alles, wie etwa Gestenerkennung, Layouthelfer und tatsächlich Angezeigte Elemente ein Widget\cite{Thiele_2018}. Dabei werden Widgets baumartig verschachtelt, wobei die meisten Widgets wieder ein oder mehrere Kinderelemente haben, die ein Widget sind. In Abbildung \ref{fig:flutter_layout_tree} etwa ist der Widget-Baum einer Menüleiste zu sehen. Dabei sind Container Elemente, die um Widgets gebaut werden, um weitere Sachen wie Abstände oder anderes hinzufügen. Nur bei Widgets wie in diesem Fall etwa Text oder Icon, stoppt der Baum, da diese keine weiteren Kinder haben.
+Eine Grundlage von Flutter ist, dass alles auf dem Bidlschirm angezeigte ein Widget ist. Neben den tatsächlich angezeigten Elementen der Oberfläche können auch Gestenerkennung, Layouthelfer oder Logik durch ein Widget eingebunden werden \cite{Thiele_2018}. Dabei werden Widgets baumartig verschachtelt, wobei die meisten Widgets wieder ein oder mehrere Kinderelemente der Klasse Widget besitzen können. In Abbildung \ref{fig:flutter_layout_tree} etwa ist der Widget-Baum einer Menüleiste zu sehen. Ein Container ist dabei ein Element, das andere Widgets enthälten und etwa einen Abstand zu anderen Elementen definiert. Er ist mit dem div-Element von HTML vergleichbar. Bei Widgets wie in diesem Fall etwa Text oder Icon, stoppt der Baum, da diese keine weiteren Kinder haben.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[height=7cm,keepaspectratio]{images/sample-flutter-layout.png} 
+  \includegraphics[height=8cm,keepaspectratio]{images/Flutter_menu_replacement.drawio.pdf} 
   \caption[Hierachie einer Menüleiste]{Hierachie einer Menüleiste\protect\footnotemark}
   \label{fig:flutter_layout_tree}
 \end{figure}
 
 \footnotetext{https://docs.flutter.dev/development/ui/layout}
 
-Anders als bei der nativen Implementierung wird in Flutter das Layoutfile mit der Funktionalität dahinter gemischt. Das bedeutet, dass die Funktionalität direkt beim definieren eines Knopfes zugeordnet wird. Dafür muss lediglich das Widget in den Baum eingefügt werden und danach das entsprechende Attribut gesetzt werden. Dadurch ist alles an einem Ort.
+Anders als bei der nativen Implementierung wird in Flutter das Layout mit der Funktionalität zusammen geschrieben. Das bedeutet, dass die Funktionalität direkt beim definieren eines Knopfes zugeordnet wird. Dafür muss lediglich das Widget in den Baum eingefügt werden und danach das entsprechende Attribut gesetzt werden. Dadurch ist alles an einem Ort.
 
 Da Flutter einen großen wert auf Perfomance legt, ist eine Änderung auf der \ac{UI} so gebaut, dass nur Elemente neu gebaut werden, die ihren Inhalt geändert haben. Dafür hat Flutter für \verb|Stateful Widgets|, die eine extra State Klasse besitzen. In diesem werden Daten gespeichert und sobald er sich ändert, registriert Flutter die Änderung und baut daraufhin das geänderte Widget und die in der Hierachie folgenden neu\cite{9623025}. Dadurch kann häufiges und vor allem vollständiges Neubauen des Widgetsbaums verhindert werden. Jedoch benötigt nicht jedes Element einen State. Wenn etwa bereits zum Zeitpunkt des Erzeugens des Widgets, alle Daten feststehen und auch nicht mehr geändert werden, dann wird kein State benötigt und es reicht ein \verb|Stateless Widget| für die Implementierung\cite[Kapitel~4]{Flutter_Recipes}. Dadurch wird einerseits die Implementierung eines States ersparrt und bei einem Neubau des Baums, kann das Widget-Element wieder genutzt werden und muss lediglich neu gerendert werden, was bei Flutter jedoch sehr performant ist.
 
