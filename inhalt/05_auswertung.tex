@@ -169,20 +169,28 @@ Tabelle \ref{tab:evaluations_questions_stackoverflow} zeigt die ermittelten Wert
 \subsubsection{Dokumentation}
 Ein weiterer Faktor ist Dokumentation. Hierbei, haben sowohl Flutter als auch Kotlin und Swift eine umfangreiche und von den Entwicklern dauerhaft aktualisierte und erweiterte Dokumentationsseite. Wo jedoch Flutter einen Vorteil zu Kotlin hat, ist ein zentraler Ort\footnote{https://pub.dev/}, um nach weiteren Plugins, Bibliotheken, Widgets und vielem mehr zu suchen. Hier sind neben offizielle Flutter Repositorys, auch von der Community entwickelte Plugins verlinkt. In der Summe können hier bereits über 27000 Erweiterungen gefunden werden\footnote{https://pub.dev/packages?q=}. Neben einem Punktesystem, dass diese danach bewertet, wie viele Richtlinien eingehalten werden, wird außerdem angezeigt, welche Plattformen unterstützt werden. Zwar gibt es auch Ansätze bei Kotlin ein solches Verzeichnis einzuführen, jedoch sind diese nicht offiziell von der Entwicklerfirma betrieben und oft auch nicht vollständig. So muss teilweise nach GitHub-Repositories gesucht werden, um eine passende Bibliothek zu finden.
 
-Die Dokumentation für die verschiedenen Ansätze ist allerdings etwas anders. So gelten alle bisherig getroffenen Aussagen vor allem für die native und Cross-Plattform Lösung, da hier die Frameworks und ihre Programmiersprachen dafür eingesetzt werden, wofür sie entwickelt wurden. Für die hybride beziehungsweise die Mix-Implementierung ist dies anders. So kann zwar die in der Regel gute Dokumentation für die gewählte Grundlagen und die Web Implementierung genutzt werden, jedoch ist eine Dokumentation für den genauen Ansatz selten oder nur begrenzt vorhanden. So gibt es etwa einige Tutorials und Seiten Dokumentation für den implementierten hybriden Ansatz, für den hybriden Flutter Ansatz hingegen gab es nur Tutorials für Teile der Implementierung, jedoch nicht für den kompletten Ansatz. 
+Neben der Dokumentation für die Programmiersprache kann man außerdem noch eine Programmierung für die verschiedene Entwicklungsansätze ziehen. Dabei hatten sowohl der cross-kompilierte, als auch der native Ansatz eine umfangreiche Dokumentation verfügbar. Für den gewählten hybriden Ansatz konnte Anhand von Anleitungen und Dokumentation der Programmiersprache eine ausreichende Unterstützung finden. Lediglich der gemischte Ansatz hatte hier Probleme. So konnte zwar gute Dokumentation für die gewählte Grundlagen und die Web Implementierung genutzt werden, jedoch ist eine Dokumentation für den genauen Ansatz nur begrenzt vorhanden. Dies liegt jedoch auch an der Art der Implementierung, da viele verschiedene Gemischte Implementierungen möglich sind und diese eher einen experimentellen Charakter besitzen.
+
+Wie also erklärt wurde, gibt es sowohl für die hybride als auch die cross-kompilierte Implementierung eine vollumfängliche Dokumentation. Auch für den hybriden Ansatz lassen sich genügend Materialien finden. Dies dürfte sich bei der Nutzung eines Frameworks sogar noch verbessern. Lediglich der gemischte Ansatz hatte lediglich Grundlagendokumentation, jedoch keine für die Schwierigkeiten des Zusammenspiels. 
 
 \subsubsection{Entwickler}
-Ein letzter Faktor der zu dieser Kategorie analysiert werden soll, ist der Blick auf verfügbare Entwickler. Denn die Entwicklung einer Applikation in speziellen Technologien funktioniert nur, wenn auch Entwickler gefunden werden können. Eine aktuelle Statistik die aus einer Befragung von 71,547 Entwicklern auf Stackoverflow gebildet wurde, besagt, dass etwa 9\% Kotlin, 7\% Dart und 5\% Swift beherrschen \cite{statist_used_programming_languages}.
-
-Bei den Programmiersprachen für Web, gaben  65\% an, JavaScript zu kennen und 55\% kennen sich in  HTML/CSS aus \cite{statist_used_programming_languages}. Diese Zahlen lassen den Entschluss zu, dass die Ansätze mit einem hohen Anteil an Web Technologie einen Vorteil haben, da es hier noch einfacher sein dürfte, passende Entwickler zu finden. Jedoch wird auch hier mindestens ein Entwickler benötigt, der sich mit den einzelnen Plattformen genauer auskennt.
+Ein letzter Faktor der zu dieser Kategorie analysiert werden soll, ist der Blick auf verfügbare Entwickler. Denn die Entwicklung einer Applikation in speziellen Technologien funktioniert nur, wenn auch Entwickler gefunden werden können. Eine Statistik \cite{statist_used_programming_languages} der Firma Stackoverflow besagt, dass etwa 9\% Kotlin, 7\% Dart und 5\% Swift der 71,547 befragten Entwicklern beherrschen.
+Bei den Programmiersprachen für Web, gaben  65\% an, JavaScript zu kennen und 55\% kennen sich in HTML bzw. CSS aus. Diese Zahlen lassen den Schluss zu, dass die Ansätze mit einem hohen Anteil an Web Technologie einen Vorteil haben, da es einfacher sein dürfte, passende Entwickler zu finden. Jedoch wird auch bei den Ansätzen mit Webtechnologie mindestens ein Entwickler benötigt, der sich mit den einzelnen Plattformen genauer auskennt, falls es Schwierigkeiten gibt, oder Plattform spezifische Funktionalität selber erstellt werden soll.
 
 Zusammenfassend lässt sich sagen, dass es für alle Ansätze genügend Entwickler geben wird, jedoch haben die hybriden und die Flutter-Web Implementierung dahingegen einen Vorteil, dass ein wesentlicher Teil aus einer Webseite oder Webtechnologie besteht und es hier eine deutlich höhere Anzahl an Entwicklern gibt.
 
 \section{Entwicklungsdauer}
+Ein weiteres wichtiges Kriterium bei der Wahl des Ansatzes ist die Entwicklungsdauer, da diese sich auf die Kosten der entwickelten Multi-Plattform-Anwendung auswirkt. Daher soll diese im Folgenden anhand zweier Faktoren etwas beleuchtet werden.
 
 \subsubsection{Programmieraufwand}
-Der genaue Programmieraufwand ist immer stark abhängig von den genauen Vorkenntnissen, der genutzten Technologie und externen Bibliotheken und natürlich dem Umfang der Anwendung. Ein Anhaltspunkt sind die Lines of Code (LOC) die für die einzelnen Implementierungen geschrieben wurden, um dies ein wenig vergleichen zu können. Dafür wurden die einzelnen Daten mit Hilfe des Statistics\footnote{https://plugins.jetbrains.com/plugin/4509-statistic} Plug in gesammelt. Dabei wurden die gesammelten Daten in die drei Typen Konfiguration, Oberfläche/UI und Logik unterteilt. Bei den zwei Implementierungen die außerdem noch Teile der Webseite mit anzeigen, wurden außerdem die in der Anwendung abgedeckten Programmteile erfasst, da diese für eine Implementierung auf dem Stand genauso notwendig ist. Zusätzlich wurde der benötigte Code untersucht um die Liste der Gegenstände anzuzeigen. Also sowohl die Layoutdatein, als auch die benötigte Anwendungslogik.\TODO{Weiß nicht ob Logik hier der richtige Begriff ist, da dies ja auch das hinzufügen der Oberflächenfunktionalität ist.}
-Bei den Implementierungen, bei denen Flutter genutzt wurde, ist die Oberflächen und Logikcode Zeile zusammengefasst, da dies bei Flutter in einer Datei geschrieben wird. 
+Die genaue Entwicklungsdauer ist stark von der Erfahrung der Entwickler und eventuell auftretenden Problemen während derImplementierung abhängig, weswegen ein Zeitvergleich hier nicht sinnvoll erscheint. Stattdessen soll die Anzahl der geschriebenen Programmzeilen (LOC) betrachtet werden.
+Dafür wurden die einzelnen Daten mit Hilfe des Statistics\footnote{https://plugins.jetbrains.com/plugin/4509-statistic} Plug-In von JetBrains gesammelt.
+Bei den beiden Implementierungen mit Web-Anteil wurde außerdem der notwendig Teil der Web-Implementierung mit angegeben. 
+Dabei wurden die gesammelten Daten in die drei Arten aufgeteilt: Konfiguration, Benutzeroberfläche und Logik unterteilt. 
+Bei den Implementierungen, bei denen Flutter genutzt wurde, ist der UI- und Logikcode zusammengefasst, da dies bei Flutter in einer Datei geschrieben wird.
+Als weiterer Parameter wurde der benötigte Code untersucht, um eine Liste an Gegenständen anzuzeigen.
+Dabei wurden nur tatsächlich geschriebene Code-Teile betrachtet und automatisch generierte nicht gezählt.
+
 
 \begin{table}
 \centering
@@ -191,28 +199,39 @@ Bei den Implementierungen, bei denen Flutter genutzt wurde, ist die Oberflächen
  \hline
  Programmteile in Lines of Code & Flutter-Web & Flutter & Kotlin-Nativ & Kotlin-Hybrid \\
  \hline
- Gesamte Anwendung       &   2391(App) + 2033(Web) &   2100 & 3138 & 449(App) + 2814(Web)\\
+ Gesamte Anwendung       &   2391(App) + 1533(Web) &   2100 & 3138 & 215(App) + 2814(Web)\\
   \hline
- Konfigurationscode  & 42 + 268& 32& 229& 16 + 357\\
+ Konfigurationscode  & 42 + 268& 32& 229& 30 + 357\\
   \hline
- Oberflächencode &\multirow{2}{*}{2349 + 1765}  &\multirow{2}{*}{2068}  & 1958& 334 + 1768\\
+ Oberflächencode &\multirow{2}{*}{2349 + 1265}  &\multirow{2}{*}{2068}  & 1958& 86 + 1768\\
   \cline{1-1}
   \cline{4 -5}
- Logikcode & & & 951& 99 + 689\\
+ Funktionalität \& Logik & & & 951& 99 + 689\\
   \hline
- Beispeil: Liste an Gegenständen & 65 & 65 & 178 & 71(Web)\\
+ Beispiel: Liste an Gegenständen & 65(App) & 65 & 178 & 71(Web)\\
   \hline
 \end{tabular}
 \label{tab:lines_of_code}
 \end{table}
 
-In Tabelle \ref{tab:lines_of_code} sind die LOCs der einzelnen Implementierungen auf verschiedenen Programmteile aufgeschlüsselt zu sehen. Dabei wurde auch der Code der genutzten WebImplementierung dazugerechnet, da diese ein Teil der jeweiligen Anwendung ist. Die wenigsten Zeilen hat die reine Flutter Implementierung und die meisten die Flutter-Web Implementierung.  Die Flutter-Web Implementierung besteht dabei in etwa zu einer Hälfte aus der Flutter Implementierung und zu einer Hälfte aus der Web Implementierung. Die hybride Implementierung hat zwar den wenigsten Code für die Applikation an sich, hat jedoch durch die Webseitenimplementierung mehr Zeilen als die native Applikation, jedoch weniger als die Flutter-Web Implementierung. 
+Die in Tabelle \ref{tab:lines_of_code} zu sehende Aufschlüsselung zeigt, dass Flutter insgesamt die wenigsten Zeilen an Code benötigte. 
+Dabei werden gerade einmal 32 Zeilen Code Konfiguration benötigt. 
+Der Rest sind knapp 2000 Zeilen Code mit Benutzeroberfläche und Logik. Die native Implementierung benötigt diese Anzahl allein um die Benutzeroberfläche zu definieren und benötigt knapp 1000 weitere Zeilen um die Funktionalität und Logik hinzuzufügen. 
+Den höchsten Programmieraufwand benötigt der gemischte Ansatz. Er kommt insgesamt auf knapp 4000 Zeilen Code und damit den doppelten der Flutter Implementierung. Die native und die hybride Implementierung haben in etwa die gleiche Anzahl an Zeilen Code und liegen mit rund 3000 Zeilen Code in der Mitte zwischen den zwei anderen Implementierungen.
+In der implementierten Anwendung hat die native Implementierung mit gerade einmal 215 Zeilen Code den geringsten Umfang, jedoch kommen hier rund 2800 Zeilen Web-Implementierung dazu.
 
-Bei dem untersuchten Beispiel einer Liste für Gegenstände ist wieder die Flutter Implementierung die mit dem geringsten Code. Dabei entfallen 55 Zeilen auf die Anzeige eines Gegenstandes und gerade einmal 10 Zeilen Code um die Liste einzubauen und zu konfigurieren. Ähnlich ist dies bei der Webseite. Einzig die native Kotlin App hat hier ein erhöhten Aufwand. Dabei entfallen 75 Zeilen auf das Design und weitere 83 Zeilen auf die Steuerung der Liste und dem hinzufügen der Daten. Ein Großteil davon ist der Adapter der benötigt wird um die Liste zu steuern. Durch solche Konstrukte benötigt Kotlin mehr LOC, als etwa die Flutter Implementierung.
+Bei dem zusätzlich betrachteten Beispiel, einer dynamischen Liste für Gegenstände ohne fester Länge, ist die Flutter Implementierung ebenfalls die kürzeste. Dabei werden gerade einmal 65 Zeilen Code benötigt, wovon 55 Zeilen auf die Anzeige eines Gegenstandes und gerade einmal 10 Zeilen Code auf die Liste entfallen. Ähnlich ist dies bei der Webseite. Einzig die native Kotlin Applikation hat hier ein erhöhten Aufwand. Dabei entfallen 75 Zeilen auf das Design und weitere 83 Zeilen auf die Steuerung der Liste und dem hinzufügen der Daten. Ein Großteil davon ist der Adapter, der benötigt wird um die Liste zu steuern. Die Web-Implementierung der hybriden Applikation braucht mit 71 Zeilen, ähnlich wenige wie die zwei Flutter-Implementierungen.
 
-Bei den Implementierungen in der die Webseite eingebaut sind, fügt die Webseite einen hohen Teil der Zeilen hinzu. Dies ist aber zu einem gewissen Teil dem Aufbau des Webcodes geschuldet. So ist bei dem Vergleich des benötigten Codes für die Liste, die Webseite gerade mal 6 Zeilen hinter der Flutter Implementierung und damit immer noch gerade mal halb so viel wie die Kotlin Entwicklung benötigt.
+Ein weiterer Faktor der beachtet werden muss, ist die Anzahl der nötigen Implementierung je Ansatz. So ist bei dem gemischten und dem cross-kompilierten Ansatz lediglich eine Implementierung nötig. Beim nativen Ansatz muss jedoch je unterstützter Plattform eine eigenständige Implementierung erstellt werden. Bei der hybriden Applikation, wie sie in dieser Arbeit umgesetzt wurde, ist zwar die umgebende Applikation ebenfalls für jede Plattform zu implementieren, jedoch hat die Implementierung einen deutlich geringeren Umfang. Der Teil der Web-Anwendung muss lediglich einmal geschireben werden.  
 
-\subsubsection{Zeit bis zum Release}
+Wie also gesehen werden konnte, benötigt eine cross-kompilierte Lösung mit Flutter deutlich weniger Zeilen Code als die anderen Implementierung.
+Wenn jedoch bereits eine Web-Anwendung existiert, reduziert sich der Implementierungsaufwand der hybriden Aufwand auf knapp 200 Zeilen Code und der gemischten Implementierung halbiert sich in etwa. Dadurch können diese beiden Implementierungen in dieser Situatuin ebenfalls eine gute Alternative zu den anderen Ansätzen darstellen. Muss diese jedoch erst erstellt werden ist gerade der gemischte Ansatz mit einem erhöhten Aufwand verbunden.
+
+\subsubsection{Zeit bis zur Veröffentlichung}
+Die Entwicklungsdauer wirkt sich direkt auf auch auf den Faktor der Dauer bis zur Möglichkeit der Veröffentlichung einer ersten Version aus .
+Je früher eine Anwendung veröffentlicht werden kann, desto früher können Kunden die Applikation nutzen und bei einer kommerziellen Nutzung auch Umsatz produzieren.
+
+Hierbei ist sowohl die native und die cross-kompilierte Implementierung auf eine vollständige Implementierung angewiesen, um den Nutzer ein umfängliches System zu bieten. Bei der nativen Entwicklung kommt d
 Durch den Programmieraufwand und der Anzahl der zu unterstützenden Plattformen wird die Dauer der Entwicklungszeit und die Zeit bis zu einem möglichen Release stark beeinflusst. Genaue Werte sind dabei auch stark von Funktionsumfang, Anzahl der Entwickler und den Vorraussetzungen abhängig. Jedoch lassen sich dennoch einige Aussagen treffen.
 
 So ist etwa ein Release der Nativen Anwendung am aufwendigsten. Nicht nur dass wie bereits gesehen, mit der meiste Code geschrieben werden muss, muss dies auch noch für jede Plattform passieren. Am schnellsten ist dies bei der Cross-Plattform Implementierung mit Flutter. Hier muss lediglich einmal die Anwendung durchprogrammiert werden und kann im Anschluss für die einzelnen Plattformen einfach nur noch exportiert werden. Nach der reinen Flutter Implementierung ist die Flutter Implementierung mit Webanteil. Diese ist dann gefolgt vom hybriden Ansatz. 
@@ -289,25 +308,3 @@ Die hybriden und Web-Applikationen haben hierbei den Nachteil, dass Webseiten nu
 Einen Vorteil den native Applikationen haben ist, dass alle verfügbare Funktionalität in die eigene Applikation eingebunden werden können, selbst wenn es sie auf anderen Plattformen nicht existiert.
 
 Um dies zu erreichen, müsste bei Cross-Plattform Ansätzen eine Unterscheidung zwischen Plattformen stattfinden, wie dies etwa in Flutter mit Hilfe der Abfrage der TargetPlatform\footnote{https://api.flutter.dev/flutter/foundation/defaultTargetPlatform.html} geschehen kann. Die Frage ist dann jedoch wie sinnvoll dies ist, da dadurch Unterschiede zwischen den Plattformen entstehen, die bei den Cross-Platformen eben nicht entstehen sollen.
-
-%\subsubsection{Lesbarkeit und Übersichtlichkeit der Implementierung}
-%Bei der Übersichtlichkeit ist es wieder eine Frage nach der Art der Implementierung. 
-
-%\section{Fragekompass um eine Auswahl zu treffen}
-%Im folgenden sollen ein paar Fragen vorgestellt, die die vorgestellten Ergebnisse kategorisieren um eine Auswahl treffen zu können.\TODO{umschreiben}
-%1. Existiert bereits eine Webseite, die in eine App umgewandelt werden soll?
-%    Wenn eine Webseite bereits existiert, sind der hybride und der Web-Flutter Ansatz eine gute Option. Denn durch die Integration kann sowohl ein großer Teil der Implementierung vermieden werden, selbst wenn letztlich nicht die Webseite in der App angezeigt wird, sondern die echten HTML Datein. Denn diese können im Zweifelsfall kopiert und falls benötigt umgearbeitet werden.
-    
- %   Es kann einen fließenden Übergang von Webseite zu komplett Implementierter Applikation geben soll. So kann bei dem entwickelten gemixten Ansatz eine erste Version schnell entwickelt werden, die ausschließlich aus der Webseite besteht und dann Stück f
-%2. Ist Performance Priorität Nummer 1 ?
-
-%3. Sollen mehr als nur eine Plattform abgedeckt werden ?
-
-%4. Existiert bereits eine Applikation die nur etwas geändert werden soll?
-
-%5. 
-%Eine der ersten Fragen die dabei im Raum steht. Gibt es bereits eine Webversion der Applikation.
-%Wenn nicht, so kann es von Anfang an spannend sein, ein Framework zu wählen, dass wie Flutter eine Cross-Plattform-Applikation erzeugt, wo auch eine Webversion mit gehostet werden kann. Falls es bereits eine Webversion geben, so geht der Weg eher in Richtung von Nativen- bzw. Hybriden Applikationen, da meißt nur noch einzelne Teile der Applikation entwickelt werden müssen. Dies ist jedoch auch kein Grund eine Cross-Plattform-Entwicklung auszuschließen, da dadurch nur ein Code geschrieben werden muss um etwa beide vorherschenden mobilen Plattformen abzudecken: iOS und Android.
-
-%Andererseits hat man einen schnell sich ändernden Technologiemarkt. Flutter wurde erst 2017 auf den Markt gebracht und ist 2021 zum Führenden Framework aufgestiegen. Andererseits ist React Native von einem der viel versprechendsten Frameworks seit dem Erscheinen von Flutter auf dem Abeseigenden Mast und andere haben ganz und gar Ihre Bedeutung verloren.Etwa Apache Flex. Das auch seit 2017 nicht mehr weiter entwickelt wird. So zeigt sich, dass die Wahl auf das richtige Framework und die richtige Entwicklungsstrategie eine sehr wichtige ist und mit viel Vorsicht getroffen werden muss.
-
