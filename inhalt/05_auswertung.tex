@@ -130,7 +130,7 @@ Beim Faktor Debuggen und Testen kann also festgestellt werden, dass Implementier
 Die Entwicklergemeinschaft ist ein weiterer Faktor für die Wahl einer Technologie. Denn wenn es keine Community gibt, wird es schwer Entwickler oder auch Lösungen für Probleme zu finden, ohne sie selber zu entwickeln. Dabei helfen neben Bibliotheken und Dokumentation auch die Zahl der aktiven Leute auf Frage und Antwort Plattformen wie Stackoverflow\footnote{https://stackoverflow.com/}.  Die genauen Zahlen derEntwickler beziehugnsweise der Populärität sind dabei nicht genau bestimmbar. Sie können jedoch anhand einiger Faktoren annähernd bestimmt beziehungsweise verglichen werden.
 
 \subsubsection{Star-History}
-Ein erster Anhaltspunkt ist die Anzahl der sogennatnen Stars auf den Github-Repositories der Programmiersprachen bzw. Frameworks. Es gibt an, wie viele Leute sich die Repositories mit einem Stern markiert haben, um über Neuerungen informiert zu werden. Es gibt also keine absolute Zahl wie viele Leute mit einem Framework oder Programmiersprache entwickeln, es zeigt jedoch ganz gut wie viel Interesse an der Entwicklung besteht.
+Ein erster Anhaltspunkt ist die Anzahl der sogenannten Stars auf den Github-Repositories der Programmiersprachen beziehungsweise Frameworks. Es gibt an, wie viele Leute sich die Repositories mit einem Stern markiert haben, um über Neuerungen informiert zu werden. Es gibt also keine absolute Zahl wie viele Leute mit einem Framework oder Programmiersprache entwickeln, es zeigt jedoch ganz gut wie viel Interesse an der Entwicklung besteht.
 
 \begin{figure}[ht]
   \centering
@@ -147,24 +147,26 @@ Besonders gut zu erkennen ist, wie stark das Interesse an Flutter ist. Nach der 
 \subsubsection{Stackoverflow}
 Ein weiterer Anhaltspunkt ist die Anzahl an gestellten Fragen auf Stackoverflow\footnote{https://stackoverflow.com/}. Stackoverflow ist für viele Entwickler ein guter Ort für Erklärungen oder Code, um die während der Entwicklung aufgetretenen Probleme zu lösen. Stackoverflow kann angemeldeten Nutzern, durch Filterung, die Anzahl der gestellten Fragen für einen Suchbegriff ausgeben. Hierfür wurde die Anzahl der Fragen für Kotlin, Swift und Flutter der letzten 2 Jahre gesammelt. Dabei wurden eventuelle Überschneidungen und Fragen ohne Antwort heraus gefiltert.
 
-\begin{table}
+\begin{table}[ht]
 \centering
 \caption{Anzahl gefundener Fragen pro Programmiersprache}
 \begin{tabular}{ |p{3.7cm}||p{5cm}| p{5cm}|}
  \hline
- Programmiersprache & Anzahl gefundener Fragen der letzten 2 Jahre & insgesamt gefundene Fragen\\
+ Programmiersprache & Anzahl gefundener Fragen der letzten 2 Jahre & insgesamt gefundene\\
  \hline
- Kotlin &  105 082\footnote{Filter: [kotlin] or [android][kotlin] or [android]-[flutter]-[java] lastactive:2y.. is:question answers:1..} & 920 585\\
+ Kotlin &  105 082 Fragen\tablefootnote{Filter: [kotlin] or [android][kotlin] or [android]-[flutter]-[java] lastactive:2y.. is:question answers:1..} & 920 585 Fragen\\
   \hline
- Swift  & 71 749\footnote{Filter: [swift] or [ios][swift] or [ios]-[flutter]-[objectivc] lastactive:2y.. is:question answers:1..} & 670 697\\
+ Swift  & 71 749 Fragen\tablefootnote{Filter: [swift] or [ios][swift] or [ios]-[flutter]-[objectivc] lastactive:2y.. is:question answers:1..} & 670 697 Fragen\\
   \hline
- Flutter & 77,568\footnote{Filter:[flutter] or [dart] -[ubuntu] lastactive:2y.. is:question answers:1..} & 115 533\\
+ Flutter & 77 568 Fragen\tablefootnote{Filter:[flutter] or [dart] -[ubuntu] lastactive:2y.. is:question answers:1..} & 115 533 Fragen\\
  \hline
 \end{tabular}
 \label{tab:evaluations_questions_stackoverflow}
 \end{table}
 
-Tabelle \ref{tab:evaluations_questions_stackoverflow} zeigt die ermittelten Werte. Flutter hat hierbei also eine ähnlich aktive Community, wie Kotlin und Apple. Hier muss jedoch eingeschränkt werden, dass manche Fragen schon vor dem untersuchten Zeitraum gestellt wurden und deswegen eine Frage nicht in dem untersuchten Zeitraum erneut auftaucht. So ist die Anzahl der insgesammt gefundenen Fragen mit mindestens einer Antwort sowohl bei Kotlin als auch Swift deutlich höher. Jedoch gibt es diese auch bereits eine längere Zeit. So zeigt sich, dass es sowohl für Kotlin als auch Swift genügend Fragen und Antworten gibt, um eine hohe Entwicklerzahl beziehungsweise vielen Hilfestellungen zu vermuten. Jedoch zeigt sich bei Flutter, dass es bereits in den letzten zwei Jahren mit den anderen beiden mithalten konnte und somit die Community stark am wachsen ist.
+
+
+Tabelle \ref{tab:evaluations_questions_stackoverflow} zeigt die ermittelten Werte. Flutter hat hierbei also eine ähnlich aktive Community, wie Kotlin und Apple. Hier muss jedoch eingeschränkt werden, dass manche Fragen schon vor dem untersuchten Zeitraum gestellt wurden und deswegen eine Frage nicht in dem untersuchten Zeitraum erneut auftaucht. So ist die Anzahl der insgesamt gefundenen Fragen mit mindestens einer Antwort sowohl bei Kotlin als auch Swift deutlich höher. Jedoch gibt es diese auch bereits eine längere Zeit. So zeigt sich, dass es sowohl für Kotlin als auch Swift genügend Fragen und Antworten gibt, um eine hohe Entwicklerzahl beziehungsweise vielen Hilfestellungen zu vermuten. Jedoch zeigt sich bei Flutter, dass es bereits in den letzten zwei Jahren mit den anderen beiden mithalten konnte und somit die Community stark am wachsen ist.
 
 \subsubsection{Dokumentation}
 Ein weiterer Faktor ist Dokumentation. Hierbei, haben sowohl Flutter als auch Kotlin und Swift eine umfangreiche und von den Entwicklern dauerhaft aktualisierte und erweiterte Dokumentationsseite. Wo jedoch Flutter einen Vorteil zu Kotlin hat, ist ein zentraler Ort\footnote{https://pub.dev/}, um nach weiteren Plugins, Bibliotheken, Widgets und vielem mehr zu suchen. Hier sind neben offizielle Flutter Repositorys, auch von der Community entwickelte Plugins verlinkt. In der Summe können hier bereits über 27000 Erweiterungen gefunden werden\footnote{https://pub.dev/packages?q=}. Neben einem Punktesystem, dass diese danach bewertet, wie viele Richtlinien eingehalten werden, wird außerdem angezeigt, welche Plattformen unterstützt werden. Zwar gibt es auch Ansätze bei Kotlin ein solches Verzeichnis einzuführen, jedoch sind diese nicht offiziell von der Entwicklerfirma betrieben und oft auch nicht vollständig. So muss teilweise nach GitHub-Repositories gesucht werden, um eine passende Bibliothek zu finden.
@@ -175,7 +177,7 @@ Wie also erklärt wurde, gibt es sowohl für die hybride als auch die cross-komp
 
 \subsubsection{Entwickler}
 Ein letzter Faktor der zu dieser Kategorie analysiert werden soll, ist der Blick auf verfügbare Entwickler. Denn die Entwicklung einer Applikation in speziellen Technologien funktioniert nur, wenn auch Entwickler gefunden werden können. Eine Statistik \cite{statist_used_programming_languages} der Firma Stackoverflow besagt, dass etwa 9\% Kotlin, 7\% Dart und 5\% Swift der 71,547 befragten Entwicklern beherrschen.
-Bei den Programmiersprachen für Web, gaben  65\% an, JavaScript zu kennen und 55\% kennen sich in HTML bzw. CSS aus. Diese Zahlen lassen den Schluss zu, dass die Ansätze mit einem hohen Anteil an Web Technologie einen Vorteil haben, da es einfacher sein dürfte, passende Entwickler zu finden. Jedoch wird auch bei den Ansätzen mit Webtechnologie mindestens ein Entwickler benötigt, der sich mit den einzelnen Plattformen genauer auskennt, falls es Schwierigkeiten gibt, oder Plattform spezifische Funktionalität selber erstellt werden soll.
+Bei den Programmiersprachen für Web, gaben  65\% an, JavaScript zu kennen und 55\% kennen sich in HTML beziehungsweise CSS aus. Diese Zahlen lassen den Schluss zu, dass die Ansätze mit einem hohen Anteil an Web Technologie einen Vorteil haben, da es einfacher sein dürfte, passende Entwickler zu finden. Jedoch wird auch bei den Ansätzen mit Webtechnologie mindestens ein Entwickler benötigt, der sich mit den einzelnen Plattformen genauer auskennt, falls es Schwierigkeiten gibt, oder Plattform spezifische Funktionalität selber erstellt werden soll.
 
 Zusammenfassend lässt sich sagen, dass es für alle Ansätze genügend Entwickler geben wird, jedoch haben die hybriden und die Flutter-Web Implementierung dahingegen einen Vorteil, dass ein wesentlicher Teil aus einer Webseite oder Webtechnologie besteht und es hier eine deutlich höhere Anzahl an Entwicklern gibt.
 
@@ -222,16 +224,19 @@ In der implementierten Anwendung hat die native Implementierung mit gerade einma
 
 Bei dem zusätzlich betrachteten Beispiel, einer dynamischen Liste für Gegenstände ohne fester Länge, ist die Flutter Implementierung ebenfalls die kürzeste. Dabei werden gerade einmal 65 Zeilen Code benötigt, wovon 55 Zeilen auf die Anzeige eines Gegenstandes und gerade einmal 10 Zeilen Code auf die Liste entfallen. Ähnlich ist dies bei der Webseite. Einzig die native Kotlin Applikation hat hier ein erhöhten Aufwand. Dabei entfallen 75 Zeilen auf das Design und weitere 83 Zeilen auf die Steuerung der Liste und dem hinzufügen der Daten. Ein Großteil davon ist der Adapter, der benötigt wird um die Liste zu steuern. Die Web-Implementierung der hybriden Applikation braucht mit 71 Zeilen, ähnlich wenige wie die zwei Flutter-Implementierungen.
 
-Ein weiterer Faktor der beachtet werden muss, ist die Anzahl der nötigen Implementierung je Ansatz. So ist bei dem gemischten und dem cross-kompilierten Ansatz lediglich eine Implementierung nötig. Beim nativen Ansatz muss jedoch je unterstützter Plattform eine eigenständige Implementierung erstellt werden. Bei der hybriden Applikation, wie sie in dieser Arbeit umgesetzt wurde, ist zwar die umgebende Applikation ebenfalls für jede Plattform zu implementieren, jedoch hat die Implementierung einen deutlich geringeren Umfang. Der Teil der Web-Anwendung muss lediglich einmal geschireben werden.  
+Ein weiterer Faktor der beachtet werden muss, ist die Anzahl der nötigen Implementierung je Ansatz. So ist bei dem gemischten und dem cross-kompilierten Ansatz lediglich eine Implementierung nötig. Beim nativen Ansatz muss jedoch je unterstützter Plattform eine eigenständige Implementierung erstellt werden. Bei der hybriden Applikation, wie sie in dieser Arbeit umgesetzt wurde, ist zwar die umgebende Applikation ebenfalls für jede Plattform zu implementieren, jedoch hat die Implementierung einen deutlich geringeren Umfang. Der Teil der Web-Anwendung muss lediglich einmal geschrieben werden.  
 
 Wie also gesehen werden konnte, benötigt eine cross-kompilierte Lösung mit Flutter deutlich weniger Zeilen Code als die anderen Implementierung.
-Wenn jedoch bereits eine Web-Anwendung existiert, reduziert sich der Implementierungsaufwand der hybriden Aufwand auf knapp 200 Zeilen Code und der gemischten Implementierung halbiert sich in etwa. Dadurch können diese beiden Implementierungen in dieser Situatuin ebenfalls eine gute Alternative zu den anderen Ansätzen darstellen. Muss diese jedoch erst erstellt werden ist gerade der gemischte Ansatz mit einem erhöhten Aufwand verbunden.
+Wenn jedoch bereits eine Web-Anwendung existiert, reduziert sich der Implementierungsaufwand der hybriden Aufwand auf knapp 200 Zeilen Code und der gemischten Implementierung halbiert sich in etwa. Dadurch können diese beiden Implementierungen in dieser Situation ebenfalls eine gute Alternative zu den anderen Ansätzen darstellen. Muss diese jedoch erst erstellt werden ist gerade der gemischte Ansatz mit einem erhöhten Aufwand verbunden.
 
 \subsubsection{Zeit bis zur Veröffentlichung}
-Die Entwicklungsdauer wirkt sich direkt auf auch auf den Faktor der Dauer bis zur Möglichkeit der Veröffentlichung einer ersten Version aus .
+Die Entwicklungsdauer wirkt sich auch auf die Dauer bis zur Möglichkeit der Veröffentlichung einer ersten Version aus.
 Je früher eine Anwendung veröffentlicht werden kann, desto früher können Kunden die Applikation nutzen und bei einer kommerziellen Nutzung auch Umsatz produzieren.
 
-Hierbei ist sowohl die native und die cross-kompilierte Implementierung auf eine vollständige Implementierung angewiesen, um den Nutzer ein umfängliches System zu bieten. Bei der nativen Entwicklung kommt d
+Hierbei ist sowohl die native und die cross-kompilierte Implementierung auf eine vollständige Implementierung angewiesen, um den Nutzer ein vollständiges System zu bieten. Die Dauer multipliziert sich außerdem bei der nativen Applikation mit der Anzahl der Plattformen. So dauert es deutlich länger um für jede Plattform eine Version zur Verfügung zu stellen.
+
+Die hybride und die Mischimplementierung haben den Vorteil, dass durch die Nutzung einer Webseite, bereits früh eine Applikation veröffentlicht werden kann und dann Stück für Stück Erweiterungen an der Webseite veröffentlicht werden können. Dabei müssen Updates lediglich auf den Server geladen werden und nicht über Updates in den App-Stores an Kunden verteilt werden, was je nach Plattform zwischen einem Tag und einer Woche dauern kann\footnote{https://developer.apple.com/app-store/review/}\footnote{https://qr.ae/pvu0ud}. 
+
 Durch den Programmieraufwand und der Anzahl der zu unterstützenden Plattformen wird die Dauer der Entwicklungszeit und die Zeit bis zu einem möglichen Release stark beeinflusst. Genaue Werte sind dabei auch stark von Funktionsumfang, Anzahl der Entwickler und den Vorraussetzungen abhängig. Jedoch lassen sich dennoch einige Aussagen treffen.
 
 So ist etwa ein Release der Nativen Anwendung am aufwendigsten. Nicht nur dass wie bereits gesehen, mit der meiste Code geschrieben werden muss, muss dies auch noch für jede Plattform passieren. Am schnellsten ist dies bei der Cross-Plattform Implementierung mit Flutter. Hier muss lediglich einmal die Anwendung durchprogrammiert werden und kann im Anschluss für die einzelnen Plattformen einfach nur noch exportiert werden. Nach der reinen Flutter Implementierung ist die Flutter Implementierung mit Webanteil. Diese ist dann gefolgt vom hybriden Ansatz. 
