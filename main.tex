@@ -22,7 +22,7 @@
 %\MyTitelseite{images/logo.svg}	% Optionales Logo des extern betreuenden Unternehmens
 {1}								% Style der Titelseite (1 oder 2)
 {Bachelorarbeit}				% Typ der Abschlussarbeit (\in {Bachelorarbeit, Masterarbeit})
-{Vergleich verschiedener Ansätze der Multiplattform Applikationsentwicklung anhand einer Beispiel-Anwendung}				% Thema der Arbeit						
+{Vergleich verschiedener Ansätze der Multi-Plattform Applikationsentwicklung anhand einer Beispiel-Anwendung}				% Thema der Arbeit						
 {Prof.\ Dr.-Ing.\ Kai Selgrad}		% Betreuer
 {Prof.\ Dr. rer.\ nat. Wolfgang Mauerer}	% Zweitgutachter
 {12.08.\the\year}	% Abgabedatum
@@ -73,7 +73,9 @@
 % Inhalt
 % ----------------------------------------------------------------------------------------------------------
 \setstretch{1.15}
-
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
 
 \mainmatter
 
@@ -103,21 +105,21 @@
 % Abkürzungsverzeichnis (optional, bitte nur wenn sinnvoll)
 % ----------------------------------------------------------------------------------------------------------
 %\listoftables
-\addchap{Abkürzungsverzeichnis}
-\begin{acronym}[KDE]
-\acro{CRUD}[CRUD]{Create, Read, Update, Delete, die vier Operationen, die auf ein Objekt ausgeführt werden können}
-\acro{UI}[UI]{User Interface}
-\acro{BA}[BA]{Bachelorarbeit}
-\acro{App}[App]{Applikation}
-\acroplural{App}[Apps]{Applikationen}
-\acro{API}[API]{Application Programming Interface}
-\acro{DAO}[DAO]{Data-Access-Object}
-\acro{APK}[APK]{Android Package Kit, dem Dateiformat von Android Anwendungen}
-\acro{LOC}[LOC]{Lines of Code}
-\acro{Mbps}[Mbps]{Megabits per Second}
-\end{acronym}
-\vfill
-\pagebreak
+%\addchap{Abkürzungsverzeichnis}
+%\begin{acronym}[KDE]
+%\acro{CRUD}[CRUD]{Create, Read, Update, Delete, die vier Operationen, die auf ein Objekt ausgeführt werden können}
+%\acro{UI}[UI]{User Interface}
+%\acro{BA}[BA]{Bachelorarbeit}
+%\acro{App}[App]{Applikation}
+%\acroplural{App}[Apps]{Applikationen}
+%\acro{API}[API]{Application Programming Interface}
+%\acro{DAO}[DAO]{Data-Access-Object}
+%\acro{APK}[APK]{Android Package Kit, dem Dateiformat von Android Anwendungen}
+%\acro{LOC}[LOC]{Lines of Code}
+%\acro{Mbps}[Mbps]{Megabits per Second}
+%\end{acronym}
+%\vfill
+%\pagebreak
 
 
 % ----------------------------------------------------------------------------------------------------------
@@ -144,7 +146,7 @@
 % ---------------------------------------------------------------------------------------------------------- 
 % Internetquellen 
 % ---------------------------------------------------------------------------------------------------------- 
-
+\sloppy
 \printbibliography[title = {Quellenverzeichnis}, heading=Quellen,filter=Quellen] 
 \vfill
 

@@ -77,6 +77,10 @@
 \newcommand\new[1]{#1} % plain text
 %\newcommand\old[1]{\textcolor{gray}{{\sout{#1}}}}
 \newcommand\old[1]{} % remove old stuff
+%footnoteref
+\makeatletter
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother
 
 \definecolor{lgdv}{rgb}{.80,.23,.13}
 \definecolor{agreen}{rgb}{.2,.8,.2}

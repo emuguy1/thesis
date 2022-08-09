@@ -35,7 +35,7 @@ Eine letzte Herausforderung war die Kombination der verschiedenen Technologien. 
 \subsection{Benutzte Packages}
 Es wurden die selben Erweiterungen wie in der Flutter Implementierung benutzt. Zusätzlich wurde ein WebView-Package benötigt, um die hybride Implementierung zu ermöglichen. Hierfür wird das von Flutter veröffentliche \verb|webview_flutter|\footnote{https://pub.dev/packages/webview\_flutter} Package genutzt. Anzumerken ist, dass die Wahl der richtigen Erweiterung kompliziert war, da keine der Optionen alle Plattformen unterstützte. Letztendlich wurde das offizielle Package gewählt, welches lediglich Android und iOS unterstützt.
 
-\subsection{Fazit}
+\subsection{Fazit gemsichte Implementierung}
 Im Vergleich zur hybriden Implementierung ist mehr Implementierungsaufwand nötig, da Teile der Webseite durch eine eigene Implementierung ersetzt werden. Jedoch konnte die Benutzbarkeit der Applikation verbessert werden, da durch das gezielte Ersetzen der Webanwendung eine für die Plattform speziell angepasste Funktionalität oder Aussehen erreicht werden kann. Dabei kann Implementierungszeit im Vergleich zur nativen beziehungsweise cross-kompilierten Applikation gespart werden, wenn die Teile der Webanwendung, die von einem derartigen Umbau nicht profitieren, weiterhin als Webseite angezeigt werden.
 Außerdem ermöglicht dieser Ansatz, dass ein Umbau von Webanwendung zu Applikation iterativ möglich ist und somit eine erste Version früher veröffentlicht werden kann.
 
