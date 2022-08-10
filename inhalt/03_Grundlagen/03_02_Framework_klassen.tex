@@ -1,6 +1,6 @@
 \section{Unterschiedliche Ansätze der Applikationsentwicklung für mobile Engeräte}
 \label{cha:3_2}
-Für die Programmierung von Multi-Plattform Applikationen gibt es unterschiedliche Ansätze, in die die Entwicklungsmethoden eingeordnet werden können. Dabei unterscheiden verschiedene Autoren unterschiedliche Ansätze. In dieser Arbeit wird dafür die von Delia et al \cite{IEEE_development_classes} definierten Einteilung verwendet. Im Folgenden werden diese vorgestellt sowie einzelne Aspekte betrachtet.
+Für die Programmierung von Multi-Plattform-Applikationen gibt es unterschiedliche Ansätze, in die die Entwicklungsmethoden eingeordnet werden können. Dabei unterscheiden verschiedene Autoren unterschiedliche Ansätze. In dieser Arbeit wird dafür die von Delia et al \cite{IEEE_development_classes} definierten Einteilung verwendet. Im Folgenden werden diese vorgestellt sowie einzelne Aspekte betrachtet.
 
 \subsection{Native Applikationen}
 Native Applikationen werden entwickelt, um auf einer einzelnen Plattform eingesetzt zu werden. Der Quellcode wird dafür in ausführbaren Code übersetzt. Dieser ist spezifisch für die gewählte Plattform \cite{IEEE_development_classes}.
@@ -9,7 +9,7 @@ Die Programmierung wird in der plattform-typischen Programmiersprache geschriebe
 Ein Vorteil der nativen Entwicklung ist, dass die Funktionen der verschiedenen Plattform optimal genutzt werden können. Die von den Geräten zur Verfügung gestellten Schnittstellen müssen dabei lediglich aufgerufen werden. So können beispielsweise Kamera, GPS oder auch Kalender einfach und effizient genutzt werden. Dabei ist die Ausführung nicht nur performant, sondern kann auch unkompliziert in einem Hintergrundprozess gestartet werden \cite{IEEE_development_classes}.
 Zusätzlich stellen die Plattformen UI-Elemente für die native Entwicklung zur Verfügung, so dass das Aussehen der Applikation und der Benutzerschnittstellen ähnlich zu der unterstützten Plattform ist. So entsteht für den Nutzer ein geschlossenes System, das leichter zu bedienen ist, da es kaum Unterschiede in Struktur, Design, Aufbau oder auch Benutzung gibt \cite{IEEE_Khackouch_Al}.
 
-Ein Nachteil der nativen Entwicklung von Multi-Plattform Anwendungen ist der Aufwand und die damit verbundenen Kosten. Da die Anwendung für jede Plattform einzeln verwirklicht werden muss. So können die Gesamtkosten durch die Multiplikation der Entwicklungskosten einer Plattform mit der Anzahl der zu unterstütztenden Plattformen geschätzt werden \cite{IEEE_Khackouch_Al}. Doch nicht nur die initiale Implementierung ist kostenintensiv. So nennen Delia et al \cite{IEEE_development_classes} auch das Testen, Abändern und Verteilen neuer Versionen als Kosten, die auf jeder unterstützten Plattform auftreten. 
+Ein Nachteil der nativen Entwicklung von Multi-Plattform-Anwendungen ist der Aufwand und die damit verbundenen Kosten. Da die Anwendung für jede Plattform einzeln verwirklicht werden muss. So können die Gesamtkosten durch die Multiplikation der Entwicklungskosten einer Plattform mit der Anzahl der zu unterstütztenden Plattformen geschätzt werden \cite{IEEE_Khackouch_Al}. Doch nicht nur die initiale Implementierung ist kostenintensiv. So nennen Delia et al \cite{IEEE_development_classes} auch das Testen, Abändern und Verteilen neuer Versionen als Kosten, die auf jeder unterstützten Plattform auftreten. 
 Um die Kosten zu verringern, können deswegen anfänglich einzelne Plattformen zur Implementierung ausgewählt werden, wodurch jedoch die Zahl der potentiellen Nutzer sinkt.
 
 \subsection{Web-Applikationen}
@@ -48,7 +48,7 @@ Grundsätzlich teilt dieser Ansatz die gleichen Vor- und Nachteile wie Web-Appli
 
 \subsection{Interpretierte Applikationen}
 \label{cha:3_2_interpretiert}
-Bei interpretieren Cross-Plattform Anwendungen schreibt der Entwickler Code, der anschließend mithilfe eines Interpreters während der Laufzeit in ausführbaren Code übersetzt wird. Folglich besteht die auf dem Gerät installierte Anwendung aus zwei Teilen. Einerseits einem nativen Teil, oftmals Frameworkcode, der zum Übersetzen der eigentlichen Anwendung benötigt wird. Andererseits einem Cross-Plattform Teil, der die Anwendungslogik realisiert \cite{IEEE_development_classes}.
+Bei interpretieren Cross-Plattform-Anwendungen schreibt der Entwickler Code, der anschließend mithilfe eines Interpreters während der Laufzeit in ausführbaren Code übersetzt wird. Folglich besteht die auf dem Gerät installierte Anwendung aus zwei Teilen. Einerseits einem nativen Teil, oftmals Frameworkcode, der zum Übersetzen der eigentlichen Anwendung benötigt wird. Andererseits einem Cross-Plattform-Teil, der die Anwendungslogik realisiert \cite{IEEE_development_classes}.
 
 Der Unterschied zu einer hybriden Applikation besteht darin, dass die Anwendungen je nach Plattform anders aussehen können. So wird etwa die Benutzeroberfläche erst während der Laufzeit in eine native UI, mit den plattformspezifischen UI Elementen, übersetzt.
 Dadurch wird eine Nutzung von nativen Elementen möglich, obwohl die Anwendung eigentlich in einer anderen Sprache definiert ist \cite{IEEE_development_classes}. 
