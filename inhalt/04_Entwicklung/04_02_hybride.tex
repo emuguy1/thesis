@@ -5,7 +5,7 @@ Um ein besseres Verständnis über die Funktionalität des hybriden Ansatzes zu 
 Dabei wird die grundlegende Funktionalität ermöglicht. Eine umfänglichere Nutzung von Plattformfunktionalität wird in einem Exkurs vorgestellt.
 
 \subsection{Grundlagen}
-Um eine Minimalversion zu erhalten, wird eine native Applikation benötigt, die eine WebView-Komponente\footnote{\url{https://developer.android.com/reference/android/webkit/WebView}} enthält. Um die Funktionalität der Webseite zu ermöglichen, müssen unter Anderem die folgenden Aspekte beachtet werden.
+Um eine Minimalversion zu erhalten, wird eine native Applikation benötigt, die eine WebView-Komponente\footnote{\url{https://developer.android.com/reference/android/webkit/WebView}} enthält. Um die Funktionalität der Webseite zu ermöglichen, müssen unter anderem die folgenden Aspekte beachtet werden.
 
 So benutzen rund 98\% aller Webseiten JavaScript in ihrem Code, um zum Beispiel ein Menü ein oder auszublenden, ohne die Seite neu laden zu müssen\footnote{\url{https://w3techs.com/technologies/details/cp-javascript}}. 
 Dazu muss jedoch JavaScript in der WebView aktiviert werden. 
@@ -16,22 +16,22 @@ Letzterer zeigt ein Browser-Tab innerhalb der nativen Applikation an. Dabei kann
 
 Um dies zu ermöglichen, wird für jede aufgerufene URL über das weitere Verfahren entschieden. So könnte eine initiale Grundkonfiguration alle URLs, die zur angezeigten Webapplikation gehören, zulassen und externe Links weiterleiten.
 
-Letzlich ist es wichtig den UserAgent-String zu setzen. Dabei handelt es sich um eine Text-Flagge, die innerhalb eines HTTP-Pakets zu finden ist. Der UserAgent beinhaltet Informationen zu dem benutzten Client oder der genutzten Hardware. Außerdem wird er auch genutzt, um verdächtige Pakete heraus zu filtern\cite{UserAgentString}. So blockiert etwa der Google-LogIn Anfragen, bei denen kein UserAgent gesetzt ist.
+Letztlich ist es wichtig den UserAgent-String zu setzen. Dabei handelt es sich um eine Text-Flagge, die innerhalb eines HTTP-Pakets zu finden ist. Der UserAgent beinhaltet Informationen zu dem benutzten Client oder der genutzten Hardware. Außerdem wird er auch genutzt, um verdächtige Pakete heraus zu filtern\cite{UserAgentString}. So blockiert etwa der Google-Login Anfragen, bei denen kein UserAgent gesetzt ist.
 
 Neben Konfigurationen zur Funktionalität können auch native Elemente in das Layout integriert werden. So kann etwa ein Button hinzugefügt werden, um zur Startseite der Anwendung zurückzukehren.
-
+\\
 \subsection{Exkurs: Nutzung von Plattformfunktionalität}
 Wie in Kapitel \ref{cha:3_hybrid} erwähnt, haben hybride Applikationen die Möglichkeit auf Plattformfunktionalität zuzugreifen. 
 Dies ist typischerweise Teil eines Frameworks und daher bereits umgesetzt.
-Jedoch wird für diesen Abschnitt aus Demonstrationszwecken auf den Einsatz eines Frameworks verzichtet, um einen möglichen Ansatz zu zeigen, native Funktionen in die eigene Applikation zu integrieren. So kann ein von der App erzeugtes WebAppInterface\footnote{\url{https://developer.android.com/guide/webapps/webview\#BindingJavaScript}} in die WebView eingefügt werden. Dieses kann aus dem JavaScript der Webseite aufgerufen werden \cite{webview_javascript_security}. Um dies zu ermöglichen, werden Objekte und ihre öffentlichen Methoden dem Webcontainer mit vordefinierten Namen zur Verfügung gestellt. Das Interface ist dabei in der Lage Daten zu senden und zu empfangen.
+Jedoch wird für diesen Abschnitt aus Demonstrationszwecken ebenfalls auf den Einsatz eines Frameworks verzichtet, um einen möglichen Ansatz zu zeigen, native Funktionen in die eigene Applikation zu integrieren. So kann ein von der App erzeugtes WebAppInterface\footnote{\url{https://developer.android.com/guide/webapps/webview\#BindingJavaScript}} in die WebView eingefügt werden. Dieses kann aus dem JavaScript der Webseite aufgerufen werden \cite{webview_javascript_security}. Um dies zu ermöglichen, werden Objekte und ihre öffentlichen Methoden dem Webcontainer mit vordefinierten Namen zur Verfügung gestellt. Das Interface ist dabei in der Lage Daten zu senden und zu empfangen.
 
-Weiterhin ist es möglich JavaScript-Code aus der Applikation heraus aufzurufen beziehungsweise auszuführen. Dafür wird mit Hilfe der loadUrl Methode, die in der WebView normalerweise einen Link aufruft, JavaScript-Code mit dem Präfix \verb|"javascript:"| der WebAnwendung hinzugefügt \cite{webview_javascript_security}.
+Weiterhin ist es möglich JavaScript-Code aus der Applikation heraus aufzurufen beziehungsweise auszuführen. Dafür wird mit Hilfe der loadUrl Methode, die in der WebView normalerweise einen Link aufruft, JavaScript-Code mit dem Präfix \verb|"javascript:"| der Web-Anwendung hinzugefügt \cite{webview_javascript_security}.
 Dabei kann sowohl selbst geschriebener Code als auch ein Aufruf bereits definierter Methoden hinzugefügt und ausgeführt werden.
 Dies erfordert, dass ein besonderes Augenmerk auf Sicherheit gesetzt werden muss. So kann nicht nur die Applikation, sondern auch die Webseite attackiert werden \cite{webview_javascript_security}. 
 Beispielsweise könnten bösartige Applikationen versuchen, über die JavaScript Schnittstelle eigenen Schadcode auszuführen, um so den aufgerufenen Webserver zu attackieren. Dies ist möglich, da der hinzugefügte Code, identisch zu dem von der Webanwendung stammenden ausgeführt wird \cite{webview_javascript_security}.
 
 \subsection{Fazit hybride Implementierung}
-Ein Vorteil ist die Entwicklungsgeschwindigkeit, vor allem, wenn bereits vorher eine Webanwendung existiert. Anstatt die Anwendung komplett neu zu verwirklichen, kann bei diesem Ansatz die Webanwendung in eine native Applikation eingebettet werden.
+Ein Vorteil ist die Entwicklungsgeschwindigkeit, vor allem, wenn bereits vorher eine Webanwendung existiert. Anstatt die Anwendung komplett neu zu entwickeln, kann bei diesem Ansatz die Webanwendung in eine native Applikation eingebettet werden.
 Ein Vorteil der Nutzung einer extern gehosteten Webanwendungen ist, dass Änderungen am Inhalt sofort für den Nutzer sichtbar sind, da keine Updates oder Neuinstallationen benötigt werden. 
 Dazu kommt, dass an der nativen Applikation nur sehr selten Änderungen durchgeführt werden müssen, da in dieser wenig anwendungsspezifische Logik implementiert ist.
 
@@ -40,4 +40,4 @@ Ein Problem für diese Art der Entwicklung sind die Review Richtlinien des Apple
 Diese fordern, dass eine App nicht nur ein Container für eine Webseite sein darf, sondern hauptsächlich weitere Funktionalität zur Verfügung stellen muss. Dadurch ist es wahrscheinlich, dass eine Implementierung, wie sie oben vorgestellt wurde, nicht von Apple veröffentlicht werden würde.
 
 Die Vor- und Nachteile hängen jedoch stark von der gewählten Umsetzung ab. So kann etwa durch die Nutzung einer lokal gespeicherten Implementierung eine offline Funktionalität erreicht werden. Dies erfordert jedoch, dass Änderungen über den normalen Updateprozess der einzelnen Plattformen verteilt werden müssen.
-Auch kann ein Großteil der Implementierung durch die Nutzung von Frameworks ersetzt werden. Allerdings muss die Webseite dann an die Anforderungen des Framework angepasst werden. 
+Auch kann ein Großteil der Implementierung durch die Nutzung von Frameworks ersetzt werden. Allerdings muss die Webseite dann an die Anforderungen des Frameworks angepasst werden. 
