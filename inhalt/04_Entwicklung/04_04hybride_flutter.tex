@@ -1,12 +1,12 @@
-\section{Entwicklung einer hybriden, cross-kompilierten Applikation mit WebView und Flutter}
+\section{Entwicklung einer gemischten Applikation mit WebView und Flutter}
 Die vierte Implementierung ist dem gemischten Ansatz zuzuordnen. Sie besteht aus der Kombination einer hybriden Applikation und einer cross-kompilierten Applikation.
 Hierbei sind die einzelnen Ansichten entweder eine mit Flutter implementierte Seite oder eine mittels WebView integrierte Ansicht der Webseite.
-Durch diese Kombination soll die bereits bestehende Webseite wiederverwendet werden, während gleichzeitig bestimmte Teile des Systems für die mobile Nutzung angepasst werden und durch eigens programmierter Flutter Seite ersetzt werden.
+Durch diese Kombination soll die bereits bestehende Webseite wiederverwendet werden, während gleichzeitig bestimmte Teile des Systems für die mobile Nutzung angepasst werden und durch eigens programmierter Flutter Seiten ersetzt werden.
 Dadurch kann ein Teil der Neuimplementierung vermieden werden, während die Nutzererfahrung für die neuen Plattformen optimiert werden kann.
 Dabei soll weiterhin die Möglichkeit bestehen, die individuellen Applikationen aus einer gemeinsamen Code-Basis zu kompilieren.
 
 \subsection{Grundlagen}
-Da es sich wiederum um eine Flutter Applikation handelt gelten die selben Grundlagen wie in Kapitel \ref{cha:4.3.1}.
+Da es sich wiederum um eine Flutter Applikation handelt gelten die selben Grundlagen wie in Kapitel \ref{cha:4_3_1}.
 Zusätzlich wird nun eine WebView-Komponente hinzugefügt und zwischen Web-Oberflächen und Flutter-Seiten hin und her gewechselt.
 Da dies kein weit verbreiteter Ansatz ist und es folglich keine offizielle Dokumentation oder Anleitungen für diesen Ansatz gibt, mussten hierzu einige Herausforderungen überwunden werden, die im Folgenden erläutert werden sollen.
 
@@ -14,12 +14,12 @@ Die Integration der Webseite ist ähnlich zum Vorgehen bei der hybriden Applikat
 Dementsprechend muss die Analyse und darauf folgende Unterscheidung der URLs deutlich feingradiger stattfinden.
 
 Flutter beendet standardmäßig alle nicht mehr angezeigten Seiten und löscht dabei auch mögliche gespeicherte Informationen. So etwa auch die Navigationshistorie der WebView.
-Da diese allerdings benötigt wird, um innerhalb der Webanwendung zurück zur vorherigen Seite zu navigieren, wird folglich eine Möglichkeit benötigt, um die Daten der WebView zu speichern. Dafür wurde das von Flutter bereitgestellte \verb|AutomaticKeepAliveMixin|\footnote{https://api.flutter.dev/flutter/widgets/AutomaticKeepAliveClientMixin-mixin.html} verwendet. 
-Wie der Name beschreibt, weden damit die States von Widgets markiert, um zu bewirken, dass die Garbage Collection diesen nicht löscht. 
-Bei einem erneuten Aufruf der Seite wird dann der noch vorhandede State geladen. Dadurch wird ein Zurücknavigieren in der Webseite auch nach dem vorherigen Verlassen der Web-Ansicht weiterhin möglich.
+Da diese allerdings benötigt wird, um innerhalb der Webanwendung zurück zur vorherigen Seite zu navigieren, wird folglich eine Möglichkeit benötigt, um die Daten der WebView zu speichern. Dafür wurde das von Flutter bereitgestellte \verb|AutomaticKeepAliveMixin|\footnote{\url{https://api.flutter.dev/flutter/widgets/AutomaticKeepAliveClientMixin-mixin.html}} verwendet. 
+Wie der Name beschreibt, werden damit die States von Widgets markiert, um zu bewirken, dass die Garbage Collection diesen nicht löscht. 
+Bei einem erneuten Aufruf der Seite wird dann der noch vorhandene State geladen. Dadurch wird ein Zurücknavigieren in der Webseite auch nach dem vorherigen Verlassen der Web-Ansicht weiterhin möglich.
 
 Es existiert außerdem bei diesem Ansatz eine zusätzliche Herausforderung bei der Navigation.
-Dabei ist das Navigieren zu einer neuen Seite ohne Probleme durch die Navigation der WebView möglich. Die aufgerufene URL werden abgefangen und ,wie bereits erklärt, weiterverarbeitet. Aus einer Flutter-Ansicht heraus wird dann entweder zu einer anderen Flutter-Ansicht navigiert oder die neue URL in der WebView aufgerufen. Bei der Rückwärtsnavigation ergibt sich jedoch folgendes Problem. Zwar kann die Flutter Navigation ohne Probleme von einer Flutter-Seite in die WebView zurückkehren, wo dann die Navigation der WebView übernimmt, wurde jedoch in vorherigen Verlauf zu einer Flutter Webseite navigiert, so ist diese im Verlauf der Webseite enthalten. Da die Methode, welche über das weitere Verfahren der URL entscheidet, lediglich bei vorwärts navigieren aufgerufen wird, würde fälschlicher Weise die Webseite angezeigt werden und nicht die angepasste Flutter-Seite.
+Dabei ist das Navigieren zu einer neuen Seite ohne Probleme durch die Navigation der WebView möglich. Die aufgerufene URLs werden abgefangen und ,wie bereits erklärt, weiterverarbeitet. Aus einer Flutter-Ansicht heraus wird dann entweder zu einer anderen Flutter-Ansicht navigiert oder die neue URL in der WebView aufgerufen. Bei der Rückwärtsnavigation ergibt sich jedoch folgendes Problem. Zwar kann die Flutter Navigation ohne Probleme von einer Flutter-Seite in die WebView zurückkehren, wo dann die Navigation der WebView übernimmt. Wurde jedoch in vorherigen Verlauf zu einer Flutter Webseite navigiert, so ist diese im Verlauf der Webseite enthalten. Da die Methode, welche über das weitere Verfahren der URL entscheidet, lediglich bei vorwärts navigieren aufgerufen wird, würde fälschlicher Weise die Webseite angezeigt werden und nicht die angepasste Flutter-Seite.
 Um diese Herausforderung zu überwinden, wurden zwei mögliche Lösungen erarbeitet:
 \begin{enumerate}
     \item Eine eigene Navigation programieren, in der genau definiert werden kann, wann eine URL als Webseite geladen wird und wann eine Flutter Seite aufgerufen wird. 
@@ -27,15 +27,15 @@ Um diese Herausforderung zu überwinden, wurden zwei mögliche Lösungen erarbei
 \end{enumerate}
 
 Beide Lösungen haben Vor und Nachteile. So benötigt der erste Ansatz weniger Ressourcen, da lediglich eine WebView genutzt werden kann. Jedoch wird hier ein hoher Implementierungsaufwand benötigt, um eine angepasste Navigation zu schreiben. 
-Beim zweiten Ansatz ist die Performance zwar schlechter, jedoch kann die von Flutter bereitgestellte Navigation genutzt werden. Somit können Fehler bei der Implementierung und ein zusätzlicher Programmieraufwand vermindert werden.
-Wenn zusätzlich sinnvolle Punkte in der App definiert werden, an welchen die Navigationshistorie der Flutternavigation gelöscht wird, können folglich alte WebView Konfigurationen von der Garbage Collection gelöscht werden und folglich können die vom Ansatz benötigten Ressourcen reduziert werden. Daher wurde für die Implementierung die zweite Lösung gewählt. 
+Beim zweiten Ansatz ist die Performance zwar schlechter, jedoch kann die von Flutter bereitgestellte Navigation genutzt werden. Somit können Fehler bei der Implementierung und ein zusätzlicher Programmieraufwand vermindert oder vermieden werden.
+Wenn zusätzlich sinnvolle Punkte in der App definiert werden, an welchen die Navigationshistorie der Flutter-Navigation gelöscht wird, können folglich alte WebView Konfigurationen von der Garbage Collection gelöscht werden und folglich die vom Ansatz benötigten Ressourcen reduziert werden. Daher wurde für die Implementierung die zweite Lösung gewählt. 
 
-Eine letzte Herausforderung war die Kombination der verschiedenen Technologien. Beispielsweise wurde bei der Web-Implementierung eine sogenannte Live-Komponente benutzt. Diese sorgt dafür, dass bei einem Wechsel von einer Seite zu einer anderen, keine neue URL geladen wird, sondern lediglich der Inhalt dynamisch nachgeladen wird. Dies lag zum Beispiel bei der Umsetzung des Chats vor. So war die Überssichtsseite der Konversationen mit der Anzeige der einzelnen Chats über diese Technologie verbunden. Deshalb konnte nicht ,wie ursprünglich geplant, lediglich die Chat-Seite durch Flutter ersetzt werden sondern es musste auch die davorliegende Übersichtsseite umgesetzt werden.
+Eine letzte Herausforderung war die Kombination der verschiedenen Technologien. Beispielsweise wurde bei der Web-Implementierung eine sogenannte Live-Komponente benutzt. Diese sorgt dafür, dass bei einem Wechsel von einer Seite zu einer anderen, keine neue URL geladen wird, sondern lediglich der Inhalt dynamisch nachgeladen wird. Dies lag zum Beispiel bei der Umsetzung des Chats vor. So war die Überssichtsseite der Konversationen mit der Anzeige der einzelnen Chats über diese Technologie verbunden. Deshalb konnte nicht ,wie ursprünglich geplant, lediglich die Chat-Seite durch Flutter ersetzt werden, sondern es musste auch die davorliegende Übersichtsseite umgesetzt werden.
 
 \subsection{Benutzte Packages}
-Es wurden die selben Erweiterungen wie in der Flutter Implementierung benutzt. Zusätzlich wurde ein WebView-Package benötigt, um die hybride Implementierung zu ermöglichen. Hierfür wird das von Flutter veröffentliche \verb|webview_flutter|\footnote{https://pub.dev/packages/webview\_flutter} Package genutzt. Anzumerken ist, dass die Wahl der richtigen Erweiterung kompliziert war, da keine der Optionen alle Plattformen unterstützte. Letztendlich wurde das offizielle Package gewählt, welches lediglich Android und iOS unterstützt.
+Es wurden die selben Erweiterungen wie in der Flutter Implementierung benutzt. Zusätzlich wurde ein WebView-Package benötigt, um die hybride Implementierung zu ermöglichen. Hierfür wird das von Flutter veröffentliche \verb|webview_flutter|\footnote{\url{https://pub.dev/packages/webview\_flutter}} Package genutzt. Anzumerken ist, dass die Wahl der richtigen Erweiterung kompliziert war, da keine der Optionen alle Plattformen unterstützte. Letztendlich wurde die offizielle Erweiterung gewählt, welche lediglich Android und iOS unterstützt.
 
-\subsection{Fazit gemsichte Implementierung}
+\subsection{Fazit gemischte Implementierung}
 Im Vergleich zur hybriden Implementierung ist mehr Implementierungsaufwand nötig, da Teile der Webseite durch eine eigene Implementierung ersetzt werden. Jedoch konnte die Benutzbarkeit der Applikation verbessert werden, da durch das gezielte Ersetzen der Webanwendung eine für die Plattform speziell angepasste Funktionalität oder Aussehen erreicht werden kann. Dabei kann Implementierungszeit im Vergleich zur nativen beziehungsweise cross-kompilierten Applikation gespart werden, wenn die Teile der Webanwendung, die von einem derartigen Umbau nicht profitieren, weiterhin als Webseite angezeigt werden.
 Außerdem ermöglicht dieser Ansatz, dass ein Umbau von Webanwendung zu Applikation iterativ möglich ist und somit eine erste Version früher veröffentlicht werden kann.
 
