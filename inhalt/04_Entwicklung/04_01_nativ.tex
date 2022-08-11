@@ -11,7 +11,7 @@ Eine native Android App besteht aus zwei separaten Teilen.
 Der erste Teil ist das Layout. Dabei wird das Design für die UI und deren Elemente mit Hilfe der XML-Notation erstellt.
 In der XML-Datei wird ähnlich zu einer HTML Datei, die Oberfläche aufgebaut. Als Wurzelelement hat eine Seite dabei ein Layoutelement. Neben einem linearen Layout oder einem Tabellenlayout, wird vor allem das so genannte Constraint-Layout\footnote{\url{https://developer.android.com/guide/topics/large-screens/support-different-screen-sizes}} genutzt. 
 Dieses Layout definiert die Positionen der Elemente abhängig von anderen Elementen. Durch diese Eigenschaft eignet es sich gut, um Designs für unterschiedliche Bildschirmgrößen zu erstellen \cite{ConstraintLayout_Android}. Es bietet dabei auch die Möglichkeit, neben der Position auch die Größe, abhängig von anderen Elementen zu definieren.
-Die eigentliche Benutzeroberfläche wird durch Verschachtelung und Anordnung von UI-Elementen innerhalb des Grundlayouts gebaut. Diese können dabei sowohl von Android vordefiniert oder von externen Bibliotheken stammen. Die erstellten Dateien beinhaltet lediglich das Layout und keinerlei Funktionalität.
+Die eigentliche Benutzeroberfläche wird durch Verschachtelung und Anordnung von UI-Elementen innerhalb des Grundlayouts gebaut. Diese können dabei sowohl von Android vordefiniert sein oder von externen Bibliotheken stammen. Die erstellten Dateien beinhalten lediglich das Layout und keinerlei Funktionalität.
 
 Der zweite Teil der Implementierung ist die Logik und Funktionalität der Anwendung. Dieser Teil kann in drei Haupt-Klassen eingeteilt werden. 
 Die erste Klasse, die sogenannte Activity\footnote{\url{https://developer.android.com/reference/kotlin/android/app/Activity}}, ist die Hauptklasse für eine Seite. In ihr wird das Layout aufgerufen und der aktuellen Seite hinzugefügt, den Elementen der UI ihre Funktionalität zugeordnet, in der Oberfläche die benötigten Daten ergänzt und vorhandenen Listen ein Controller zugeordnet \cite{sarkar_android}.
@@ -34,13 +34,13 @@ Die Besonderheit ist, dass Room eine Zwischenebene darstellt, die die geschriebe
 Zum Speichern eines Authentifizierungsstrings für die Kommunikation mit der GraphQL-\break Schnittstelle werden sogenannte Shared-Preferences\footnote{\url{https://developer.android.com/reference/android/content/SharedPreferences}} genutzt. 
 Sie sind ein weiterer Teil von Android Jetpack und dienen zur Speicherung von Key-Value Werten innerhalb der Applikation. 
 Die Key-Value Werte können aus jeder Klasse der Applikation abgefragt, hinzugefügt, geändert oder gelöscht werden und sind in einfachen XML-Dateien gespeichert \cite{Shared_Preferences_Android}. 
-So kann die Erstellung einer eigenen Entität in der Datenbank verhindert werden und der Zugriff auf den Inhalt vereinfacht. 
+So kann die Erstellung einer eigenen Entität in der Datenbank verhindert und der Zugriff auf den Inhalt vereinfacht werden. 
 Sie sind nur für einfache Daten geeignet, da lediglich primitive Datentypen genutzt werden können. 
 Daher werden sie für Werte wie Authentifizierung oder Benutzereinstellungen genutzt \cite{Shared_Preferences_Android}.
 
 
 \subsection{Fazit native Implementierung}
-Der native Ansatz ist sehr gut dokumentiert. Für fast jedes Problem, wie etwa der GraphQL Kommunikation, kann eine erprobte und gut funktionierende Lösung gefunden werden. Dazu kommt, dass es viele Bibliotheken gibt, die Google beziehungsweise JetBrains selbst anbieten, um die Entwicklung von Apps zu vereinfachen und zu standardisieren.
+Der native Ansatz ist sehr gut dokumentiert. Für fast jedes Problem, wie etwa der GraphQL-Kommunikation, kann eine erprobte und gut funktionierende Lösung gefunden werden. Dazu kommt, dass es viele Bibliotheken gibt, die Google beziehungsweise JetBrains selbst anbieten, um die Entwicklung von Apps zu vereinfachen und zu standardisieren.
 
 Ein Vorteil der Layoutentwicklung in diesem Bereich ist, dass das Layout in einer sofortigen Anzeige zusammengebaut werden kann und somit das Aussehen sofort ersichtlich ist. Dies ist dabei sowohl bei der nativen Android als auch der nativen iOS Entwicklung möglich. 
 Jedoch ist diese Anzeige nur auf die Oberfläche ohne Funktionalität oder von der Activity hinzugefügte Daten beschränkt. 

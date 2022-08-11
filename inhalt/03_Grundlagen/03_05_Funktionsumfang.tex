@@ -1,6 +1,6 @@
 \section{Funktionsumfang der Beispiel-Anwendung}
-Damit die abgebildete Anwendung ein gutes Beispiel für eine Applikationsentwicklung darstellt, wurden beim Entwurf des Funktionsumfang darauf geachtet, möglichst viele der typischen Funktionalitäten von Applikationen abzudecken. Eine Befragung \cite{JetBrains_miscellaneous_2021} mobiler Anwendungsentwickler durch JetBrains ergab, dass die wichtigsten Funktionen Datenspeicherung, Kommunikation über Netzwerk, Medienanzeige, Statusmanagement, Navigation, Datensynchronisierung, Dateien lesen/schreiben sind.
-Das in der Arbeit betrachtete Projekt beschränkt sich dabei auf folgende Funktionalität:
+Damit die abgebildete Anwendung ein gutes Beispiel für eine Applikationsentwicklung darstellt, wurde beim Entwurf des Funktionsumfangs darauf geachtet, möglichst viele der typischen Funktionalitäten von Applikationen abzudecken. Eine Befragung \cite{JetBrains_miscellaneous_2021} mobiler Anwendungsentwickler durch JetBrains ergab, dass die wichtigsten Funktionen Datenspeicherung, Kommunikation über Netzwerk, Medienanzeige, Statusmanagement, Navigation, Datensynchronisierung, Dateien lesen/schreiben sind.
+Das in der Arbeit betrachtete Projekt beschränkt sich dabei auf folgende Funktionalitäten:
 
 Es soll eine App gebaut werden, die sich an der bestehende Web-Anwendung orientiert und einen Teil der Funktionalität durch die Programmierung abbildet. Dabei können die Implementierungen in zwei Gruppen unterteilt werden, die im Folgenden genauer beschrieben werden.
 
@@ -19,6 +19,6 @@ Der Nutzer verwendet die Anwendung, wie im Folgenden beschrieben. Zunächst wird
 \subsubsection{Funktionalität mit Web-Integrierung}
 In dieser Gruppe wird ein Teil oder auch die komplette Applikationslogik durch das Einbinden der Web-Anwendung in die Applikation ersetzt. So wird bei der Implementierung des hybriden Ansatzes die bereits existierende Website in eine native programmierte Applikation eingebunden. Der Applikationscode übernimmt dabei die Aufgaben, die klassischer Weise durch ein Framework erfüllt werden würde. Sie ist jedoch durch die spezifische Implementierung der Webseite stark in der Funktionalität eingeschränkt.
 
-Bei der gemischten   Implementierung wird zwischen der Web-Anwendung und Benutzeroberflächen, die mit dem Cross-Compiler Framework Flutter erstellt wurden, gewechselt. Dabei wird insbesondere der Login, die Profilseite und das Chat System durch Flutter Seiten ersetzt, während der Rest der Anwendung durch die Web-Anwendung dargestellt wird. Daher ist dieser Ansatz eine Mischung aus dem hybriden und dem cross-kompilierten Ansatz.
+Bei der gemischten   Implementierung wird zwischen der Web-Anwendung und Benutzeroberflächen, die mit dem Cross-Compiler Framework Flutter erstellt wurden, gewechselt. Dabei werden insbesondere der Login, die Profilseite und das Chat System durch Flutter Seiten ersetzt, während der Rest der Anwendung durch die Web-Anwendung dargestellt wird. Daher ist dieser Ansatz eine Mischung aus dem hybriden und dem cross-kompilierten Ansatz.
 
 

@@ -28,7 +28,7 @@ Jedoch wird für diesen Abschnitt aus Demonstrationszwecken ebenfalls auf den Ei
 Weiterhin ist es möglich JavaScript-Code aus der Applikation heraus aufzurufen beziehungsweise auszuführen. Dafür wird mit Hilfe der loadUrl Methode, die in der WebView normalerweise einen Link aufruft, JavaScript-Code mit dem Präfix \verb|"javascript:"| der Web-Anwendung hinzugefügt \cite{webview_javascript_security}.
 Dabei kann sowohl selbst geschriebener Code als auch ein Aufruf bereits definierter Methoden hinzugefügt und ausgeführt werden.
 Dies erfordert, dass ein besonderes Augenmerk auf Sicherheit gesetzt werden muss. So kann nicht nur die Applikation, sondern auch die Webseite attackiert werden \cite{webview_javascript_security}. 
-Beispielsweise könnten bösartige Applikationen versuchen, über die JavaScript Schnittstelle eigenen Schadcode auszuführen, um so den aufgerufenen Webserver zu attackieren. Dies ist möglich, da der hinzugefügte Code, identisch zu dem von der Webanwendung stammenden ausgeführt wird \cite{webview_javascript_security}.
+Beispielsweise könnten bösartige Applikationen versuchen, über die JavaScript-Schnittstelle eigenen Schadcode auszuführen, um so den aufgerufenen Webserver zu attackieren. Dies ist möglich, da der hinzugefügte Code, identisch zu dem von der Webanwendung stammenden ausgeführt wird \cite{webview_javascript_security}.
 
 \subsection{Fazit hybride Implementierung}
 Ein Vorteil ist die Entwicklungsgeschwindigkeit, vor allem, wenn bereits vorher eine Webanwendung existiert. Anstatt die Anwendung komplett neu zu entwickeln, kann bei diesem Ansatz die Webanwendung in eine native Applikation eingebettet werden.
