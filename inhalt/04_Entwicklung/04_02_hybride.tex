@@ -21,6 +21,7 @@ Letztlich ist es wichtig den UserAgent-String zu setzen. Dabei handelt es sich u
 Neben Konfigurationen zur Funktionalität können auch native Elemente in das Layout integriert werden. So kann etwa ein Button hinzugefügt werden, um zur Startseite der Anwendung zurückzukehren.
 \\
 \subsection{Exkurs: Nutzung von Plattformfunktionalität}
+\label{cha:4_2_2}
 Wie in Kapitel \ref{cha:3_hybrid} erwähnt, haben hybride Applikationen die Möglichkeit auf Plattformfunktionalität zuzugreifen. 
 Dies ist typischerweise Teil eines Frameworks und daher bereits umgesetzt.
 Jedoch wird für diesen Abschnitt aus Demonstrationszwecken ebenfalls auf den Einsatz eines Frameworks verzichtet, um einen möglichen Ansatz zu zeigen, native Funktionen in die eigene Applikation zu integrieren. So kann ein von der App erzeugtes WebAppInterface\footnote{\url{https://developer.android.com/guide/webapps/webview\#BindingJavaScript}} in die WebView eingefügt werden. Dieses kann aus dem JavaScript der Webseite aufgerufen werden \cite{webview_javascript_security}. Um dies zu ermöglichen, werden Objekte und ihre öffentlichen Methoden dem Webcontainer mit vordefinierten Namen zur Verfügung gestellt. Das Interface ist dabei in der Lage Daten zu senden und zu empfangen.
